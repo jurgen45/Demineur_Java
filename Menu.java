@@ -1,3 +1,4 @@
+import java.awt.event.ActionEvent;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -23,6 +24,7 @@ public class Menu extends JFrame implements ActionListener {
         fond.add(b1);
         fond.add(b2);
         b1.addActionListener(this);
+        b2.addActionListener(this);
         JLabel titre=new JLabel("Demineur");
         paneltitre.add(titre);
         fond.setMaximumSize(new Dimension(600,400));
@@ -31,5 +33,8 @@ public class Menu extends JFrame implements ActionListener {
         
     }
 
+    public void actionPerformed(ActionEvent e) {
+
+    }
     
 }
