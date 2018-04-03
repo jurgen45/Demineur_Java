@@ -26,7 +26,7 @@ public class Menu extends JFrame {
         fond.setMaximumSize(new Dimension(600,400));
         this.add(paneltitre, BorderLayout.NORTH);
         this.add(fond);
-        
+         
     }
 
     
