@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
-public class Menu extends JFrame {
+import java.awt.event.ActionListener;
+public class Menu extends JFrame implements ActionListener {
     public Menu() {
     super();
         this.setSize(600, 600);
@@ -21,12 +22,13 @@ public class Menu extends JFrame {
         fond.setLayout(grid);
         fond.add(b1);
         fond.add(b2);
+        b1.addActionListener(this);
         JLabel titre=new JLabel("Demineur");
         paneltitre.add(titre);
         fond.setMaximumSize(new Dimension(600,400));
         this.add(paneltitre, BorderLayout.NORTH);
         this.add(fond);
-         
+        
     }
 
     
