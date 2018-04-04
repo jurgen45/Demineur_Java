@@ -43,7 +43,11 @@ public class Menu extends JFrame implements ActionListener {
             this.dispose();
             Reglage visu = new Reglage();          
             visu.affiche();
+<<<<<<< HEAD
           
+=======
+            //Demineur jeu=new Demineur(10,30,5);
+>>>>>>> 722be543775b68fe77a10f18e816cabed83ac941
             
         } else if (e.getActionCommand() == "reprendre la partie précédente") {
             
