@@ -28,30 +28,42 @@ public class Jeu extends JFrame implements ActionListener{
 		this.add(l2);
 		this.add(col);
 		this.add(lig);
-		
-		
+		col.setText("colonne: " + nbc);
+		lig.setText("ligne: " + nbl);
 		this.setVisible(true);
 	}
 	public void actionPerformed(ActionEvent e)
 	{
 	    if(e.getActionCommand()=="colonne +")
 	    {
-	      nbc++; 
-	      col.setText("colonne: " + nbc);	 
+	      nbc++;     
+	      if (nbc>=40) {
+	      	 	nbc=40;
+	      	 }	
+		  col.setText("colonne: " + nbc); 
 	    }
 	    else if(e.getActionCommand()=="colonne -")
 	    {
-	      nbc--;
+	      nbc--;	      
+	      if (nbc<=4) {
+	      	 	nbc=4;
+	      	 }
 	      col.setText("colonne: " + nbc);
 	    }
 	    else if(e.getActionCommand()=="ligne +")
 	    {
-	      nbl++;
+	      nbl++;	      
+	      if (nbl>=40) {
+	      	 	nbl=40;
+	      	 }
 	      lig.setText("ligne: " + nbl);
 	    }
 	    else if (e.getActionCommand()=="ligne -")
 	    {
-	      nbl--;	
+	      nbl--;		      
+	      if (nbl<=4) {
+	      	 	nbl=4;
+	      	 }
 	      lig.setText("ligne: " + nbl);
 	    }	
 	}
