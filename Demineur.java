@@ -22,8 +22,8 @@ public class Demineur extends JFrame implements ActionListener {
             {
                 for(int f=0;f<ligne;f++)
                     {
-                        tabJButton[i][f] = new JButton();
-                        this.add(tabJButton[i][f]);
+                        tabJButton[f][i] = new JButton();
+                        this.add(tabJButton[f][i]);
                     }
             }
    }
