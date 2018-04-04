@@ -8,8 +8,7 @@ public class Menu extends JFrame implements ActionListener {
     public JButton b2 = null;
     public Menu() {
     super();
-        this.setSize(600, 600);
-        this.setLocation(2000, 100);
+        
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
         this.menuDemarrage();
@@ -30,9 +29,8 @@ public class Menu extends JFrame implements ActionListener {
         b2.addActionListener(this);
         JLabel titre=new JLabel("Demineur");
         paneltitre.add(titre);
-        fond.setMaximumSize(new Dimension(600,400));
         this.add(paneltitre, BorderLayout.NORTH);
-        this.add(fond);
+        this.add(fond,BorderLayout.CENTER);
          
     }
 
