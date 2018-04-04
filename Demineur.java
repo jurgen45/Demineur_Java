@@ -18,22 +18,16 @@ public class Demineur extends JFrame implements ActionListener {
         GridLayout grid=new GridLayout(colonne,ligne);
         this.setLayout(grid);
         tabJButton=new JButton[ligne][colonne];
-            for(int i=0;i<colonne;i++)
-            {
-                for(int f=0;f<ligne;f++)
-                    {
-                        tabJButton[f][i] = new JButton();
-                        this.add(tabJButton[f][i]);
-                    }
+            System.out.println(ligne+"/"+colonne + "/"+mine);
+            for (int i = 0; i < colonne; i++) {
+            for (int f = 0; f < ligne; f++) {
+                tabJButton[f][i]=new JButton();
             }
+        }
             double aleadouble=Math.random() * 10;
             int alea=(int)aleadouble;
             int compteurAleaMine=0;
-            
-                
             while (compteurAleaMine<mine) {
-                
-            
             for (int i = 0; i < colonne; i++) {
                 for (int f = 0; f < ligne; f++) {
                     aleadouble = Math.random() * 100;
@@ -41,23 +35,24 @@ public class Demineur extends JFrame implements ActionListener {
                     if (alea==1&&compteurAleaMine<mine) {
                         tabJButton[f][i] = new JButton("*");
                         tabJButton[f][i].setBackground(Color.BLACK);
+                        System.out.println("mine :"+f + "/" + i);
                         compteurAleaMine++;
-                        System.out.println("mine");
-                       System.out.println("f:"+f+" i:"+i);
                     }
-                
+                    
                 
                 }
             }
             }
             for (int i = 0; i < colonne; i++) {
-                    for (int f = 0; f < ligne; f++) {
-        
-                        this.add(tabJButton[f][i]);
+                for (int f = 0; f < ligne; f++) {
+            this.add(tabJButton[f][i]);
+                }
             }
+            
+            
         }
         
-   }
+   
 
 
 
