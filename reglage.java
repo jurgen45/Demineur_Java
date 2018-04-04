@@ -2,23 +2,31 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Jeu extends JFrame implements ActionListener{
+public class Reglage extends JFrame implements ActionListener{
 	public int nbc=4;
 	public int nbl=4;
+	public int nbm=2;
 	public JLabel col = new JLabel();
 	public JLabel lig = new JLabel();
+	public JLabel mines = new JLabel();
 	public void affiche(){
 		
-		GridLayout gestionnaire = new GridLayout(4, 2);
+		GridLayout gestionnaire = new GridLayout(5, 2);
 		this.setLayout(gestionnaire);
 		JButton c1 = new JButton("colonne +");
 		JButton c2 = new JButton("colonne -");
 		JButton l1 = new JButton("ligne +");
 		JButton l2 = new JButton("ligne -");
+		JButton m1 = new JButton("mines +");
+		JButton m2 = new JButton("mines -");
+		JButton run = new JButton("lancer la partie !");
 		c1.addActionListener(this);
 		c2.addActionListener(this);
 		l1.addActionListener(this);
 		l2.addActionListener(this);
+		m1.addActionListener(this);
+		m2.addActionListener(this);
+		run.addActionListener(this);
 		this.setSize(400,400);
 		this.setLocation(200, 100);
 		this.setLocationRelativeTo(null);
@@ -31,6 +39,11 @@ public class Jeu extends JFrame implements ActionListener{
 		this.add(lig);
 		col.setText("colonne: " + nbc);
 		lig.setText("ligne: " + nbl);
+		this.add(m1);
+		this.add(m2);
+		this.add(mines);
+		mines.setText("mines: "+nbm);
+		this.add(run);
 		this.setVisible(true);
 	}
 	public void actionPerformed(ActionEvent e)
@@ -66,6 +79,24 @@ public class Jeu extends JFrame implements ActionListener{
 	      	 	nbl=4;
 	      	 }
 	      lig.setText("ligne: " + nbl);
+		}
+		else if (e.getActionCommand()=="mines +") {
+	    	nbm++;
+	    	if (nbm>=nbl*nbc) {
+	    		nbm=nbm/4;
+	    	}
+	    	mines.setText("mines: " + nbm);
+	    }
+	    else if (e.getActionCommand()=="mines -") {
+	    	nbm--;
+	    	if (nbm<=nbl*nbc/4) {
+	    		nbm=nbl*nbc/4;
+	    	}
+	    	mines.setText("mines: " + nbm);
+		}
+		else if (e.getActionCommand()=="run") {
+	    	this.dispose();
+			Demineur jeu=new Demineur(10,30,5);
 	    }	
 	}
 }
