@@ -7,7 +7,7 @@ public class Menu extends JFrame implements ActionListener {
     public JPanel fond = null;
     public JButton b1 = null;
     public JButton b2 = null;
-
+    public JButton b3 = null;
     public Menu() {
         super();
 
@@ -23,11 +23,14 @@ public class Menu extends JFrame implements ActionListener {
         GridLayout grid = new GridLayout(1, 2);
         b1 = new JButton("Nouvelle partie");
         b2 = new JButton("reprendre la partie précédente");
+        b3 = new JButton("quitter");
         fond.setLayout(grid);
         fond.add(b1);
         fond.add(b2);
+        fond.add(b3);
         b1.addActionListener(this);
         b2.addActionListener(this);
+        b3.addActionListener(this);
         JLabel titre = new JLabel("Demineur");
         paneltitre.add(titre);
         this.add(paneltitre, BorderLayout.NORTH);
@@ -45,6 +48,8 @@ public class Menu extends JFrame implements ActionListener {
             visu.affiche();
         } else if (e.getActionCommand() == "reprendre la partie précédente") {
             
+        } else if (e.getActionCommand() == "quitter"){
+            this.dispose();
         }
     }
 
