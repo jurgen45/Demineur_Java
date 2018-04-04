@@ -39,8 +39,8 @@ public class Reglage extends JFrame implements ActionListener{
 		this.add(lig);
 		col.setText("colonne: " + nbc);
 		lig.setText("ligne: " + nbl);
-		this.add(m1);
 		this.add(m2);
+		this.add(m1);
 		this.add(mines);
 		mines.setText("mines: "+nbm);
 		this.add(run);
