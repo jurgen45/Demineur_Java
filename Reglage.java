@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Reglage extends JFrame implements ActionListener{
+
 	public int nbc=4;
 	public int nbl=4;
 	public int nbm=2;
@@ -94,9 +95,10 @@ public class Reglage extends JFrame implements ActionListener{
 	    	}
 	    	mines.setText("mines: " + nbm);
 		}
-		else if (e.getActionCommand()=="run") {
-	    	this.dispose();
-			Demineur jeu=new Demineur(10,30,5);
+		else if (e.getActionCommand()=="lancer la partie !") {
+			this.dispose();
+			System.out.println("run");
+			Demineur jeu=new Demineur(nbl,nbc,nbm);
 	    }	
 	}
 }

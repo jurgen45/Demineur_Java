@@ -36,7 +36,7 @@ public class Demineur extends JFrame implements ActionListener {
             
             for (int i = 0; i < colonne; i++) {
                 for (int f = 0; f < ligne; f++) {
-                    aleadouble = Math.random() * 10;
+                    aleadouble = Math.random() * 100;
                     alea = (int) aleadouble;
                     if (alea==1&&compteurAleaMine<mine) {
                         tabJButton[f][i] = new JButton("*");
