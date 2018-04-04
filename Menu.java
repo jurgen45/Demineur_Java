@@ -40,7 +40,8 @@ public class Menu extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e){
         System.out.println(e.getActionCommand());
         if (e.getActionCommand() == "Nouvelle partie") {
-            
+            Jeu visu = new Jeu();
+            visu.affiche();
         } else if (e.getActionCommand() == "reprendre la partie précédente") {
             
         }
