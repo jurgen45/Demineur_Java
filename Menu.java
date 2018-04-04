@@ -43,11 +43,6 @@ public class Menu extends JFrame implements ActionListener {
             this.dispose();
             Reglage visu = new Reglage();          
             visu.affiche();
-<<<<<<< HEAD
-            
-            
-=======
->>>>>>> 9702ddee409e8cb3338f76c8e1308213ea68382d
         } else if (e.getActionCommand() == "reprendre la partie précédente") {
             
         }
