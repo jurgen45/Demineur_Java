@@ -18,6 +18,14 @@ public class Demineur extends JFrame implements ActionListener {
         GridLayout grid=new GridLayout(colonne,ligne);
         this.setLayout(grid);
         tabJButton=new JButton[ligne][colonne];
+        for(int i=0;i<colonne;i++)
+            {
+                for(int f=0;f<ligne;f++)
+                    {
+                        tabJButton[i][f] = new JButton();
+                        this.add(tabJButton[i][f]);
+                    }
+            }
    }
 
 
