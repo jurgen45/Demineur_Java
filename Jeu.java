@@ -9,7 +9,7 @@ public class Jeu extends JFrame implements ActionListener{
 	public JLabel lig = new JLabel();
 	public void affiche(){
 		
-		GridLayout gestionnaire = new GridLayout(3, 5);
+		GridLayout gestionnaire = new GridLayout(4, 2);
 		this.setLayout(gestionnaire);
 		JButton c1 = new JButton("colonne +");
 		JButton c2 = new JButton("colonne -");
