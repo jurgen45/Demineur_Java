@@ -20,6 +20,7 @@ public class Jeu extends JFrame implements ActionListener{
 		l1.addActionListener(this);
 		l2.addActionListener(this);
 		this.setSize(400,400);
+		this.setLocation(200, 100);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.add(c1);	
