@@ -52,7 +52,7 @@ public class Reglage extends JFrame implements ActionListener{
 	    if(e.getActionCommand()=="colonne +")
 	    {
 	      nbc++;     
-	      if (nbc>=40) {
+	      if (nbc>=30) {
 	      	 	nbc=40;
 	      	 }	
 		  col.setText("colonne: " + nbc); 
@@ -68,7 +68,7 @@ public class Reglage extends JFrame implements ActionListener{
 	    else if(e.getActionCommand()=="ligne +")
 	    {
 	      nbl++;	      
-	      if (nbl>=40) {
+	      if (nbl>=30) {
 	      	 	nbl=40;
 	      	 }
 	      lig.setText("ligne: " + nbl);
