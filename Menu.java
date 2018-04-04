@@ -35,12 +35,14 @@ public class Menu extends JFrame implements ActionListener {
 
     }
 
-    public void actionPerformed(ActionEvent e) {
+ 
+
+    public void actionPerformed(ActionEvent e){
         System.out.println(e.getActionCommand());
         if (e.getActionCommand() == "Nouvelle partie") {
-            b1.setBackground(Color.BLUE);
+            
         } else if (e.getActionCommand() == "reprendre la partie précédente") {
-            b2.setBackground(Color.CYAN);
+            
         }
     }
 
