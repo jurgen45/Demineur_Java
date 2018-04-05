@@ -335,7 +335,7 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
         }
         for (int i = 0; i < colonne; i++) {
             for (int f = 0; f < ligne; f++) {
-                if (e.getSource()==tabCase[f][i]&&tabCase[f][i].getEtat()==1) {
+                if (e.getSource()==tabCase[f][i]&&tabCase[f][i].getEtat()==1&& e.getModifiers() == MouseEvent.BUTTON3_MASK) {
                     img=new ImageIcon("flag1.png");
                     tabCase[f][i].setIcon(img);
                     marqueurs++;
