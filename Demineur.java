@@ -1,9 +1,11 @@
 import java.awt.event.ActionEvent;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 
-public class Demineur extends JFrame implements ActionListener {
+public class Demineur extends JFrame implements ActionListener,MouseListener {
     private int ligne;
     private int colonne;
     private Case[][] tabCase=null;
@@ -40,7 +42,7 @@ public class Demineur extends JFrame implements ActionListener {
                     if (alea==1&&compteurAleaMine<mine) {
                         tabCase[f][i] = new Case(true);
                         tabCase[f][i].addActionListener(this);
-                        
+                        tabCase[f][i].addMouseListener(this);
                         compteurAleaMine++;
                     }
                 }
@@ -69,8 +71,8 @@ public class Demineur extends JFrame implements ActionListener {
               JLabel nbmarques = new JLabel();
               GridLayout grid1 = new GridLayout(4,2);
               fenetre.setLayout(grid1);
-              nbmarques.setText("drapeau: ");
-              nbmines.setText("mines: "+mine);
+              nbmarques.setText("nombres de marqueurs: ");
+              nbmines.setText("nombres de mines: "+mine);
               fenetre.setSize(150,600);
               fenetre.setLocation(800,100);
               fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -223,4 +225,13 @@ public class Demineur extends JFrame implements ActionListener {
         }
        
     }
+     public void mousePressed(MouseEvent me) { }
+        public void mouseReleased(MouseEvent me) { }
+        public void mouseEntered(MouseEvent me) { }
+        public void mouseExited(MouseEvent me) { }
+        public void mouseClicked(MouseEvent me) { 
+            if(me.getButton() == MouseEvent.BUTTON3) {
+            System.out.println("clique gauche");
+          }
+        }
 }
