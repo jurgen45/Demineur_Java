@@ -99,7 +99,7 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                            if (tabCase[f][i].etatMine()==true) 
                            {
                             tabCase[f][i].setValide();
-                           tabCase[f][i].setBackground(Color.BLACK);
+                           tabCase[f][i].setText("*");
                           }
                        }
               }
@@ -323,7 +323,7 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
     }
     for (int i = 0; i < colonne; i++) {
             for (int f = 0; f < ligne; f++) {
-                if (e.getSource()==tabCase[f][i]&&tabCase[f][i].getValide()==false && e.getModifiers() == MouseEvent.BUTTON3_MASK||tabCase[f][i].etatMine()==true) {
+                if (e.getSource()==tabCase[f][i]&&tabCase[f][i].getValide()==false && e.getModifiers() == MouseEvent.BUTTON3_MASK||tabCase[f][i].etatMine()==true&& e.getSource() == tabCase[f][i]&& e.getModifiers() == MouseEvent.BUTTON3_MASK) {
                                     
                                 tabCase[f][i].setEtat();
                     
