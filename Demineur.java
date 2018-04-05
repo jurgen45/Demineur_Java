@@ -13,7 +13,7 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
     private JFrame fenetre = new JFrame();
     JButton save = new JButton("sauvegarder");
     JButton quitter = new JButton("quitter");
-   public Demineur(int ligne,int colonne,int mine)
+   public Demineur(int ligne,int colonne,int mine,boolean fichier)
    {
         super();
         this.ligne=ligne;
@@ -33,6 +33,36 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                 tabCase[f][i].addMouseListener(this);
             }
         }
+        if (fichier==true){
+            int nbm;
+            try {
+                FileInputStream file = new FileInputStream("save.txt");
+                DataInputStream flux1 = new DataInputStream(file);
+                nbm = flux1.readInt();
+                nbm = flux1.readInt();
+                nbm = flux1.readInt();
+                for (int i = 0; i < colonne; i++) {
+                    for (int f = 0; f < ligne; f++) {
+                       nbm  = flux1.readInt();
+                        System.out.println(nbm);
+                       if (nbm==1) {
+                           System.out.println("lecture 1");
+                            tabCase[f][i] = new Case(true);
+                            tabCase[f][i].addActionListener(this);
+                            tabCase[f][i].addMouseListener(this);
+                       }
+                    }
+                }
+                
+               
+            } catch (FileNotFoundException ex) {
+                System.err.println("fichier non trouvé: lecture");
+            } catch (IOException ex) {
+                System.out.println("il y'a une erreur: lecture");
+            }
+        }else{
+
+        
             double aleadouble=Math.random() * 10;
             int alea=(int)aleadouble;
             int compteurAleaMine=0;
@@ -48,6 +78,7 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                         compteurAleaMine++;
                     }
                 }
+            }
             }
             }
             for (int i = 0; i < colonne; i++) 
@@ -69,6 +100,7 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                           }
                        }
               }
+              
               mine1=mine;
               JLabel nbmines = new JLabel();
               JLabel nbmarques = new JLabel();
@@ -242,9 +274,11 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                     for (int f=0;f<colonne ;f++ ) {
                         if (tabCase[f][i].etatMine()==true){
                             flux.writeInt(1);
+                            System.out.println("ecrit 1");
                         }
                         else if (tabCase[f][i].etatMine()==false) {
                             flux.writeInt(0);
+                            System.out.println("ecrit 0");
                         }
                     }
                 }
