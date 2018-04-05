@@ -86,6 +86,7 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
         }
 
     public void actionPerformed(ActionEvent e){
+        System.out.println("event");
         for (int i = 0; i < colonne; i++) {
             for (int f = 0; f < ligne; f++) {
                 if (e.getSource()==tabCase[f][i]&& tabCase[f][i].etatMine()==false&&tabCase[f][i].getValide()==false) {
@@ -230,9 +231,11 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
         public void mouseReleased(MouseEvent me) { }
         public void mouseEntered(MouseEvent me) { }
         public void mouseExited(MouseEvent me) { }
-        public void mouseClicked(MouseEvent me) { 
-            if(me.getButton() == MouseEvent.BUTTON3) {
-            System.out.println("clique gauche");
-          }
+          public void mouseClicked (MouseEvent e) 
+            {       			
+    if (e.getModifiers() == MouseEvent.BUTTON3_MASK)
+    {
+      System.out.println("You right clicked on the button");
+    }
         }
 }
