@@ -8,6 +8,7 @@ public class Menu extends JFrame implements ActionListener {
     public JButton b1 = null;
     public JButton b2 = null;
     public JButton b3 = null;
+    public ImageIcon play;
     public Menu() {
         super();
 
@@ -20,10 +21,12 @@ public class Menu extends JFrame implements ActionListener {
         JPanel paneltitre = new JPanel();
         fond = new JPanel();
         fond.setBackground(new Color(136, 225, 213));
-        GridLayout grid = new GridLayout(1, 2);
-        b1 = new JButton("Nouvelle partie");
+        GridLayout grid = new GridLayout(3, 1);
+        b1 = new JButton("1");
+        b1.setIcon(new ImageIcon("play3.jpg"));
         b2 = new JButton("reprendre la partie précédente");
-        b3 = new JButton("quitter");
+        b3 = new JButton("2");
+        b3.setIcon(new ImageIcon("exit.png"));
         fond.setLayout(grid);
         fond.add(b1);
         fond.add(b2);
@@ -42,13 +45,13 @@ public class Menu extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e){
         System.out.println(e.getActionCommand());
-        if (e.getActionCommand() == "Nouvelle partie") {
+        if (e.getActionCommand() == "1") {
             this.dispose();
             Reglage visu = new Reglage();          
             visu.affiche();
         } else if (e.getActionCommand() == "reprendre la partie précédente") {
             
-        } else if (e.getActionCommand() == "quitter"){
+        } else if (e.getActionCommand() == "2"){
             this.dispose();
         }
     }
