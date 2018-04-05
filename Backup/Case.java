@@ -4,12 +4,14 @@ public class Case extends JButton{
     private boolean mine;
     private boolean valide;
     private int nb;
+    private int etat;
 public Case(boolean etatmine)
 {
     super();
     this.mine=etatmine;
     this.valide=false;
     this.nb = 0;
+    this.etat=0;
 
 }
 public boolean etatMine()
@@ -28,6 +30,17 @@ public boolean getValide() {
 public void setNb()
 {
     this.nb++;
+}
+public void setEtat()
+{
+    this.etat++;
+    if (this.etat>2) {
+        this.etat=0;
+    }
+}
+public int getEtat()
+{
+    return this.etat;
 }
 
 public int getNb() {

@@ -98,7 +98,7 @@ public class Reglage extends JFrame implements ActionListener{
 		else if (e.getActionCommand()=="lancer la partie !") {
 			this.dispose();
 			System.out.println("run");
-			Demineur jeu=new Demineur(nbl,nbc,nbm);
+			Demineur jeu=new Demineur(nbl,nbc,nbm,false);
 	    }	
 	}
 }
