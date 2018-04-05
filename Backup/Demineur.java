@@ -11,8 +11,11 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
     private int ligne;
     private int colonne;
     private int mine1;
+    private int marqueurs;
+    private JLabel nbmarques=null;
     private Case[][] tabCase=null;
     private JFrame fenetre = new JFrame();
+    private ImageIcon img=null;
     JButton save = new JButton("sauvegarder");
     JButton quitter = new JButton("quitter");
    public Demineur(int ligne,int colonne,int mine,boolean fichier)
@@ -98,18 +101,20 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                            if (tabCase[f][i].etatMine()==true) 
                            {
                             tabCase[f][i].setValide();
-                           tabCase[f][i].setBackground(Color.BLACK);
+                           tabCase[f][i].setText("*");
                           }
                        }
               }
               
               mine1=mine;
               JLabel nbmines = new JLabel();
-              JLabel nbmarques = new JLabel();
+              nbmarques = new JLabel();
               GridLayout grid1 = new GridLayout(4,2);
               fenetre.setLayout(grid1);
-              nbmarques.setText("nombres de marqueurs: ");
-              nbmines.setText("nombres de mines: "+mine);
+              nbmarques.setIcon(new ImageIcon("flag1.png"));
+              nbmarques.setText("0");
+              nbmines.setIcon(new ImageIcon("mine.png"));
+              nbmines.setText(""+mine);
               fenetre.setSize(150,600);
               fenetre.setLocation(800,100);
               fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -322,28 +327,32 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
     }
     for (int i = 0; i < colonne; i++) {
             for (int f = 0; f < ligne; f++) {
-                if (e.getSource()==tabCase[f][i]&& tabCase[f][i].etatMine()==false&&tabCase[f][i].getValide()==false && e.getModifiers() == MouseEvent.BUTTON3_MASK) {
-                                     tabCase[f][i].setEtat();
+                if (e.getSource()==tabCase[f][i]&&tabCase[f][i].getValide()==false && e.getModifiers() == MouseEvent.BUTTON3_MASK||tabCase[f][i].etatMine()==true&& e.getSource() == tabCase[f][i]&& e.getModifiers() == MouseEvent.BUTTON3_MASK) {
+                                    
+                                tabCase[f][i].setEtat();
+                    
                 }
-                if(e.getSource()==tabCase[f][i]&& tabCase[f][i].etatMine()==true && e.getModifiers() == MouseEvent.BUTTON3_MASK)
-                    {
-                        tabCase[f][i].setEtat();
-                    }
-                
+               
             }
         }
         for (int i = 0; i < colonne; i++) {
             for (int f = 0; f < ligne; f++) {
-                if (tabCase[f][i].getEtat()==1) {
-                    tabCase[f][i].setText("flag");
+                if (e.getSource()==tabCase[f][i]&&tabCase[f][i].getEtat()==1&& e.getModifiers() == MouseEvent.BUTTON3_MASK) {
+                    img=new ImageIcon("flag1.png");
+                    tabCase[f][i].setIcon(img);
+                    marqueurs++;
                 }
-                else if (tabCase[f][i].getEtat() == 2) {
-                    tabCase[f][i].setText("?");
-                } else if (tabCase[f][i].getEtat() == 0&&tabCase[f][i].getValide()==false||tabCase[f][i].etatMine()==true) {
-                    tabCase[f][i].setText("");
+                else if (e.getSource() == tabCase[f][i] &&tabCase[f][i].getEtat() == 2) {
+                    img=new ImageIcon("intero.png");
+                    tabCase[f][i].setIcon(img);
+                } else if (e.getSource()==tabCase[f][i]&&tabCase[f][i].getEtat() == 0&&tabCase[f][i].getValide()==false||tabCase[f][i].etatMine()==true&& e.getSource() == tabCase[f][i]) {
+                    img=null;
+                    tabCase[f][i].setIcon(img);
+                    marqueurs--;
                 }
                 
             }
         }
+        nbmarques.setText(""+marqueurs);
         }
 }
