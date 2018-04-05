@@ -48,6 +48,7 @@ public class Demineur extends JFrame implements ActionListener {
                     for (int f = 0; f < ligne; f++) 
                     {
                     this.add(tabCase[f][i]);
+                    tabCase[f][i].setBackground(Color.GRAY);
                     }
             }
             for (int i = 0; i < colonne; i++) 
@@ -66,11 +67,49 @@ public class Demineur extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e){
         for (int i = 0; i < colonne; i++) {
             for (int f = 0; f < ligne; f++) {
-                if (e.getSource()==tabCase[f][i]) {
-                    tabCase[f][i].setBackground(Color.CYAN);
+                if (e.getSource()==tabCase[f][i]&& tabCase[f][i].etatMine()==false) {
+                    if (f==0) {
+                        System.out.println("Ligne de gauche");
+                        for (int k = i; k < 3; k++) {
+                            for (int g = f ; g < 3; g++) {
+                                if (tabCase[g][k].etatMine() == true) {
+                                    tabCase[f][i].setBackground(Color.YELLOW);
+                                }
+                            }
+                        }
+                    }else{
+                        for (int k = i - 1; k < 4; k++) {
+                            for (int g = f - 1; g < 4; g++) {
+                                System.out.println("position: "+g+"/"+k);
+                                if (tabCase[g][k].etatMine() == true) {
+                                    System.out.println("mine");
+                                    tabCase[f][i].setBackground(Color.YELLOW);
+                                    this.add(tabCase[f][i]);
+                                }
+                            }
+                        }
+                    }
+                    
+
+
+
+
+
+
+
+
+                        /*
+                    tabCase[f][i].setBackground(Color.WHITE);
+                    tabCase[f][i].setValide();
+                    */
                 }
+                if(e.getSource()==tabCase[f][i]&& tabCase[f][i].etatMine()==true)
+                    {
+                        this.dispose();
+                    }
             }
         }
+
        
     }
 }
