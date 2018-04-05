@@ -7,6 +7,9 @@ public class Demineur extends JFrame implements ActionListener {
     private int ligne;
     private int colonne;
     private Case[][] tabCase=null;
+    private JFrame fenetre = new JFrame();
+    JButton save = new JButton("sauvegarder");
+    JButton quitter = new JButton("quitter");
    public Demineur(int ligne,int colonne,int mine)
    {
         super();
@@ -62,6 +65,31 @@ public class Demineur extends JFrame implements ActionListener {
                           }
                        }
               }
+              JLabel nbmines = new JLabel();
+              JLabel nbmarques = new JLabel();
+              GridLayout grid1 = new GridLayout(4,2);
+              fenetre.setLayout(grid1);
+              nbmarques.setText("nombres de marqueurs: ");
+              nbmines.setText("nombres de mines: "+mine);
+              fenetre.setSize(150,600);
+              fenetre.setLocation(800,100);
+              fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+              quitter.addActionListener(this);
+              fenetre.add(nbmarques);
+              fenetre.add(nbmines);
+              fenetre.add(save);
+              fenetre.add(quitter);
+              fenetre.setVisible(true);
+
+
+
+
+
+
+
+
+
+
         }
 
     public void actionPerformed(ActionEvent e){
@@ -174,6 +202,7 @@ public class Demineur extends JFrame implements ActionListener {
                                 
                             }
                         }
+<<<<<<< HEAD
                     }
                     
 
@@ -185,6 +214,9 @@ public class Demineur extends JFrame implements ActionListener {
 
 
                       
+=======
+                    }     
+>>>>>>> a91606e9884756f1b7e7638e5715127f0acfadda
                 }
                 if(e.getSource()==tabCase[f][i]&& tabCase[f][i].etatMine()==true)
                     {
@@ -192,6 +224,7 @@ public class Demineur extends JFrame implements ActionListener {
                     }
             }
         }
+<<<<<<< HEAD
         for (int i = 0; i < colonne; i++) {
             for (int f = 0; f < ligne; f++) {
                 if (tabCase[f][i].getNb() == 0 && tabCase[f][i].getValide() == true) {
@@ -201,6 +234,12 @@ public class Demineur extends JFrame implements ActionListener {
             }
         }
 
+=======
+        if (e.getActionCommand()=="quitter") {
+            this.dispose();
+            fenetre.dispose();
+        }
+>>>>>>> a91606e9884756f1b7e7638e5715127f0acfadda
        
     }
 }
