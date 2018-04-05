@@ -202,7 +202,6 @@ public class Demineur extends JFrame implements ActionListener {
                                 
                             }
                         }
-<<<<<<< HEAD
                     }
                     
 
@@ -214,9 +213,6 @@ public class Demineur extends JFrame implements ActionListener {
 
 
                       
-=======
-                    }     
->>>>>>> a91606e9884756f1b7e7638e5715127f0acfadda
                 }
                 if(e.getSource()==tabCase[f][i]&& tabCase[f][i].etatMine()==true)
                     {
@@ -224,7 +220,6 @@ public class Demineur extends JFrame implements ActionListener {
                     }
             }
         }
-<<<<<<< HEAD
         for (int i = 0; i < colonne; i++) {
             for (int f = 0; f < ligne; f++) {
                 if (tabCase[f][i].getNb() == 0 && tabCase[f][i].getValide() == true) {
@@ -234,12 +229,10 @@ public class Demineur extends JFrame implements ActionListener {
             }
         }
 
-=======
         if (e.getActionCommand()=="quitter") {
             this.dispose();
             fenetre.dispose();
         }
->>>>>>> a91606e9884756f1b7e7638e5715127f0acfadda
        
     }
 }
