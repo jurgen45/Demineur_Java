@@ -322,27 +322,22 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
     }
     for (int i = 0; i < colonne; i++) {
             for (int f = 0; f < ligne; f++) {
-                if (e.getSource()==tabCase[f][i]&& tabCase[f][i].etatMine()==false&&tabCase[f][i].getValide()==false && e.getModifiers() == MouseEvent.BUTTON3_MASK) {
-                                    tabCase[f][i].setIcon(new ImageIcon("flag1.png"));
-                                
+                if (e.getSource()==tabCase[f][i]&&tabCase[f][i].getValide()==false && e.getModifiers() == MouseEvent.BUTTON3_MASK||tabCase[f][i].etatMine()==true) {
+                                    
+                                tabCase[f][i].setEtat();
                     
                 }
-                if(e.getSource()==tabCase[f][i]&& tabCase[f][i].etatMine()==true && e.getModifiers() == MouseEvent.BUTTON3_MASK)
-                    {
-                        
-                        tabCase[f][i].setIcon(new ImageIcon("flag1.png"));
-                                     tabCase[f][i].setEtat();
-                }
+               
             }
         }
         for (int i = 0; i < colonne; i++) {
             for (int f = 0; f < ligne; f++) {
-                if (tabCase[f][i].getEtat()==1) {
-                    tabCase[f][i].setText("flag");
+                if (e.getSource()==tabCase[f][i]&&tabCase[f][i].getEtat()==1) {
+                    tabCase[f][i].setIcon(new ImageIcon("flag1.png"));
                 }
-                else if (tabCase[f][i].getEtat() == 2) {
+                else if (e.getSource() == tabCase[f][i] &&tabCase[f][i].getEtat() == 2) {
                     tabCase[f][i].setText("?");
-                } else if (tabCase[f][i].getEtat() == 0&&tabCase[f][i].getValide()==false||tabCase[f][i].etatMine()==true) {
+                } else if (e.getSource()==tabCase[f][i]&&tabCase[f][i].getEtat() == 0&&tabCase[f][i].getValide()==false||tabCase[f][i].etatMine()==true) {
                     tabCase[f][i].setText("");
                 }
                 
