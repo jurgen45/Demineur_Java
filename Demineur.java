@@ -69,8 +69,8 @@ public class Demineur extends JFrame implements ActionListener {
               JLabel nbmarques = new JLabel();
               GridLayout grid1 = new GridLayout(4,2);
               fenetre.setLayout(grid1);
-              nbmarques.setText("nombres de marqueurs: ");
-              nbmines.setText("nombres de mines: "+mine);
+              nbmarques.setText("drapeau: ");
+              nbmines.setText("mines: "+mine);
               fenetre.setSize(150,600);
               fenetre.setLocation(800,100);
               fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
