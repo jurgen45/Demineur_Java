@@ -3,12 +3,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
-<<<<<<< HEAD
-import java.io.*;
-=======
 import java.awt.event.MouseListener;
->>>>>>> 5be43d19998c745b8fc55d928914721fcc0f4793
-
+import java.io.*;
 public class Demineur extends JFrame implements ActionListener,MouseListener {
     private int ligne;
     private int colonne;
