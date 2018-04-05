@@ -13,6 +13,7 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
     private int mine1;
     private Case[][] tabCase=null;
     private JFrame fenetre = new JFrame();
+    private ImageIcon img=null;
     JButton save = new JButton("sauvegarder");
     JButton quitter = new JButton("quitter");
    public Demineur(int ligne,int colonne,int mine,boolean fichier)
@@ -333,12 +334,15 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
         for (int i = 0; i < colonne; i++) {
             for (int f = 0; f < ligne; f++) {
                 if (e.getSource()==tabCase[f][i]&&tabCase[f][i].getEtat()==1) {
-                    tabCase[f][i].setIcon(new ImageIcon("flag1.png"));
+                    img=new ImageIcon("flag1.png");
+                    tabCase[f][i].setIcon(img);
                 }
                 else if (e.getSource() == tabCase[f][i] &&tabCase[f][i].getEtat() == 2) {
-                    tabCase[f][i].setIcon(new ImageIcon("intero.png"));
+                    img=new ImageIcon("intero.png");
+                    tabCase[f][i].setIcon(img);
                 } else if (e.getSource()==tabCase[f][i]&&tabCase[f][i].getEtat() == 0&&tabCase[f][i].getValide()==false||tabCase[f][i].etatMine()==true&& e.getSource() == tabCase[f][i]) {
-                    tabCase[f][i].setIcon(new ImageIcon("vide.png"));
+                    img=null;
+                    tabCase[f][i].setIcon(img);
                 }
                 
             }
