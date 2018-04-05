@@ -8,6 +8,8 @@ public Case(boolean etatmine)
 {
     super();
     this.mine=etatmine;
+    this.valide=false;
+    this.nb = 0;
 
 }
 public boolean etatMine()
