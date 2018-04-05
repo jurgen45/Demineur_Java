@@ -431,17 +431,12 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                         }
                     }
                 }
-                /* if(e.getSource()==tabCase[f][i]&& tabCase[f][i].etatMine()==true && e.getModifiers() == MouseEvent.BUTTON3_MASK)
+                if(e.getSource()==tabCase[f][i]&& tabCase[f][i].etatMine()==true && e.getModifiers() == MouseEvent.BUTTON3_MASK)
                     {
-                        if (indice == 0) {
-                            System.out.println("?");
-                            indice++;
-                        }
-                        else if (indice == 1) {
-                            System.out.println("*");
-                        }
+                        tabCase[f][i].setText("flag");
+                        tabCase[f][i].setNb();
                     }
-                */
+                
             }
         }
         }
