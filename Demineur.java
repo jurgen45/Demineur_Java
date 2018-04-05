@@ -3,11 +3,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
+<<<<<<< HEAD
+import java.io.*;
+=======
 import java.awt.event.MouseListener;
+>>>>>>> 5be43d19998c745b8fc55d928914721fcc0f4793
 
 public class Demineur extends JFrame implements ActionListener,MouseListener {
     private int ligne;
     private int colonne;
+    private int mine1;
     private Case[][] tabCase=null;
     private JFrame fenetre = new JFrame();
     JButton save = new JButton("sauvegarder");
@@ -68,6 +73,7 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                           }
                        }
               }
+              mine1=mine;
               JLabel nbmines = new JLabel();
               JLabel nbmarques = new JLabel();
               GridLayout grid1 = new GridLayout(4,2);
@@ -78,6 +84,7 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
               fenetre.setLocation(800,100);
               fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
               quitter.addActionListener(this);
+              save.addActionListener(this);
               fenetre.add(nbmarques);
               fenetre.add(nbmines);
               fenetre.add(save);
@@ -201,6 +208,7 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                 if(e.getSource()==tabCase[f][i]&& tabCase[f][i].etatMine()==true)
                     {
                         this.dispose();
+                        fenetre.dispose();
                     }
             }
         }
@@ -224,6 +232,36 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
         if (e.getActionCommand()=="quitter") {
             this.dispose();
             fenetre.dispose();
+        }
+        if (e.getActionCommand()=="sauvegarder") {
+            try{
+                
+                FileOutputStream fichier = new FileOutputStream("save.txt");
+                DataOutputStream flux = new DataOutputStream(fichier);
+                flux.writeInt(ligne);
+                flux.writeInt(colonne);
+                flux.writeInt(mine1);
+
+                for (int i=0;i<ligne ;i++ ) {
+                    for (int f=0;f<colonne ;f++ ) {
+                        if (tabCase[f][i].etatMine()==true){
+                            flux.writeInt(1);
+                        }
+                        else if (tabCase[f][i].etatMine()==false) {
+                            flux.writeInt(0);
+                        }
+                    }
+                }
+                
+                flux.close();
+            }
+            catch(FileNotFoundException ex){
+                System.err.println("fichier non trouvé: ecriture");
+            }
+            catch(IOException ex){
+                System.out.println("il y'a une erreur: ecriture");
+            }
+              
         }
        
     }
