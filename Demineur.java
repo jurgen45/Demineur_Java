@@ -60,7 +60,7 @@ public class Demineur extends JFrame implements ActionListener {
                     {
                            if (tabCase[f][i].etatMine()==true) 
                            {
-                           
+                            tabCase[f][i].setValide();
                            tabCase[f][i].setBackground(Color.BLACK);
                           }
                        }
@@ -206,7 +206,7 @@ public class Demineur extends JFrame implements ActionListener {
                     
 
                    
-                  
+                 
 
 
 
@@ -220,10 +220,17 @@ public class Demineur extends JFrame implements ActionListener {
                     }
             }
         }
+        int compteurFinal=0;
         for (int i = 0; i < colonne; i++) {
             for (int f = 0; f < ligne; f++) {
-                if (tabCase[f][i].getNb() == 0 && tabCase[f][i].getValide() == true) {
+                if (tabCase[f][i].getNb() == 0 && tabCase[f][i].getValide() == true&& tabCase[f][i].etatMine()==false) {
                     tabCase[f][i].setBackground(Color.WHITE);
+                }
+                if (tabCase[f][i].getValide()==true) {
+                    compteurFinal++;
+                }
+                if (compteurFinal==ligne*colonne) {
+                    this.dispose();
                 }
                 
             }
