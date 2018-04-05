@@ -68,16 +68,116 @@ public class Demineur extends JFrame implements ActionListener {
         for (int i = 0; i < colonne; i++) {
             for (int f = 0; f < ligne; f++) {
                 if (e.getSource()==tabCase[f][i]&& tabCase[f][i].etatMine()==false) {
-                    if (f==0) {
-                        System.out.println("Ligne de gauche");
-                        for (int k = i; k < 3; k++) {
-                            for (int g = f ; g < 3; g++) {
+
+                    if (f == ligne - 1 && i == colonne - 1) {
+                        System.out.println("angle bas droite");
+                        for (int k = i - 1; k < i + 1; k++) {
+                            for (int g = f - 1; g < f + 1; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
+                                    System.out.println("mine");
                                     tabCase[f][i].setBackground(Color.YELLOW);
+                                    tabCase[f][i].setNb();
+                                } else if (tabCase[f][i].getNb() == 0) {
+                                    tabCase[f][i].setBackground(Color.WHITE);
                                 }
                             }
                         }
-                    }else{
+                    }else if (f == 0 && i == 0) {
+                        System.out.println("angle haut gauche");
+                        for (int k = i; k < i + 2; k++) {
+                            for (int g = f; g < f + 2; g++) {
+                                if (tabCase[g][k].etatMine() == true) {
+                                    System.out.println("mine");
+                                    tabCase[f][i].setBackground(Color.YELLOW);
+                                    tabCase[f][i].setNb();
+                                } else if (tabCase[f][i].getNb() == 0) {
+                                    tabCase[f][i].setBackground(Color.WHITE);
+                                }
+                            }
+                        }
+                    }
+                    else if (i == 0 && f == ligne - 1) {
+                        System.out.println("angle haut droite");
+                        for (int k = i ; k < i + 2; k++) {
+                            for (int g = f - 1; g < f + 1; g++) {
+                                if (tabCase[g][k].etatMine() == true) {
+                                    System.out.println("mine");
+                                    tabCase[f][i].setBackground(Color.YELLOW);
+                                    tabCase[f][i].setNb();
+                                } else if (tabCase[f][i].getNb() == 0) {
+                                    tabCase[f][i].setBackground(Color.WHITE);
+                                }
+                            }
+                        }
+                    } else if (f == 0 && i == colonne - 1) {
+                        System.out.println("angle bas gauche");
+                        for (int k = i-1; k < i + 1; k++) {
+                            for (int g = f; g < f + 2; g++) {
+                                if (tabCase[g][k].etatMine() == true) {
+                                    System.out.println("mine");
+                                    tabCase[f][i].setBackground(Color.YELLOW);
+                                    tabCase[f][i].setNb();
+                                } else if (tabCase[f][i].getNb() == 0) {
+                                    tabCase[f][i].setBackground(Color.WHITE);
+                                }
+                            }
+                        }
+                    }else if (f==0) {
+                        System.out.println("Ligne de gauche");
+                        for (int k = i-1; k < i+2; k++) {
+                            for (int g = f ; g < f+2; g++) {
+                                if (tabCase[g][k].etatMine() == true) {
+                                    System.out.println("mine");
+                                    tabCase[f][i].setBackground(Color.YELLOW);
+                                    tabCase[f][i].setNb();
+                                }
+                                 else if(tabCase[f][i].getNb()==0){
+                                    tabCase[f][i].setBackground(Color.WHITE);
+                                 }
+                            }
+                        }
+                    }else if (i==0) {
+                        System.out.println("Ligne de haut");
+                        for (int k = i; k < i+2; k++) {
+                            for (int g = f-1 ; g < f+2; g++) {
+                                if (tabCase[g][k].etatMine() == true) {
+                                    System.out.println("mine");
+                                    tabCase[f][i].setBackground(Color.YELLOW);
+                                    tabCase[f][i].setNb();
+                                }
+                                 else if(tabCase[f][i].getNb()==0){
+                                    tabCase[f][i].setBackground(Color.WHITE);
+                                 }
+                            }
+                        }
+                    } else if (i == colonne-1) {
+                        System.out.println("Ligne du bas");
+                        for (int k = i-1; k < i + 1; k++) {
+                            for (int g = f - 1; g < f + 2; g++) {
+                                if (tabCase[g][k].etatMine() == true) {
+                                    System.out.println("mine");
+                                    tabCase[f][i].setBackground(Color.YELLOW);
+                                    tabCase[f][i].setNb();
+                                } else if (tabCase[f][i].getNb() == 0) {
+                                    tabCase[f][i].setBackground(Color.WHITE);
+                                }
+                            }
+                        }
+                    } else if (f == ligne - 1) {
+                        System.out.println("Ligne du bas");
+                        for (int k = i - 1; k < i + 2; k++) {
+                            for (int g = f - 1; g < f + 1; g++) {
+                                if (tabCase[g][k].etatMine() == true) {
+                                    System.out.println("mine");
+                                    tabCase[f][i].setBackground(Color.YELLOW);
+                                    tabCase[f][i].setNb();
+                                } else if (tabCase[f][i].getNb() == 0) {
+                                    tabCase[f][i].setBackground(Color.WHITE);
+                                }
+                            }
+                        }
+                    }  
+                    else{
                         
                         for (int k = i - 1; k < i+2; k++) {
                             for (int g = f - 1; g < f+2; g++) {
@@ -85,6 +185,10 @@ public class Demineur extends JFrame implements ActionListener {
                                 if (tabCase[g][k].etatMine() == true) {
                                     System.out.println("mine");
                                     tabCase[f][i].setBackground(Color.YELLOW);
+                                    tabCase[f][i].setNb();
+                                }
+                                else if(tabCase[f][i].getNb()==0){
+                                    tabCase[f][i].setBackground(Color.WHITE);
                                 } 
                             }
                         }

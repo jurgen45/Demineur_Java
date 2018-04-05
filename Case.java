@@ -3,6 +3,7 @@ import java.awt.*;
 public class Case extends JButton{
     private boolean mine;
     private boolean valide;
+    private int nb;
 public Case(boolean etatmine)
 {
     super();
@@ -17,6 +18,14 @@ public boolean etatMine()
 public void setValide()
 {
     this.valide=true;
+}
+public void setNb()
+{
+    this.nb++;
+}
+
+public int getNb() {
+    return this.nb;
 }
 
 }
