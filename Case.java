@@ -19,6 +19,10 @@ public void setValide()
 {
     this.valide=true;
 }
+
+public boolean getValide() {
+    return this.valide;
+}
 public void setNb()
 {
     this.nb++;

@@ -40,7 +40,7 @@ public class Demineur extends JFrame implements ActionListener {
                     if (alea==1&&compteurAleaMine<mine) {
                         tabCase[f][i] = new Case(true);
                         tabCase[f][i].addActionListener(this);
-                        System.out.println("mine :"+f + "/" + i);
+                        
                         compteurAleaMine++;
                     }
                 }
@@ -60,7 +60,7 @@ public class Demineur extends JFrame implements ActionListener {
                     {
                            if (tabCase[f][i].etatMine()==true) 
                            {
-                           System.out.println("mine black");
+                           
                            tabCase[f][i].setBackground(Color.BLACK);
                           }
                        }
@@ -95,8 +95,8 @@ public class Demineur extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e){
         for (int i = 0; i < colonne; i++) {
             for (int f = 0; f < ligne; f++) {
-                if (e.getSource()==tabCase[f][i]&& tabCase[f][i].etatMine()==false) {
-
+                if (e.getSource()==tabCase[f][i]&& tabCase[f][i].etatMine()==false&&tabCase[f][i].getValide()==false) {
+                    tabCase[f][i].setValide();
                     if (f == ligne - 1 && i == colonne - 1) {
                         System.out.println("angle bas droite");
                         for (int k = i - 1; k < i + 1; k++) {
