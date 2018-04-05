@@ -111,8 +111,10 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
               nbmarques = new JLabel();
               GridLayout grid1 = new GridLayout(4,2);
               fenetre.setLayout(grid1);
-              nbmarques.setText("nombres de marqueurs: 0");
-              nbmines.setText("nombres de mines: "+mine);
+              nbmarques.setIcon(new ImageIcon("flag1.png"));
+              nbmarques.setText("0");
+              nbmines.setIcon(new ImageIcon("mine.png"));
+              nbmines.setText(""+mine);
               fenetre.setSize(150,600);
               fenetre.setLocation(800,100);
               fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -351,6 +353,6 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                 
             }
         }
-        nbmarques.setText("nombres de marqueurs: "+marqueurs);
+        nbmarques.setText(""+marqueurs);
         }
 }
