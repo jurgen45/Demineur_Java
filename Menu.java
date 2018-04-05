@@ -59,7 +59,7 @@ public class Menu extends JFrame implements ActionListener {
                 int nbm = flux1.readInt();
                 this.dispose();
                 System.out.println("run");
-                Demineur jeu = new Demineur(nbl,nbc,nbm);
+                Demineur jeu = new Demineur(nbl,nbc,nbm,true);
             }
             catch(FileNotFoundException ex){
               System.err.println("fichier non trouvé: lecture");
