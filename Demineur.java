@@ -60,7 +60,7 @@ public class Demineur extends JFrame implements ActionListener {
                     {
                            if (tabCase[f][i].etatMine()==true) 
                            {
-                           
+                            tabCase[f][i].setValide();
                            tabCase[f][i].setBackground(Color.BLACK);
                           }
                        }
@@ -105,9 +105,7 @@ public class Demineur extends JFrame implements ActionListener {
                                     System.out.println("mine");
                                     tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setNb();
-                                } else if (tabCase[f][i].getNb() == 0) {
-                                    tabCase[f][i].setBackground(Color.WHITE);
-                                }
+                                } 
                             }
                         }
                     }else if (f == 0 && i == 0) {
@@ -118,9 +116,7 @@ public class Demineur extends JFrame implements ActionListener {
                                     System.out.println("mine");
                                     tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setNb();
-                                } else if (tabCase[f][i].getNb() == 0) {
-                                    tabCase[f][i].setBackground(Color.WHITE);
-                                }
+                                } 
                             }
                         }
                     }
@@ -132,9 +128,7 @@ public class Demineur extends JFrame implements ActionListener {
                                     System.out.println("mine");
                                     tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setNb();
-                                } else if (tabCase[f][i].getNb() == 0) {
-                                    tabCase[f][i].setBackground(Color.WHITE);
-                                }
+                                } 
                             }
                         }
                     } else if (f == 0 && i == colonne - 1) {
@@ -145,9 +139,7 @@ public class Demineur extends JFrame implements ActionListener {
                                     System.out.println("mine");
                                     tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setNb();
-                                } else if (tabCase[f][i].getNb() == 0) {
-                                    tabCase[f][i].setBackground(Color.WHITE);
-                                }
+                                } 
                             }
                         }
                     }else if (f==0) {
@@ -159,9 +151,7 @@ public class Demineur extends JFrame implements ActionListener {
                                     tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setNb();
                                 }
-                                 else if(tabCase[f][i].getNb()==0){
-                                    tabCase[f][i].setBackground(Color.WHITE);
-                                 }
+                                
                             }
                         }
                     }else if (i==0) {
@@ -173,9 +163,7 @@ public class Demineur extends JFrame implements ActionListener {
                                     tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setNb();
                                 }
-                                 else if(tabCase[f][i].getNb()==0){
-                                    tabCase[f][i].setBackground(Color.WHITE);
-                                 }
+                                
                             }
                         }
                     } else if (i == colonne-1) {
@@ -186,9 +174,7 @@ public class Demineur extends JFrame implements ActionListener {
                                     System.out.println("mine");
                                     tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setNb();
-                                } else if (tabCase[f][i].getNb() == 0) {
-                                    tabCase[f][i].setBackground(Color.WHITE);
-                                }
+                                } 
                             }
                         }
                     } else if (f == ligne - 1) {
@@ -199,9 +185,7 @@ public class Demineur extends JFrame implements ActionListener {
                                     System.out.println("mine");
                                     tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setNb();
-                                } else if (tabCase[f][i].getNb() == 0) {
-                                    tabCase[f][i].setBackground(Color.WHITE);
-                                }
+                                } 
                             }
                         }
                     }  
@@ -215,12 +199,20 @@ public class Demineur extends JFrame implements ActionListener {
                                     tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setNb();
                                 }
-                                else if(tabCase[f][i].getNb()==0){
-                                    tabCase[f][i].setBackground(Color.WHITE);
-                                } 
+                                
                             }
                         }
-                    }     
+                    }
+                    
+
+                   
+                 
+
+
+
+
+
+                      
                 }
                 if(e.getSource()==tabCase[f][i]&& tabCase[f][i].etatMine()==true)
                     {
@@ -228,6 +220,23 @@ public class Demineur extends JFrame implements ActionListener {
                     }
             }
         }
+        int compteurFinal=0;
+        for (int i = 0; i < colonne; i++) {
+            for (int f = 0; f < ligne; f++) {
+                if (tabCase[f][i].getNb() == 0 && tabCase[f][i].getValide() == true&& tabCase[f][i].etatMine()==false) {
+                    tabCase[f][i].setBackground(Color.WHITE);
+                }
+                if (tabCase[f][i].getValide()==true) {
+                    compteurFinal++;
+                }
+                if (compteurFinal==ligne*colonne) {
+                    this.dispose();
+                    fenetre.dispose();
+                }
+                
+            }
+        }
+
         if (e.getActionCommand()=="quitter") {
             this.dispose();
             fenetre.dispose();
