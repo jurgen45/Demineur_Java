@@ -78,14 +78,14 @@ public class Demineur extends JFrame implements ActionListener {
                             }
                         }
                     }else{
-                        for (int k = i - 1; k < 4; k++) {
-                            for (int g = f - 1; g < 4; g++) {
+                        
+                        for (int k = i - 1; k < i+2; k++) {
+                            for (int g = f - 1; g < f+2; g++) {
                                 System.out.println("position: "+g+"/"+k);
                                 if (tabCase[g][k].etatMine() == true) {
                                     System.out.println("mine");
                                     tabCase[f][i].setBackground(Color.YELLOW);
-                                    this.add(tabCase[f][i]);
-                                }
+                                } 
                             }
                         }
                     }
@@ -98,10 +98,7 @@ public class Demineur extends JFrame implements ActionListener {
 
 
 
-                        /*
-                    tabCase[f][i].setBackground(Color.WHITE);
-                    tabCase[f][i].setValide();
-                    */
+                      
                 }
                 if(e.getSource()==tabCase[f][i]&& tabCase[f][i].etatMine()==true)
                     {
