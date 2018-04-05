@@ -126,7 +126,7 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
         System.out.println("event");
         for (int i = 0; i < colonne; i++) {
             for (int f = 0; f < ligne; f++) {
-                if (e.getSource()==tabCase[f][i]&& tabCase[f][i].etatMine()==false&&tabCase[f][i].getValide()==false) {
+                if (e.getSource()==tabCase[f][i]&& tabCase[f][i].etatMine()==false&&tabCase[f][i].getValide()==false&&tabCase[f][i].getEtat()==0){
                     tabCase[f][i].setValide();
                     if (f == ligne - 1 && i == colonne - 1) {
                         System.out.println("angle bas droite");
@@ -235,7 +235,7 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                         }
                     }
                 }
-                if(e.getSource()==tabCase[f][i]&& tabCase[f][i].etatMine()==true)
+                if(e.getSource()==tabCase[f][i]&& tabCase[f][i].etatMine()==true&&tabCase[f][i].getEtat()==0)
                     {
                         this.dispose();
                         fenetre.dispose();
@@ -339,9 +339,10 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                 }
                 else if (tabCase[f][i].getEtat() == 2) {
                     tabCase[f][i].setText("?");
-                } else if (tabCase[f][i].getEtat() == 0) {
+                } else if (tabCase[f][i].getEtat() == 0&&tabCase[f][i].getValide()==false||tabCase[f][i].etatMine()==true) {
                     tabCase[f][i].setText("");
                 }
+                
             }
         }
         }
