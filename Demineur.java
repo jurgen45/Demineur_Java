@@ -231,6 +231,7 @@ public class Demineur extends JFrame implements ActionListener {
                 }
                 if (compteurFinal==ligne*colonne) {
                     this.dispose();
+                    fenetre.dispose();
                 }
                 
             }
