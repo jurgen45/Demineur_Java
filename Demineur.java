@@ -66,7 +66,7 @@ public class Demineur extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e){
         for (int i = 0; i < colonne; i++) {
             for (int f = 0; f < ligne; f++) {
-                if (e.getActionCommand()==tabCase[f][i]) {
+                if (e.getSource()==tabCase[f][i]) {
                     tabCase[f][i].setBackground(Color.CYAN);
                 }
             }
