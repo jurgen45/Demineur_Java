@@ -28,4 +28,9 @@ public int getNb() {
     return this.nb;
 }
 
+    public String getNbStr() {
+        int k= this.nb+1;
+        return ""+k;
+    }
+
 }

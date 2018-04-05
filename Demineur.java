@@ -75,7 +75,7 @@ public class Demineur extends JFrame implements ActionListener {
                             for (int g = f - 1; g < f + 1; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
                                     System.out.println("mine");
-                                    tabCase[f][i].setBackground(Color.YELLOW);
+                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setNb();
                                 } else if (tabCase[f][i].getNb() == 0) {
                                     tabCase[f][i].setBackground(Color.WHITE);
@@ -88,7 +88,7 @@ public class Demineur extends JFrame implements ActionListener {
                             for (int g = f; g < f + 2; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
                                     System.out.println("mine");
-                                    tabCase[f][i].setBackground(Color.YELLOW);
+                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setNb();
                                 } else if (tabCase[f][i].getNb() == 0) {
                                     tabCase[f][i].setBackground(Color.WHITE);
@@ -102,7 +102,7 @@ public class Demineur extends JFrame implements ActionListener {
                             for (int g = f - 1; g < f + 1; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
                                     System.out.println("mine");
-                                    tabCase[f][i].setBackground(Color.YELLOW);
+                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setNb();
                                 } else if (tabCase[f][i].getNb() == 0) {
                                     tabCase[f][i].setBackground(Color.WHITE);
@@ -115,7 +115,7 @@ public class Demineur extends JFrame implements ActionListener {
                             for (int g = f; g < f + 2; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
                                     System.out.println("mine");
-                                    tabCase[f][i].setBackground(Color.YELLOW);
+                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setNb();
                                 } else if (tabCase[f][i].getNb() == 0) {
                                     tabCase[f][i].setBackground(Color.WHITE);
@@ -128,7 +128,7 @@ public class Demineur extends JFrame implements ActionListener {
                             for (int g = f ; g < f+2; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
                                     System.out.println("mine");
-                                    tabCase[f][i].setBackground(Color.YELLOW);
+                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setNb();
                                 }
                                  else if(tabCase[f][i].getNb()==0){
@@ -142,7 +142,7 @@ public class Demineur extends JFrame implements ActionListener {
                             for (int g = f-1 ; g < f+2; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
                                     System.out.println("mine");
-                                    tabCase[f][i].setBackground(Color.YELLOW);
+                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setNb();
                                 }
                                  else if(tabCase[f][i].getNb()==0){
@@ -156,7 +156,7 @@ public class Demineur extends JFrame implements ActionListener {
                             for (int g = f - 1; g < f + 2; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
                                     System.out.println("mine");
-                                    tabCase[f][i].setBackground(Color.YELLOW);
+                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setNb();
                                 } else if (tabCase[f][i].getNb() == 0) {
                                     tabCase[f][i].setBackground(Color.WHITE);
@@ -169,7 +169,7 @@ public class Demineur extends JFrame implements ActionListener {
                             for (int g = f - 1; g < f + 1; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
                                     System.out.println("mine");
-                                    tabCase[f][i].setBackground(Color.YELLOW);
+                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setNb();
                                 } else if (tabCase[f][i].getNb() == 0) {
                                     tabCase[f][i].setBackground(Color.WHITE);
@@ -184,7 +184,7 @@ public class Demineur extends JFrame implements ActionListener {
                                 System.out.println("position: "+g+"/"+k);
                                 if (tabCase[g][k].etatMine() == true) {
                                     System.out.println("mine");
-                                    tabCase[f][i].setBackground(Color.YELLOW);
+                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setNb();
                                 }
                                 else if(tabCase[f][i].getNb()==0){
