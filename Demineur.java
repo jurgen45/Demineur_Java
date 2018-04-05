@@ -11,6 +11,8 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
     private int ligne;
     private int colonne;
     private int mine1;
+    private int marqueurs;
+    private JLabel nbmarques=null;
     private Case[][] tabCase=null;
     private JFrame fenetre = new JFrame();
     private ImageIcon img=null;
@@ -106,10 +108,10 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
               
               mine1=mine;
               JLabel nbmines = new JLabel();
-              JLabel nbmarques = new JLabel();
+              nbmarques = new JLabel();
               GridLayout grid1 = new GridLayout(4,2);
               fenetre.setLayout(grid1);
-              nbmarques.setText("nombres de marqueurs: ");
+              nbmarques.setText("nombres de marqueurs: 0");
               nbmines.setText("nombres de mines: "+mine);
               fenetre.setSize(150,600);
               fenetre.setLocation(800,100);
@@ -336,6 +338,7 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                 if (e.getSource()==tabCase[f][i]&&tabCase[f][i].getEtat()==1) {
                     img=new ImageIcon("flag1.png");
                     tabCase[f][i].setIcon(img);
+                    marqueurs++;
                 }
                 else if (e.getSource() == tabCase[f][i] &&tabCase[f][i].getEtat() == 2) {
                     img=new ImageIcon("intero.png");
@@ -343,9 +346,11 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                 } else if (e.getSource()==tabCase[f][i]&&tabCase[f][i].getEtat() == 0&&tabCase[f][i].getValide()==false||tabCase[f][i].etatMine()==true&& e.getSource() == tabCase[f][i]) {
                     img=null;
                     tabCase[f][i].setIcon(img);
+                    marqueurs--;
                 }
                 
             }
         }
+        nbmarques.setText("nombres de marqueurs: "+marqueurs);
         }
 }
