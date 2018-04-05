@@ -336,9 +336,9 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                     tabCase[f][i].setIcon(new ImageIcon("flag1.png"));
                 }
                 else if (e.getSource() == tabCase[f][i] &&tabCase[f][i].getEtat() == 2) {
-                    tabCase[f][i].setText("?");
-                } else if (e.getSource()==tabCase[f][i]&&tabCase[f][i].getEtat() == 0&&tabCase[f][i].getValide()==false||tabCase[f][i].etatMine()==true) {
-                    tabCase[f][i].setText("");
+                    tabCase[f][i].setIcon(new ImageIcon("intero.png"));
+                } else if (e.getSource()==tabCase[f][i]&&tabCase[f][i].getEtat() == 0&&tabCase[f][i].getValide()==false||tabCase[f][i].etatMine()==true&& e.getSource() == tabCase[f][i]) {
+                    
                 }
                 
             }
