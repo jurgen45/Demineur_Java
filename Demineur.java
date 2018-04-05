@@ -323,118 +323,15 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
     for (int i = 0; i < colonne; i++) {
             for (int f = 0; f < ligne; f++) {
                 if (e.getSource()==tabCase[f][i]&& tabCase[f][i].etatMine()==false&&tabCase[f][i].getValide()==false && e.getModifiers() == MouseEvent.BUTTON3_MASK) {
-                    tabCase[f][i].setValide();
-                    if (f == ligne - 1 && i == colonne - 1) {
-                        System.out.println("angle bas droite cliquer gauche");
-                        for (int k = i - 1; k < i + 1; k++) {
-                            for (int g = f - 1; g < f + 1; g++) {
-                                if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
+                   
                                     tabCase[f][i].setText("flag");
-                                    tabCase[f][i].setNb();
-                                } 
-                            }
-                        }
-                    }else if (f == 0 && i == 0) {
-                        System.out.println("angle haut gauche cliquer gauche");
-                        for (int k = i; k < i + 2; k++) {
-                            for (int g = f; g < f + 2; g++) {
-                                if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
-                                    tabCase[f][i].setText("flag");
-                                    tabCase[f][i].setNb();
-                                } 
-                            }
-                        }
-                    }
-                    else if (i == 0 && f == ligne - 1) {
-                        System.out.println("angle haut droite cliquer gauche");
-                        for (int k = i ; k < i + 2; k++) {
-                            for (int g = f - 1; g < f + 1; g++) {
-                                if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
-                                    tabCase[f][i].setText("flag");
-                                    tabCase[f][i].setNb();
-                                } 
-                            }
-                        }
-                    } else if (f == 0 && i == colonne - 1) {
-                        System.out.println("angle bas gauche cliquer gauche");
-                        for (int k = i-1; k < i + 1; k++) {
-                            for (int g = f; g < f + 2; g++) {
-                                if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
-                                    tabCase[f][i].setText("flag");
-                                    tabCase[f][i].setNb();
-                                } 
-                            }
-                        }
-                    }else if (f==0) {
-                        System.out.println("Ligne de gauche cliquer gauche");
-                        for (int k = i-1; k < i+2; k++) {
-                            for (int g = f ; g < f+2; g++) {
-                                if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
-                                    tabCase[f][i].setText("flag");
-                                    tabCase[f][i].setNb();
-                                }
                                 
-                            }
-                        }
-                    }else if (i==0) {
-                        System.out.println("Ligne de haut cliquer gauche ");
-                        for (int k = i; k < i+2; k++) {
-                            for (int g = f-1 ; g < f+2; g++) {
-                                if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
-                                    tabCase[f][i].setText("flag");
-                                    tabCase[f][i].setNb();
-                                }
-                                
-                            }
-                        }
-                    } else if (i == colonne-1) {
-                        System.out.println("Ligne du bas cliquer gauche");
-                        for (int k = i-1; k < i + 1; k++) {
-                            for (int g = f - 1; g < f + 2; g++) {
-                                if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
-                                    tabCase[f][i].setText("flag");
-                                    tabCase[f][i].setNb();
-                                } 
-                            }
-                        }
-                    } else if (f == ligne - 1) {
-                        System.out.println("Ligne du bas cliquer gauche");
-                        for (int k = i - 1; k < i + 2; k++) {
-                            for (int g = f - 1; g < f + 1; g++) {
-                                if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
-                                    tabCase[f][i].setText("flag");
-                                    tabCase[f][i].setNb();
-                                } 
-                            }
-                        }
-                    }  
-                    else{
-                        
-                        for (int k = i - 1; k < i+2; k++) {
-                            for (int g = f - 1; g < f+2; g++) {
-                                System.out.println("position: "+g+"/"+k);
-                                if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
-                                    tabCase[f][i].setText("flag");
-                                    tabCase[f][i].setNb();
-                                }
-                                
-                            }
-                        }
-                    }
+                    
                 }
                 if(e.getSource()==tabCase[f][i]&& tabCase[f][i].etatMine()==true && e.getModifiers() == MouseEvent.BUTTON3_MASK)
                     {
                         tabCase[f][i].setText("flag");
-                        tabCase[f][i].setNb();
+                       
                     }
                 
             }
