@@ -29,6 +29,7 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
             for (int f = 0; f < ligne; f++) {
                 tabCase[f][i]=new Case(false);
                 tabCase[f][i].addActionListener(this);
+                tabCase[f][i].addMouseListener(this);
             }
         }
             double aleadouble=Math.random() * 10;
@@ -39,7 +40,7 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                 for (int f = 0; f < ligne; f++) {
                     aleadouble = Math.random() * 100;
                     alea = (int) aleadouble;
-                    if (alea==1&&compteurAleaMine<mine) {
+                    if (alea==1&&compteurAleaMine<mine+1) {
                         tabCase[f][i] = new Case(true);
                         tabCase[f][i].addActionListener(this);
                         tabCase[f][i].addMouseListener(this);
