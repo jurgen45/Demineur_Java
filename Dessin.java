@@ -15,11 +15,13 @@ public class Dessin extends JComponent {
       pinceau1.setColor(this.getBackground());
       pinceau1.fillRect(0, 0, this.getWidth(), this.getHeight());
     }
+    Font f = new Font("Arial", Font.ROMAN_BASELINE  , 15);
+    pinceau1.setFont(f);
     pinceau1.drawImage(play,10,10,this);
-    pinceau1.drawString("nouvelle partie", 25, 130);
+    pinceau1.drawString("nouvelle partie", 15, 130);
     pinceau1.drawImage(replay,200,10,this);
-    pinceau1.drawString("reprendre la partie", 215, 130);
+    pinceau1.drawString("reprendre la partie", 200, 130);
     pinceau1.drawImage(quitter,390,10,this);
-    pinceau1.drawString("quitter", 425, 130);
+    pinceau1.drawString("quitter", 410, 130);
   }
 }
