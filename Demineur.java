@@ -97,6 +97,8 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                        }
                     }
                 }
+                etat = flux1.readInt();
+                marqueurs=etat;
                 
                
             } catch (FileNotFoundException ex) {
@@ -154,7 +156,7 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
               GridLayout grid1 = new GridLayout(4,2);
               fenetre.setLayout(grid1);
               nbmarques.setIcon(new ImageIcon("flag1.png"));
-              nbmarques.setText("0");
+              nbmarques.setText(""+marqueurs);
               nbmines.setIcon(new ImageIcon("mine.png"));
               nbmines.setText(""+mine);
               fenetre.setSize(150,600);
@@ -358,7 +360,7 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                     }
                 }
 
-                
+                flux.writeInt(marqueurs);
                 flux.close();
             }
             catch(FileNotFoundException ex){
