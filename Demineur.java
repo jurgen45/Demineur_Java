@@ -21,6 +21,7 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
    public Demineur(int ligne,int colonne,int mine,boolean fichier)
    {
         super();
+        marqueurs = mine;
         this.ligne=ligne;
         this.colonne=colonne;
         this.setSize(600, 600);
@@ -415,13 +416,18 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
         for (int i = 0; i < colonne; i++) {
             for (int f = 0; f < ligne; f++) {
                 if (e.getSource()==tabCase[f][i]&&tabCase[f][i].getEtat()==1&& e.getModifiers() == MouseEvent.BUTTON3_MASK) {
+                    marqueurs--;
                     img=new ImageIcon("flag1.png");
                     tabCase[f][i].setIcon(img);
-                    marqueurs++;
+                    
                 }
                 else if (e.getSource() == tabCase[f][i] &&tabCase[f][i].getEtat() == 2&& e.getModifiers() == MouseEvent.BUTTON3_MASK) {
                     img=new ImageIcon("intero.png");
                     tabCase[f][i].setIcon(img);
+
+                    marqueurs++;
+                } else if (e.getSource()==tabCase[f][i]&&tabCase[f][i].getEtat() == 0&&tabCase[f][i].getValide()==false||tabCase[f][i].etatMine()==true&& e.getSource() == tabCase[f][i]) {
+
                     marqueurs--;
                 } else if (e.getSource()==tabCase[f][i]&&tabCase[f][i].getEtat() == 0&&tabCase[f][i].getValide()==false&&e.getModifiers() == MouseEvent.BUTTON3_MASK||tabCase[f][i].etatMine()==true&& e.getSource() == tabCase[f][i]&&e.getModifiers() == MouseEvent.BUTTON3_MASK) {
                     img=null;
