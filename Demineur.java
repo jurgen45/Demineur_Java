@@ -334,7 +334,6 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                         }
                     }
                 }
-                /////////////////////////////////////////////////////
                 for (int i = 0; i < ligne; i++) {
                     for (int f = 0; f < colonne; f++) {
                         if (tabCase[f][i].getValide() == true) {
