@@ -40,6 +40,8 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
         }
         if (fichier==true){
             int nbm;
+            int nbcompteur;
+            int valid;
             try {
                 FileInputStream file = new FileInputStream("save.txt");
                 DataInputStream flux1 = new DataInputStream(file);
@@ -58,6 +60,29 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                        }
                     }
                 }
+                for (int i = 0; i < colonne; i++) {
+                    for (int f = 0; f < ligne; f++) {
+                        valid = flux1.readInt();
+                        nbcompteur = flux1.readInt();
+                        
+                        if (valid == 1) {
+                            tabCase[f][i].setValide();
+                            
+                        }
+                        if (nbcompteur!=0) {
+                            tabCase[f][i].setNbtoFile(nbcompteur);
+                            tabCase[f][i].setText(tabCase[f][i].getNbStr());
+                            tabCase[f][i].setBackground(Color.WHITE);
+                        }else if(nbcompteur == 0&& valid == 1)
+                        {
+                            System.out.println("hey");
+                            tabCase[f][i].setBackground(Color.WHITE);
+                        }
+
+                        
+                    }
+                }
+
                 
                
             } catch (FileNotFoundException ex) {
@@ -68,7 +93,7 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
         }else{
 
         
-            double aleadouble=Math.random() * 10;
+            double aleadouble=Math.random() * 100;
             int alea=(int)aleadouble;
             int compteurAleaMine=0;
             while (compteurAleaMine<mine) {
@@ -91,7 +116,10 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                     for (int f = 0; f < ligne; f++) 
                     {
                     this.add(tabCase[f][i]);
-                    tabCase[f][i].setBackground(Color.GRAY);
+                    if (tabCase[f][i].getValide()==false||tabCase[f][i].etatMine()==true) {
+                        tabCase[f][i].setBackground(Color.GRAY);
+                    }
+                    
                     }
             }
             for (int i = 0; i < colonne; i++) 
@@ -133,7 +161,8 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
             for (int f = 0; f < ligne; f++) {
                 if (e.getSource()==tabCase[f][i]&& tabCase[f][i].etatMine()==false&&tabCase[f][i].getValide()==false&&tabCase[f][i].getEtat()==0){
                     tabCase[f][i].setValide();
-                    if (f == ligne - 1 && i == colonne - 1) {
+                    tabCase[f][i].setBackground(Color.WHITE);
+                        if (f == ligne - 1 && i == colonne - 1) {
                         System.out.println("angle bas droite");
                         for (int k = i - 1; k < i + 1; k++) {
                             for (int g = f - 1; g < f + 1; g++) {
@@ -292,13 +321,21 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                 /////////////////////////////////////////////////////
                 for (int i = 0; i < ligne; i++) {
                     for (int f = 0; f < colonne; f++) {
-                        if (tabCase[f][i].etatMine() == true) {
+                        if (tabCase[f][i].getValide() == true) {
                             flux.writeInt(1);
                             System.out.println("ecrit 1");
-                        } else if (tabCase[f][i].etatMine() == false) {
+                        } else if (tabCase[f][i].getValide() == false) {
                             flux.writeInt(0);
                             System.out.println("ecrit 0");
                         }
+                        if (tabCase[f][i].getNb()!=0) {
+                            flux.writeInt(tabCase[f][i].getNb());
+                            System.out.println("ecrit nb");
+                        } else {
+                            flux.writeInt(0);
+                            System.out.println("ecrit nb:0");
+                        }
+
                     }
                 }
 
