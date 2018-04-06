@@ -31,6 +31,11 @@ public void setNb()
 {
     this.nb++;
 }
+
+public void setNbtoFile(int n) {
+      this.nb=n;
+}
+
 public void setEtat()
 {
     this.etat++;
@@ -38,6 +43,11 @@ public void setEtat()
         this.etat=0;
     }
 }
+
+public void setEtattoFile(int n) {
+    this.etat=n;
+    
+ }
 public int getEtat()
 {
     return this.etat;
@@ -47,9 +57,9 @@ public int getNb() {
     return this.nb;
 }
 
-    public String getNbStr() {
-        int k= this.nb+1;
-        return ""+k;
-    }
+public String getNbStr() {
+    int k= this.nb+1;
+      return ""+k;
+}
 
 }
