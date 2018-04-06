@@ -43,6 +43,11 @@ public void setEtat()
         this.etat=0;
     }
 }
+
+public void setEtattoFile(int n) {
+    this.etat=n;
+    
+ }
 public int getEtat()
 {
     return this.etat;

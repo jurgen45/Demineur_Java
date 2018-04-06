@@ -42,6 +42,7 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
             int nbm;
             int nbcompteur;
             int valid;
+            int etat;
             try {
                 FileInputStream file = new FileInputStream("save.txt");
                 DataInputStream flux1 = new DataInputStream(file);
@@ -75,14 +76,27 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                             tabCase[f][i].setBackground(Color.WHITE);
                         }else if(nbcompteur == 0&& valid == 1)
                         {
-                            System.out.println("hey");
                             tabCase[f][i].setBackground(Color.WHITE);
                         }
 
                         
                     }
                 }
-
+                for (int i = 0; i < colonne; i++) {
+                    for (int f = 0; f < ligne; f++) {
+                        etat = flux1.readInt();
+                       tabCase[f][i].setEtattoFile(etat);
+                       if (tabCase[f][i].getEtat()==1) {
+                            img = new ImageIcon("flag1.png");
+                            tabCase[f][i].setIcon(img);
+                            marqueurs++;
+                       }else if (tabCase[f][i].getEtat() == 2) {
+                            img = new ImageIcon("intero.png");
+                            tabCase[f][i].setIcon(img);
+                            marqueurs--;
+                       }
+                    }
+                }
                 
                
             } catch (FileNotFoundException ex) {
@@ -336,6 +350,11 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                             System.out.println("ecrit nb:0");
                         }
 
+                    }
+                }
+                for (int i = 0; i < ligne; i++) {
+                    for (int f = 0; f < colonne; f++) {
+                            flux.writeInt(tabCase[f][i].getEtat());
                     }
                 }
 
