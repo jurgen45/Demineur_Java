@@ -2,6 +2,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.io.*;
 
 public class Menu extends JFrame implements ActionListener {
     public JPanel fond = null;
@@ -50,7 +51,22 @@ public class Menu extends JFrame implements ActionListener {
             Reglage visu = new Reglage();          
             visu.affiche();
         } else if (e.getActionCommand() == "reprendre la partie précédente") {
-            
+            try{
+                FileInputStream file = new FileInputStream("save.txt");
+                DataInputStream flux1 = new DataInputStream(file);
+                int nbl = flux1.readInt();
+                int nbc = flux1.readInt();
+                int nbm = flux1.readInt();
+                this.dispose();
+                System.out.println("run");
+                Demineur jeu = new Demineur(nbl,nbc,nbm,true);
+            }
+            catch(FileNotFoundException ex){
+              System.err.println("fichier non trouvé: lecture");
+            }
+            catch(IOException ex){
+              System.out.println("il y'a une erreur: lecture");
+            }
         } else if (e.getActionCommand() == "2"){
             this.dispose();
         }

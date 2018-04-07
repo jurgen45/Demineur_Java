@@ -1,56 +1,30 @@
-import java.awt.event.ActionEvent;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.io.*;
 
-public class Menu extends JFrame implements ActionListener {
-    public JPanel fond = null;
-    public JButton b1 = null;
-    public JButton b2 = null;
-    public JButton b3 = null;
-    public ImageIcon play;
-    public Menu() {
-        super();
-
+public class Menu extends JFrame implements MouseListener{
+    public Dessin des = new Dessin();
+    public void affiche(){
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.add(des);
+        this.setSize(510,180);
         this.setVisible(true);
-        this.menuDemarrage();
+        des.paintComponent(this.getGraphics());
+        this.addMouseListener(this);
     }
-
-    public void menuDemarrage() {
-        JPanel paneltitre = new JPanel();
-        fond = new JPanel();
-        fond.setBackground(new Color(136, 225, 213));
-        GridLayout grid = new GridLayout(3, 1);
-        b1 = new JButton("1");
-        b1.setIcon(new ImageIcon("play3.jpg"));
-        b2 = new JButton("reprendre la partie précédente");
-        b3 = new JButton("2");
-        b3.setIcon(new ImageIcon("exit.png"));
-        fond.setLayout(grid);
-        fond.add(b1);
-        fond.add(b2);
-        fond.add(b3);
-        b1.addActionListener(this);
-        b2.addActionListener(this);
-        b3.addActionListener(this);
-        JLabel titre = new JLabel("Demineur");
-        paneltitre.add(titre);
-        this.add(paneltitre, BorderLayout.NORTH);
-        this.add(fond, BorderLayout.CENTER);
-
-    }
-
- 
-
-    public void actionPerformed(ActionEvent e){
-        System.out.println(e.getActionCommand());
-        if (e.getActionCommand() == "1") {
+    
+    public void mousePressed(MouseEvent me){}
+    public void mouseReleased(MouseEvent me){}
+    public void mouseEntered(MouseEvent me){}
+    public void mouseExited(MouseEvent me){}
+    public void mouseClicked (MouseEvent e){
+        if (e.getX()>10 && e.getX()<150 && e.getButton() == MouseEvent.BUTTON1) {
             this.dispose();
             Reglage visu = new Reglage();          
             visu.affiche();
-        } else if (e.getActionCommand() == "reprendre la partie précédente") {
+        }
+        if (e.getX()>200 && e.getX()<340 && e.getButton() == MouseEvent.BUTTON1) {
             try{
                 FileInputStream file = new FileInputStream("save.txt");
                 DataInputStream flux1 = new DataInputStream(file);
@@ -59,7 +33,7 @@ public class Menu extends JFrame implements ActionListener {
                 int nbm = flux1.readInt();
                 this.dispose();
                 System.out.println("run");
-                Demineur jeu = new Demineur(nbl,nbc,nbm);
+                Demineur jeu = new Demineur(nbl,nbc,nbm,true);
             }
             catch(FileNotFoundException ex){
               System.err.println("fichier non trouvé: lecture");
@@ -67,9 +41,10 @@ public class Menu extends JFrame implements ActionListener {
             catch(IOException ex){
               System.out.println("il y'a une erreur: lecture");
             }
-        } else if (e.getActionCommand() == "2"){
+        }
+        if (e.getX()>390 && e.getButton() == MouseEvent.BUTTON1) {
             this.dispose();
         }
-    }
 
+    }
 }

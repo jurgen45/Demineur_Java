@@ -12,7 +12,7 @@ public class Reglage extends JFrame implements ActionListener{
 	public JLabel mines = new JLabel();
 	public void affiche(){
 		
-		GridLayout gestionnaire = new GridLayout(5, 2);
+		GridLayout gestionnaire = new GridLayout(7, 2);
 		this.setLayout(gestionnaire);
 		JButton c1 = new JButton("colonne +");
 		JButton c2 = new JButton("colonne -");
@@ -20,6 +20,10 @@ public class Reglage extends JFrame implements ActionListener{
 		JButton l2 = new JButton("ligne -");
 		JButton m1 = new JButton("mines +");
 		JButton m2 = new JButton("mines -");
+		JButton ci5 = new JButton("colonne +5");
+		JButton cd5 = new JButton("colonne -5");
+		JButton li5 = new JButton("ligne +5");
+		JButton ld5 = new JButton("ligne -5");
 		JButton run = new JButton("lancer la partie !");
 		c1.addActionListener(this);
 		c2.addActionListener(this);
@@ -27,6 +31,10 @@ public class Reglage extends JFrame implements ActionListener{
 		l2.addActionListener(this);
 		m1.addActionListener(this);
 		m2.addActionListener(this);
+		ci5.addActionListener(this);
+		cd5.addActionListener(this);
+		li5.addActionListener(this);
+		ld5.addActionListener(this);
 		run.addActionListener(this);
 		this.setSize(400,400);
 		this.setLocation(200, 100);
@@ -36,6 +44,10 @@ public class Reglage extends JFrame implements ActionListener{
 		this.add(l1);
 		this.add(c2);
 		this.add(l2);
+		this.add(ci5);
+		this.add(li5);
+		this.add(cd5);
+		this.add(ld5);
 		this.add(col);
 		this.add(lig);
 		col.setText("colonne: " + nbc);
@@ -53,7 +65,7 @@ public class Reglage extends JFrame implements ActionListener{
 	    {
 	      nbc++;     
 	      if (nbc>=30) {
-	      	 	nbc=40;
+	      	 	nbc=30;
 	      	 }	
 		  col.setText("colonne: " + nbc); 
 	    }
@@ -69,7 +81,7 @@ public class Reglage extends JFrame implements ActionListener{
 	    {
 	      nbl++;	      
 	      if (nbl>=30) {
-	      	 	nbl=40;
+	      	 	nbl=30;
 	      	 }
 	      lig.setText("ligne: " + nbl);
 	    }
@@ -98,7 +110,37 @@ public class Reglage extends JFrame implements ActionListener{
 		else if (e.getActionCommand()=="lancer la partie !") {
 			this.dispose();
 			System.out.println("run");
-			Demineur jeu=new Demineur(nbl,nbc,nbm);
-	    }	
+			Demineur jeu=new Demineur(nbl,nbc,nbm,false);
+	    }
+	    else if (e.getActionCommand()=="colonne +5") {
+	    	nbc=nbc+5;
+	    	if (nbc>=30) {
+	      	 	nbc=30;
+	      	 }
+	      col.setText("colonne: " + nbc);
+	    }
+	    else if (e.getActionCommand()=="colonne -5") {
+	    	nbc=nbc-5;
+	    	if (nbc<=4) {
+	      	 	nbc=4;
+	      	 }
+	      col.setText("colonne: " + nbc);
+	    }
+	    else if(e.getActionCommand()=="ligne +5")
+	    {
+	      nbl=nbl+5;	      
+	      if (nbl>=30) {
+	      	 	nbl=30;
+	      	 }
+	      lig.setText("ligne: " + nbl);
+	    }
+	    else if (e.getActionCommand()=="ligne -5")
+	    {
+	      nbl=nbl-5;		      
+	      if (nbl<=4) {
+	      	 	nbl=4;
+	      	 }
+	      lig.setText("ligne: " + nbl);
+		}
 	}
 }
