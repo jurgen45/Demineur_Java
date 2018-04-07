@@ -174,107 +174,150 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
 
     public void actionPerformed(ActionEvent e){
         int g=0,k=0;
+<<<<<<< HEAD
         System.out.println("event");
+=======
+>>>>>>> b5b14eaf6b25624b9dc32047b74f46fe17d106f9
         for (int i = 0; i < colonne; i++) {
             for (int f = 0; f < ligne; f++) {
                 if (e.getSource()==tabCase[f][i]&& tabCase[f][i].etatMine()==false&&tabCase[f][i].getValide()==false&&tabCase[f][i].getEtat()==0){
                     
                     tabCase[f][i].setBackground(Color.WHITE);
                         if (f == ligne - 1 && i == colonne - 1) {
+<<<<<<< HEAD
                         System.out.println("angle bas droite");
+=======
+>>>>>>> b5b14eaf6b25624b9dc32047b74f46fe17d106f9
                         for ( k = i - 1; k < i + 1; k++) {
                             for ( g = f - 1; g < f + 1; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
-                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setNb();
+<<<<<<< HEAD
+=======
+                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
+>>>>>>> b5b14eaf6b25624b9dc32047b74f46fe17d106f9
                                     tabCase[f][i].setValide();
                                 } 
                             }
                         }
                     }else if (f == 0 && i == 0) {
+<<<<<<< HEAD
                         System.out.println("angle haut gauche");
+=======
+>>>>>>> b5b14eaf6b25624b9dc32047b74f46fe17d106f9
                         for ( k = i; k < i + 2; k++) {
                             for ( g = f; g < f + 2; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
-                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setNb();
+<<<<<<< HEAD
+=======
+                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
+>>>>>>> b5b14eaf6b25624b9dc32047b74f46fe17d106f9
                                     tabCase[f][i].setValide();
                                 } 
                             }
                         }
                     }
                     else if (i == 0 && f == ligne - 1) {
+<<<<<<< HEAD
                         System.out.println("angle haut droite");
+=======
+>>>>>>> b5b14eaf6b25624b9dc32047b74f46fe17d106f9
                         for ( k = i ; k < i + 2; k++) {
                             for ( g = f - 1; g < f + 1; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
-                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setNb();
+<<<<<<< HEAD
+=======
+                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
+>>>>>>> b5b14eaf6b25624b9dc32047b74f46fe17d106f9
                                     tabCase[f][i].setValide();
                                 } 
                             }
                         }
                     } else if (f == 0 && i == colonne - 1) {
+<<<<<<< HEAD
                         System.out.println("angle bas gauche");
+=======
+>>>>>>> b5b14eaf6b25624b9dc32047b74f46fe17d106f9
                         for ( k = i-1; k < i + 1; k++) {
                             for ( g = f; g < f + 2; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
-                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setNb();
+<<<<<<< HEAD
+=======
+                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
+>>>>>>> b5b14eaf6b25624b9dc32047b74f46fe17d106f9
                                     tabCase[f][i].setValide();
                                 } 
                             }
                         }
                     }else if (f==0) {
+<<<<<<< HEAD
                         System.out.println("Ligne de gauche");
+=======
+>>>>>>> b5b14eaf6b25624b9dc32047b74f46fe17d106f9
                         for ( k = i-1; k < i+2; k++) {
                             for ( g = f ; g < f+2; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
-                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setNb();
+<<<<<<< HEAD
+=======
+                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
+>>>>>>> b5b14eaf6b25624b9dc32047b74f46fe17d106f9
                                     tabCase[f][i].setValide();
                                 }
                                 
                             }
                         }
                     }else if (i==0) {
+<<<<<<< HEAD
                         System.out.println("Ligne de haut");
+=======
+>>>>>>> b5b14eaf6b25624b9dc32047b74f46fe17d106f9
                         for ( k = i; k < i+2; k++) {
                             for ( g = f-1 ; g < f+2; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
-                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setNb();
+<<<<<<< HEAD
+=======
+                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
+>>>>>>> b5b14eaf6b25624b9dc32047b74f46fe17d106f9
                                     tabCase[f][i].setValide();
                                 }
                                 
                             }
                         }
                     } else if (i == colonne-1) {
+<<<<<<< HEAD
                         System.out.println("Ligne du bas");
+=======
+>>>>>>> b5b14eaf6b25624b9dc32047b74f46fe17d106f9
                         for ( k = i-1; k < i + 1; k++) {
                             for ( g = f - 1; g < f + 2; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
-                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setNb();
+<<<<<<< HEAD
+=======
+                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
+>>>>>>> b5b14eaf6b25624b9dc32047b74f46fe17d106f9
                                     tabCase[f][i].setValide();
                                 } 
                             }
                         }
                     } else if (f == ligne - 1) {
+<<<<<<< HEAD
                         System.out.println("Ligne du bas");
+=======
+>>>>>>> b5b14eaf6b25624b9dc32047b74f46fe17d106f9
                         for ( k = i - 1; k < i + 2; k++) {
                             for ( g = f - 1; g < f + 1; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
-                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setNb();
+<<<<<<< HEAD
+=======
+                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
+>>>>>>> b5b14eaf6b25624b9dc32047b74f46fe17d106f9
                                     tabCase[f][i].setValide();
                                 } 
                             }
@@ -284,11 +327,16 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                         
                         for ( k = i - 1; k < i+2; k++) {
                             for ( g = f - 1; g < f+2; g++) {
+<<<<<<< HEAD
                                 System.out.println("position: "+g+"/"+k);
+=======
+>>>>>>> b5b14eaf6b25624b9dc32047b74f46fe17d106f9
                                 if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
-                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setNb();
+<<<<<<< HEAD
+=======
+                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
+>>>>>>> b5b14eaf6b25624b9dc32047b74f46fe17d106f9
                                     tabCase[f][i].setValide();
                                 }
                                 
@@ -298,11 +346,20 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                             }
                         }
                     }
+<<<<<<< HEAD
                     if (tabCase[f][i].getNb()==0) {
                         tabCase[f][i].setValide();
                         //tabCase[f][i].detectionRecursive(tabCase, g, k, ligne, colonne);
                     }
                     
+=======
+                    /*
+                    if (tabCase[f][i].getNb()==0) {
+                        tabCase[f][i].detectionRecursive(tabCase, k, g, ligne, colonne);
+                        tabCase[f][i].setValide();
+                    }
+                    */
+>>>>>>> b5b14eaf6b25624b9dc32047b74f46fe17d106f9
                     
                 }
                 
@@ -399,19 +456,27 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
         public void mouseExited(MouseEvent me) { }
           public void mouseClicked (MouseEvent e) 
             {       			
+<<<<<<< HEAD
     if (e.getModifiers() == MouseEvent.BUTTON3_MASK)
     {
       System.out.println("You right clicked on the button");
     }
+=======
+>>>>>>> b5b14eaf6b25624b9dc32047b74f46fe17d106f9
     for (int i = 0; i < colonne; i++) {
             for (int f = 0; f < ligne; f++) {
                 if (e.getSource()==tabCase[f][i]&&tabCase[f][i].getValide()==false && e.getModifiers() == MouseEvent.BUTTON3_MASK||tabCase[f][i].etatMine()==true&& e.getSource() == tabCase[f][i]&& e.getModifiers() == MouseEvent.BUTTON3_MASK) {
                                     
+<<<<<<< HEAD
                                 tabCase[f][i].setEtat();
+=======
+                        tabCase[f][i].setEtat();
+>>>>>>> b5b14eaf6b25624b9dc32047b74f46fe17d106f9
                     
                 }
                
             }
+<<<<<<< HEAD
         }
         for (int i = 0; i < colonne; i++) {
             for (int f = 0; f < ligne; f++) {
@@ -439,6 +504,34 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
         }
         nbmarques.setText(""+marqueurs);
         }
+=======
+        }
+        for (int i = 0; i < colonne; i++) {
+            for (int f = 0; f < ligne; f++) {
+                if (e.getSource()==tabCase[f][i]&&tabCase[f][i].getEtat()==1&& e.getModifiers() == MouseEvent.BUTTON3_MASK) {
+                    marqueurs--;
+                    img=new ImageIcon("flag1.png");
+                    tabCase[f][i].setIcon(img);
+                    
+                }
+                else if (e.getSource() == tabCase[f][i] &&tabCase[f][i].getEtat() == 2&& e.getModifiers() == MouseEvent.BUTTON3_MASK) {
+                    img=new ImageIcon("intero.png");
+                    tabCase[f][i].setIcon(img);
+
+                    marqueurs++;
+                }
+                else if (e.getSource()==tabCase[f][i]&&tabCase[f][i].getEtat() == 0&&tabCase[f][i].getValide()==false&&e.getModifiers() == MouseEvent.BUTTON3_MASK||tabCase[f][i].etatMine()==true&& e.getSource() == tabCase[f][i]&&e.getModifiers() == MouseEvent.BUTTON3_MASK) {
+                    img=null;
+                    tabCase[f][i].setIcon(img);
+                    System.out.println("case vide");
+                    
+                }
+                
+            }
+        }
+        nbmarques.setText(""+marqueurs);
+        }
+>>>>>>> b5b14eaf6b25624b9dc32047b74f46fe17d106f9
 
 ////////////////////////////////////////////////////////////////////////
 
