@@ -186,8 +186,8 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                             for ( g = f - 1; g < f + 1; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
                                     System.out.println("mine");
-                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setNb();
+                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setValide();
                                 } 
                             }
@@ -198,8 +198,8 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                             for ( g = f; g < f + 2; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
                                     System.out.println("mine");
-                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setNb();
+                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setValide();
                                 } 
                             }
@@ -211,8 +211,8 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                             for ( g = f - 1; g < f + 1; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
                                     System.out.println("mine");
-                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setNb();
+                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setValide();
                                 } 
                             }
@@ -223,8 +223,8 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                             for ( g = f; g < f + 2; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
                                     System.out.println("mine");
-                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setNb();
+                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setValide();
                                 } 
                             }
@@ -235,8 +235,8 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                             for ( g = f ; g < f+2; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
                                     System.out.println("mine");
-                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setNb();
+                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setValide();
                                 }
                                 
@@ -248,8 +248,8 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                             for ( g = f-1 ; g < f+2; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
                                     System.out.println("mine");
-                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setNb();
+                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setValide();
                                 }
                                 
@@ -261,8 +261,8 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                             for ( g = f - 1; g < f + 2; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
                                     System.out.println("mine");
-                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setNb();
+                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setValide();
                                 } 
                             }
@@ -273,8 +273,8 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                             for ( g = f - 1; g < f + 1; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
                                     System.out.println("mine");
-                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setNb();
+                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setValide();
                                 } 
                             }
@@ -287,8 +287,8 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                                 System.out.println("position: "+g+"/"+k);
                                 if (tabCase[g][k].etatMine() == true) {
                                     System.out.println("mine");
-                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setNb();
+                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setValide();
                                 }
                                 
@@ -300,7 +300,7 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                     }
                     if (tabCase[f][i].getNb()==0) {
                         tabCase[f][i].setValide();
-                        //tabCase[f][i].detectionRecursive(tabCase, g, k, ligne, colonne);
+                        tabCase[f][i].detectionRecursive(tabCase, g, k, ligne, colonne);
                     }
                     
                     
@@ -426,12 +426,11 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                     tabCase[f][i].setIcon(img);
 
                     marqueurs++;
-                } else if (e.getSource()==tabCase[f][i]&&tabCase[f][i].getEtat() == 0&&tabCase[f][i].getValide()==false||tabCase[f][i].etatMine()==true&& e.getSource() == tabCase[f][i]) {
-
-                    marqueurs--;
-                } else if (e.getSource()==tabCase[f][i]&&tabCase[f][i].getEtat() == 0&&tabCase[f][i].getValide()==false&&e.getModifiers() == MouseEvent.BUTTON3_MASK||tabCase[f][i].etatMine()==true&& e.getSource() == tabCase[f][i]&&e.getModifiers() == MouseEvent.BUTTON3_MASK) {
+                }
+                else if (e.getSource()==tabCase[f][i]&&tabCase[f][i].getEtat() == 0&&tabCase[f][i].getValide()==false&&e.getModifiers() == MouseEvent.BUTTON3_MASK||tabCase[f][i].etatMine()==true&& e.getSource() == tabCase[f][i]&&e.getModifiers() == MouseEvent.BUTTON3_MASK) {
                     img=null;
                     tabCase[f][i].setIcon(img);
+                    System.out.println("case vide");
                     
                 }
                 
