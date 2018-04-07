@@ -174,18 +174,15 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
 
     public void actionPerformed(ActionEvent e){
         int g=0,k=0;
-        System.out.println("event");
         for (int i = 0; i < colonne; i++) {
             for (int f = 0; f < ligne; f++) {
                 if (e.getSource()==tabCase[f][i]&& tabCase[f][i].etatMine()==false&&tabCase[f][i].getValide()==false&&tabCase[f][i].getEtat()==0){
                     
                     tabCase[f][i].setBackground(Color.WHITE);
                         if (f == ligne - 1 && i == colonne - 1) {
-                        System.out.println("angle bas droite");
                         for ( k = i - 1; k < i + 1; k++) {
                             for ( g = f - 1; g < f + 1; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
                                     tabCase[f][i].setNb();
                                     tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setValide();
@@ -193,11 +190,9 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                             }
                         }
                     }else if (f == 0 && i == 0) {
-                        System.out.println("angle haut gauche");
                         for ( k = i; k < i + 2; k++) {
                             for ( g = f; g < f + 2; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
                                     tabCase[f][i].setNb();
                                     tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setValide();
@@ -206,11 +201,9 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                         }
                     }
                     else if (i == 0 && f == ligne - 1) {
-                        System.out.println("angle haut droite");
                         for ( k = i ; k < i + 2; k++) {
                             for ( g = f - 1; g < f + 1; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
                                     tabCase[f][i].setNb();
                                     tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setValide();
@@ -218,11 +211,9 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                             }
                         }
                     } else if (f == 0 && i == colonne - 1) {
-                        System.out.println("angle bas gauche");
                         for ( k = i-1; k < i + 1; k++) {
                             for ( g = f; g < f + 2; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
                                     tabCase[f][i].setNb();
                                     tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setValide();
@@ -230,11 +221,9 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                             }
                         }
                     }else if (f==0) {
-                        System.out.println("Ligne de gauche");
                         for ( k = i-1; k < i+2; k++) {
                             for ( g = f ; g < f+2; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
                                     tabCase[f][i].setNb();
                                     tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setValide();
@@ -243,11 +232,9 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                             }
                         }
                     }else if (i==0) {
-                        System.out.println("Ligne de haut");
                         for ( k = i; k < i+2; k++) {
                             for ( g = f-1 ; g < f+2; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
                                     tabCase[f][i].setNb();
                                     tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setValide();
@@ -256,11 +243,9 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                             }
                         }
                     } else if (i == colonne-1) {
-                        System.out.println("Ligne du bas");
                         for ( k = i-1; k < i + 1; k++) {
                             for ( g = f - 1; g < f + 2; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
                                     tabCase[f][i].setNb();
                                     tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setValide();
@@ -268,11 +253,9 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                             }
                         }
                     } else if (f == ligne - 1) {
-                        System.out.println("Ligne du bas");
                         for ( k = i - 1; k < i + 2; k++) {
                             for ( g = f - 1; g < f + 1; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
                                     tabCase[f][i].setNb();
                                     tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setValide();
@@ -284,9 +267,7 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                         
                         for ( k = i - 1; k < i+2; k++) {
                             for ( g = f - 1; g < f+2; g++) {
-                                System.out.println("position: "+g+"/"+k);
                                 if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
                                     tabCase[f][i].setNb();
                                     tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setValide();
@@ -298,11 +279,12 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
                             }
                         }
                     }
+                    /*
                     if (tabCase[f][i].getNb()==0) {
+                        tabCase[f][i].detectionRecursive(tabCase, k, g, ligne, colonne);
                         tabCase[f][i].setValide();
-                        tabCase[f][i].detectionRecursive(tabCase, g, k, ligne, colonne);
                     }
-                    
+                    */
                     
                 }
                 
@@ -399,15 +381,11 @@ public class Demineur extends JFrame implements ActionListener,MouseListener {
         public void mouseExited(MouseEvent me) { }
           public void mouseClicked (MouseEvent e) 
             {       			
-    if (e.getModifiers() == MouseEvent.BUTTON3_MASK)
-    {
-      System.out.println("You right clicked on the button");
-    }
     for (int i = 0; i < colonne; i++) {
             for (int f = 0; f < ligne; f++) {
                 if (e.getSource()==tabCase[f][i]&&tabCase[f][i].getValide()==false && e.getModifiers() == MouseEvent.BUTTON3_MASK||tabCase[f][i].etatMine()==true&& e.getSource() == tabCase[f][i]&& e.getModifiers() == MouseEvent.BUTTON3_MASK) {
                                     
-                                tabCase[f][i].setEtat();
+                        tabCase[f][i].setEtat();
                     
                 }
                
