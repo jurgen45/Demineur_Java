@@ -12,7 +12,15 @@ public class Reglage extends JFrame implements ActionListener{
 	public JLabel mines = new JLabel();
 	public void affiche(){
 		
+<<<<<<< HEAD
 		GridLayout gestionnaire = new GridLayout(8, 2);
+=======
+<<<<<<< HEAD
+		GridLayout gestionnaire = new GridLayout(8, 2);
+=======
+		GridLayout gestionnaire = new GridLayout(7, 2);
+>>>>>>> b5b14eaf6b25624b9dc32047b74f46fe17d106f9
+>>>>>>> 7cfb0836e3e23688dd9e3a35c41085ee9e066d6f
 		this.setLayout(gestionnaire);
 		JButton c1 = new JButton("colonne +");
 		JButton c2 = new JButton("colonne -");
@@ -24,8 +32,16 @@ public class Reglage extends JFrame implements ActionListener{
 		JButton cd5 = new JButton("colonne -5");
 		JButton li5 = new JButton("ligne +5");
 		JButton ld5 = new JButton("ligne -5");
+<<<<<<< HEAD
 		JButton mi5 = new JButton("mines +5");
 		JButton md5 = new JButton("mines -5");
+=======
+<<<<<<< HEAD
+		JButton mi5 = new JButton("mines +5");
+		JButton md5 = new JButton("mines -5");
+=======
+>>>>>>> b5b14eaf6b25624b9dc32047b74f46fe17d106f9
+>>>>>>> 7cfb0836e3e23688dd9e3a35c41085ee9e066d6f
 		JButton run = new JButton("lancer la partie !");
 		c1.addActionListener(this);
 		c2.addActionListener(this);
@@ -37,8 +53,16 @@ public class Reglage extends JFrame implements ActionListener{
 		cd5.addActionListener(this);
 		li5.addActionListener(this);
 		ld5.addActionListener(this);
+<<<<<<< HEAD
 		mi5.addActionListener(this);
 		md5.addActionListener(this);
+=======
+<<<<<<< HEAD
+		mi5.addActionListener(this);
+		md5.addActionListener(this);
+=======
+>>>>>>> b5b14eaf6b25624b9dc32047b74f46fe17d106f9
+>>>>>>> 7cfb0836e3e23688dd9e3a35c41085ee9e066d6f
 		run.addActionListener(this);
 		this.setSize(400,400);
 		this.setLocation(200, 100);
@@ -148,6 +172,10 @@ public class Reglage extends JFrame implements ActionListener{
 	      	 }
 	      lig.setText("ligne: " + nbl);
 		}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 7cfb0836e3e23688dd9e3a35c41085ee9e066d6f
 		else if (e.getActionCommand()=="mines +5")
 	    {
 	      nbm=nbm+5;
@@ -163,5 +191,10 @@ public class Reglage extends JFrame implements ActionListener{
 	    	}
 	    	mines.setText("mines: " + nbm);
 		}
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> b5b14eaf6b25624b9dc32047b74f46fe17d106f9
+>>>>>>> 7cfb0836e3e23688dd9e3a35c41085ee9e066d6f
 	}
 }
