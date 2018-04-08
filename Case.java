@@ -58,7 +58,6 @@ public int getNb() {
 }
 
 public String getNbStr() {
-<<<<<<< HEAD
     int k= this.nb+1;
       return ""+k;
 }
@@ -246,7 +245,6 @@ public void detectionRecursive(Case [][] tabCase,int x,int y,int ligne,int colon
 
         
     
-=======
     int k= this.nb;
       return ""+k;
 }
@@ -424,6 +422,5 @@ public void detectionRecursive(Case [][] tabCase,int x,int y,int ligne,int colon
             }
         }
    
->>>>>>> b5b14eaf6b25624b9dc32047b74f46fe17d106f9
 }
 }
