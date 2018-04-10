@@ -5,6 +5,11 @@ public class Case extends JButton{
     private boolean valide;
     private int nb;
     private int etat;
+    private boolean mouvementB = false;
+    private boolean mouvementD = false;
+    private boolean mouvementH = false;
+    private boolean mouvementG = false;
+
 public Case(boolean etatmine)
 {
     super();
@@ -12,6 +17,7 @@ public Case(boolean etatmine)
     this.valide=false;
     this.nb = 0;
     this.etat=0;
+    
 
 }
 public boolean etatMine()
@@ -19,9 +25,62 @@ public boolean etatMine()
     return this.mine;
 }
 
+public void setmouvementB(){
+    mouvementB=true;
+}
+
+    public void setmouvementD() {
+        mouvementD = true;
+    }
+    
+    public void setmouvementH() {
+        mouvementH = true;
+    }
+    
+    public void setmouvementG() {
+        mouvementG = true;
+    }
+
+    
+    public void desetmouvementB() {
+        mouvementB = false;
+    }
+
+    public void desetmouvementD() {
+        mouvementD = false;
+    }
+
+    public void desetmouvementH() {
+        mouvementH = false;
+    }
+
+    public void desetmouvementG() {
+        mouvementG = false;
+    }
+    
+    public boolean getmouvementB() {
+        return mouvementB;
+    }
+
+    public boolean getmouvementD() {
+        return mouvementD;
+    }
+
+    public boolean getmouvementH() {
+        return mouvementH;
+    }
+
+    public boolean getmouvementG() {
+        return mouvementG;
+    }
+
 public void setValide()
 {
     this.valide=true;
+}
+
+public void setDeValide() {
+     this.valide = false;
 }
 
 public boolean getValide() {

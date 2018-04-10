@@ -18,7 +18,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener {
     private ImageIcon img = null;
     JButton save = new JButton("sauvegarder");
     JButton quitter = new JButton("quitter");
-    Algo alg=null;
+    Algo2 alg=null;
     public Demineur(int ligne, int colonne, int mine, boolean fichier) {
         super();
         this.ligne = ligne;
@@ -160,7 +160,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener {
         fenetre.add(save);
         fenetre.add(quitter);
         fenetre.setVisible(true);
-        alg=new Algo(tabCase,ligne,colonne);
+        alg=new Algo2(tabCase,ligne,colonne);
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -170,7 +170,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener {
             for (int f = 0; f < ligne; f++) {
                 if (e.getSource() == tabCase[f][i] && tabCase[f][i].etatMine() == false
                         && tabCase[f][i].getValide() == false && tabCase[f][i].getEtat() == 0) {
-                    tabCase[f][i].setValide();
+                    //tabCase[f][i].setValide();
                     tabCase[f][i].setBackground(Color.WHITE);
                     if (f == ligne - 1 && i == colonne - 1) {
                         System.out.println("angle bas droite");
