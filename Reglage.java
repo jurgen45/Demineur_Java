@@ -6,7 +6,7 @@ public class Reglage extends JFrame implements ActionListener{
 
 	public int nbc=4;
 	public int nbl=4;
-	public int nbm=4;
+	public int nbm=nbc*nbl/4;
 	public JLabel col = new JLabel();
 	public JLabel lig = new JLabel();
 	public JLabel mines = new JLabel();
@@ -101,15 +101,15 @@ public class Reglage extends JFrame implements ActionListener{
 		}
 		else if (e.getActionCommand()=="mines +") {
 	    	nbm++;
-	    	if (nbm>=nbl*nbc) {
+	    	if (nbm>=nbl*nbc/4) {
 	    		nbm=nbl*nbc/4;
 	    	}
 	    	mines.setText("mines: " + nbm);
 	    }
 	    else if (e.getActionCommand()=="mines -") {
 	    	nbm--;
-	    	if (nbm<=0) {
-	    		nbm=nbl*nbc/4;
+	    	if (nbm<=4) {
+	    		nbm=4;
 	    	}
 	    	mines.setText("mines: " + nbm);
 		}
@@ -151,15 +151,15 @@ public class Reglage extends JFrame implements ActionListener{
 		else if (e.getActionCommand()=="mines +5")
 	    {
 	      nbm=nbm+5;
-	    	if (nbm>=nbl*nbc) {
+	    	if (nbm>=nbl*nbc/4) {
 	    		nbm=nbl*nbc/4;
 	    	}
 	    	mines.setText("mines: " + nbm);
 		}
 		else if (e.getActionCommand()=="mines -5") {
 	    	nbm=nbm-5;
-	    	if (nbm<=0) {
-	    		nbm=nbl*nbc/4;
+	    	if (nbm<=4) {
+	    		nbm=4;
 	    	}
 	    	mines.setText("mines: " + nbm);
 		}
