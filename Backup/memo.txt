@@ -1,0 +1,49 @@
+if (a<colonne-1&&tabAlgo[b][a+1]==0&& tabCase[b][a].getmouvementB()==false) {
+                    tabCase[b][a].setmouvementB();
+                        System.out.println("bas");
+
+                    System.out.println(a + "/" + b);
+                    tabCase[b][a].setBackground(Color.YELLOW);
+                   // tabCase[b][a].setText(compteur + "");
+                    this.LectureAlgo(tabCase, ligne, colonne, a + 1, b);
+            tabCase[b][a].desetmouvementB();
+                }else if(b+1<ligne&&tabAlgo[b+1][a]==0 && tabCase[b][a].getmouvementD() == false){
+                    System.out.println("droite");
+            tabCase[b][a].setmouvementD();
+            System.out.println(a + "/" + b);
+            tabCase[b][a].setBackground(Color.YELLOW);
+            //tabCase[b][a].setText(compteur + "");
+            this.LectureAlgo(tabCase, ligne, colonne, a, b+1);
+            tabCase[b][a].desetmouvementD();
+                }
+                else if (a>0 && tabAlgo[b][a-1] == 0 && tabCase[b][a].getmouvementH() == false) {
+            System.out.println("haut");
+            tabCase[b][a].setmouvementH();
+            System.out.println(a + "/" + b);
+            tabCase[b][a].setBackground(Color.YELLOW);
+            //tabCase[b][a].setText(compteur + "");
+            this.LectureAlgo(tabCase, ligne, colonne, a-1, b);
+            tabCase[b][a].desetmouvementH();
+
+        } else if (b >0 && tabAlgo[b -1][a] == 0 && tabCase[b][a].getmouvementG() == false) {
+            System.out.println("gauche");
+            tabCase[b][a].setmouvementG();
+            System.out.println(a + "/" + b);
+            tabCase[b][a].setBackground(Color.YELLOW);
+           // tabCase[b][a].setText(compteur+"");
+            this.LectureAlgo(tabCase, ligne, colonne, a, b - 1);
+            tabCase[b][a].desetmouvementG();
+            
+            
+        }
+                else{
+                    tabCase[b][a].setText(compteur + "");
+                    tabCase[b][a].desetmouvementB();
+                    tabCase[b][a].desetmouvementD();
+                    tabCase[b][a].desetmouvementH();
+                    tabCase[b][a].desetmouvementG();
+                System.out.println("Non");
+                System.out.println(a + "/" + b);
+                tabCase[b][a].setBackground(Color.BLACK);
+                return;
+                }

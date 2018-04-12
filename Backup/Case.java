@@ -5,6 +5,11 @@ public class Case extends JButton{
     private boolean valide;
     private int nb;
     private int etat;
+    private boolean mouvementB = false;
+    private boolean mouvementD = false;
+    private boolean mouvementH = false;
+    private boolean mouvementG = false;
+
 public Case(boolean etatmine)
 {
     super();
@@ -12,6 +17,7 @@ public Case(boolean etatmine)
     this.valide=false;
     this.nb = 0;
     this.etat=0;
+    
 
 }
 public boolean etatMine()
@@ -19,9 +25,62 @@ public boolean etatMine()
     return this.mine;
 }
 
+public void setmouvementB(){
+    mouvementB=true;
+}
+
+    public void setmouvementD() {
+        mouvementD = true;
+    }
+    
+    public void setmouvementH() {
+        mouvementH = true;
+    }
+    
+    public void setmouvementG() {
+        mouvementG = true;
+    }
+
+    
+    public void desetmouvementB() {
+        mouvementB = false;
+    }
+
+    public void desetmouvementD() {
+        mouvementD = false;
+    }
+
+    public void desetmouvementH() {
+        mouvementH = false;
+    }
+
+    public void desetmouvementG() {
+        mouvementG = false;
+    }
+    
+    public boolean getmouvementB() {
+        return mouvementB;
+    }
+
+    public boolean getmouvementD() {
+        return mouvementD;
+    }
+
+    public boolean getmouvementH() {
+        return mouvementH;
+    }
+
+    public boolean getmouvementG() {
+        return mouvementG;
+    }
+
 public void setValide()
 {
     this.valide=true;
+}
+
+public void setDeValide() {
+     this.valide = false;
 }
 
 public boolean getValide() {
@@ -61,5 +120,190 @@ public String getNbStr() {
     int k= this.nb+1;
       return ""+k;
 }
+public void detectionRecursive(Case [][] tabCase,int x,int y,int ligne,int colonne)
+        {
+            
+            
+            
+        if (y == ligne - 1 && x == colonne - 1) {
+            System.out.println("angle bas droite");
+            for (int k = x - 1; k < x + 1; k++) {
+                for (int g = y - 1; g < y + 1; g++) {
+                    if (tabCase[g][k].etatMine() == true&&tabCase[g][k].getValide()==false) {
+                        System.out.println("mine");
+                        tabCase[y][x].setText(tabCase[y][x].getNbStr());
+                        tabCase[y][x].setNb();
+                                tabCase[y][x].setValide();
+                        tabCase[y][x].setBackground(Color.WHITE);
+                        return;
+                    }else{
+                                tabCase[y][x].setValide();
+                                tabCase[y][x].setBackground(Color.WHITE);
+                        tabCase[y][x].detectionRecursive(tabCase,g,k,ligne,colonne);
 
+                    }
+                }
+            }
+        } else if (y == 0 && x == 0) {
+            System.out.println("angle haut gauche");
+            for (int k = x; k < x + 2; k++) {
+                for (int g = y; g < y + 2; g++) {
+                            if (tabCase[g][k].etatMine() == true&&tabCase[g][k].getValide()==false) {
+                                System.out.println("mine");
+                                tabCase[y][x].setText(tabCase[y][x].getNbStr());
+                                tabCase[y][x].setNb();
+                                tabCase[y][x].setValide();
+                                tabCase[y][x].setBackground(Color.WHITE);
+                                return;
+                            } else {
+                                tabCase[y][x].setValide();
+                                tabCase[y][x].setBackground(Color.WHITE);
+                                tabCase[y][x].detectionRecursive(tabCase, g, k, ligne, colonne);
+
+                            }
+                }
+            }
+        } else if (x == 0 && y == ligne - 1) {
+            System.out.println("angle haut droite");
+            for (int k = x; k < x + 2; k++) {
+                for (int g = y - 1; g < y + 1; g++) {
+                            if (tabCase[g][k].etatMine() == true&&tabCase[g][k].getValide()==false) {
+                                System.out.println("mine");
+                                tabCase[y][x].setText(tabCase[y][x].getNbStr());
+                                tabCase[y][x].setNb();
+                                tabCase[y][x].setValide();
+                                tabCase[y][x].setBackground(Color.WHITE);
+                                return;
+                            } else {
+                                tabCase[y][x].setValide();
+                                tabCase[y][x].setBackground(Color.WHITE);
+                                tabCase[y][x].detectionRecursive(tabCase, g, k, ligne, colonne);
+
+                            }
+                }
+            }
+        } else if (y == 0 && x == colonne - 1) {
+            System.out.println("angle bas gauche");
+            for (int k = x - 1; k < x + 1; k++) {
+                for (int g = y; g < y + 2; g++) {
+                            if (tabCase[g][k].etatMine() == true&&tabCase[g][k].getValide()==false) {
+                                System.out.println("mine");
+                                tabCase[y][x].setText(tabCase[y][x].getNbStr());
+                                tabCase[y][x].setNb();
+                                tabCase[y][x].setValide();
+                                tabCase[y][x].setBackground(Color.WHITE);
+                                return;
+                            } else {
+                                tabCase[y][x].setValide();
+                                tabCase[y][x].setBackground(Color.WHITE);
+                                tabCase[y][x].detectionRecursive(tabCase, g, k, ligne, colonne);
+
+                            }
+                }
+            }
+        } else if (y == 0) {
+            System.out.println("Ligne de gauche");
+            for (int k = x - 1; k < x + 2; k++) {
+                for (int g = y; g < y + 2; g++) {
+                            if (tabCase[g][k].etatMine() == true&&tabCase[g][k].getValide()==false) {
+                                System.out.println("mine");
+                                tabCase[y][x].setText(tabCase[y][x].getNbStr());
+                                tabCase[y][x].setNb();
+                                tabCase[y][x].setValide();
+                                tabCase[y][x].setBackground(Color.WHITE);
+                                return;
+                            } else {
+                                tabCase[y][x].setValide();
+                                tabCase[y][x].setBackground(Color.WHITE);
+                                tabCase[y][x].detectionRecursive(tabCase, g, k, ligne, colonne);
+
+                            }
+
+                }
+            }
+        } else if (x == 0) {
+            System.out.println("Ligne de haut");
+            for (int k = x; k < x + 2; k++) {
+                for (int g = y - 1; g < y + 2; g++) {
+                            if (tabCase[g][k].etatMine() == true&&tabCase[g][k].getValide()==false) {
+                                System.out.println("mine");
+                                tabCase[y][x].setText(tabCase[y][x].getNbStr());
+                                tabCase[y][x].setNb();
+                                tabCase[y][x].setValide();
+                                tabCase[y][x].setBackground(Color.WHITE);
+                                return;
+                            } else {
+                                tabCase[y][x].setValide();
+                                tabCase[y][x].setBackground(Color.WHITE);
+                                tabCase[y][x].detectionRecursive(tabCase, g, k, ligne, colonne);
+
+                            }
+
+                }
+            }
+        } else if (x == colonne - 1) {
+            System.out.println("Ligne du bas");
+            for (int k = x - 1; k < x + 1; k++) {
+                for (int g = y - 1; g < y + 2; g++) {
+                            if (tabCase[g][k].etatMine() == true&&tabCase[g][k].getValide()==false) {
+                                System.out.println("mine");
+                                tabCase[y][x].setText(tabCase[y][x].getNbStr());
+                                tabCase[y][x].setNb();
+                                tabCase[y][x].setValide();
+                                tabCase[y][x].setBackground(Color.WHITE);
+                                return;
+                            } else {
+                                tabCase[y][x].setValide();
+                                tabCase[y][x].setBackground(Color.WHITE);
+                                tabCase[y][x].detectionRecursive(tabCase, g, k, ligne, colonne);
+
+                            }
+                }
+            }
+        } else if (y == ligne - 1) {
+            System.out.println("Ligne du bas");
+            for (int k = x - 1; k < x + 2; k++) {
+                for (int g = y - 1; g < y + 1; g++) {
+                            if (tabCase[g][k].etatMine() == true && tabCase[g][k].getValide() == false) {
+                                System.out.println("mine");
+                                tabCase[y][x].setText(tabCase[y][x].getNbStr());
+                                tabCase[y][x].setNb();
+                                tabCase[y][x].setValide();
+                                tabCase[y][x].setBackground(Color.WHITE);
+                                return;
+                            } else {
+                                tabCase[y][x].setValide();
+                                tabCase[y][x].setBackground(Color.WHITE);
+                                tabCase[y][x].detectionRecursive(tabCase, g, k, ligne, colonne);
+
+                            }
+                }
+            }
+        } else {
+
+            for (int k = x - 1; k < x + 2; k++) {
+                for (int g = y - 1; g < y + 2; g++) {
+                    System.out.println("position: " + g + "/" + k);
+                            if (tabCase[g][k].etatMine() == true&&tabCase[g][k].getValide()==false) {
+                                System.out.println("mine");
+                                tabCase[y][x].setText(tabCase[y][x].getNbStr());
+                                tabCase[y][x].setNb();
+                                tabCase[y][x].setValide();
+                                tabCase[y][x].setBackground(Color.WHITE);
+                                return;
+                            } else {
+                                tabCase[y][x].setValide();
+                                tabCase[y][x].setBackground(Color.WHITE);
+                                tabCase[y][x].detectionRecursive(tabCase, g, k, ligne, colonne);
+
+                            }
+
+                }
+            }
+        }
+
+        
+    
+   
+}
 }

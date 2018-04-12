@@ -149,6 +149,7 @@ public class Algo2 {
             // tabCase[b][a].setText(compteur+"");
             this.LectureAlgo(tabCase, ligne, colonne, a, b - 1);
             tabCase[b][a].desetmouvementG();
+           
 
         } else {
             tabCase[b][a].setText(compteur + "");

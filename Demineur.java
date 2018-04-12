@@ -18,7 +18,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener {
     private ImageIcon img = null;
     JButton save = new JButton("sauvegarder");
     JButton quitter = new JButton("quitter");
-    Algo2 alg=null;
+    Algo alg=null;
     public Demineur(int ligne, int colonne, int mine, boolean fichier) {
         super();
         this.ligne = ligne;
@@ -160,7 +160,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener {
         fenetre.add(save);
         fenetre.add(quitter);
         fenetre.setVisible(true);
-        alg=new Algo2(tabCase,ligne,colonne);
+        alg=new Algo(tabCase,ligne,colonne);
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -170,124 +170,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener {
             for (int f = 0; f < ligne; f++) {
                 if (e.getSource() == tabCase[f][i] && tabCase[f][i].etatMine() == false
                         && tabCase[f][i].getValide() == false && tabCase[f][i].getEtat() == 0) {
-                    //tabCase[f][i].setValide();
-                    tabCase[f][i].setBackground(Color.WHITE);
-                    if (f == ligne - 1 && i == colonne - 1) {
-                        System.out.println("angle bas droite");
-                        for (  k = i - 1; k < i + 1; k++) {
-                            for (  g = f - 1; g < f + 1; g++) {
-                                if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
-                                    tabCase[f][i].setNb();
-                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
-                                    
-                                }
-                            }
-                        }
-                    } else if (f == 0 && i == 0) {
-                        System.out.println("angle haut gauche");
-                        for (  k = i; k < i + 2; k++) {
-                            for (  g = f; g < f + 2; g++) {
-                                if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
-                                    tabCase[f][i].setNb();
-                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
-                                    
-                                }
-                            }
-                        }
-                    } else if (i == 0 && f == ligne - 1) {
-                        System.out.println("angle haut droite");
-                        for (  k = i; k < i + 2; k++) {
-                            for (  g = f - 1; g < f + 1; g++) {
-                                if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
-                                    tabCase[f][i].setNb();
-                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
-                                    
-                                }
-                            }
-                        }
-                    } else if (f == 0 && i == colonne - 1) {
-                        System.out.println("angle bas gauche");
-                        for (  k = i - 1; k < i + 1; k++) {
-                            for (  g = f; g < f + 2; g++) {
-                                if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
-                                    tabCase[f][i].setNb();
-                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
-                                    
-                                }
-                            }
-                        }
-                    } else if (f == 0) {
-                        System.out.println("Ligne de gauche");
-                        for (  k = i - 1; k < i + 2; k++) {
-                            for (  g = f; g < f + 2; g++) {
-                                if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
-                                    tabCase[f][i].setNb();
-                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
-                                    
-                                }
-
-                            }
-                        }
-                    } else if (i == 0) {
-                        System.out.println("Ligne de haut");
-                        for (  k = i; k < i + 2; k++) {
-                            for (  g = f - 1; g < f + 2; g++) {
-                                if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
-                                    tabCase[f][i].setNb();
-                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
-                                    
-                                }
-
-                            }
-                        }
-                    } else if (i == colonne - 1) {
-                        System.out.println("Ligne du bas");
-                        for (  k = i - 1; k < i + 1; k++) {
-                            for (  g = f - 1; g < f + 2; g++) {
-                                if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
-                                    tabCase[f][i].setNb();
-                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
-                                    
-                                }
-                            }
-                        }
-                    } else if (f == ligne - 1) {
-                        System.out.println("Ligne du bas");
-                        for (  k = i - 1; k < i + 2; k++) {
-                            for (  g = f - 1; g < f + 1; g++) {
-                                if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
-                                    tabCase[f][i].setNb();
-                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
-                                    
-                                }
-                            }
-                        }
-                    } else {
-
-                        for (  k = i - 1; k < i + 2; k++) {
-                            for (  g = f - 1; g < f + 2; g++) {
-                                //System.out.println("position: " + g + "/" + k);
-                                if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
-                                    tabCase[f][i].setNb();
-                                    tabCase[f][i].setText(tabCase[f][i].getNbStr());
-                                    
-                                }
-
-                            }
-                        }
-                    }
-                    if (tabCase[f][i].getNb()==0) {
-                        alg.LectureAlgo(tabCase, ligne, colonne,i, f);
-                    }
+                    alg.recherche(tabCase,f, i,ligne, colonne);
                 }
                 if (e.getSource() == tabCase[f][i] && tabCase[f][i].etatMine() == true
                         && tabCase[f][i].getEtat() == 0) {
