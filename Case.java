@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.io.*;
 public class Case extends JButton{
     private boolean mine;
     private boolean valide;
@@ -71,5 +72,59 @@ public String getNbStr() {
         
     
    
+public void sauvegarde(Case[][] tabCase,int ligne,int colonne,int mine1,int marqueurs){
 
+        try {
+
+            FileOutputStream fichier = new FileOutputStream("save.txt");
+            DataOutputStream flux = new DataOutputStream(fichier);
+            flux.writeInt(ligne);
+            flux.writeInt(colonne);
+            flux.writeInt(mine1);
+
+            for (int i = 0; i < ligne; i++) {
+                for (int f = 0; f < colonne; f++) {
+                    if (tabCase[f][i].etatMine() == true) {
+                        flux.writeInt(1);
+                        System.out.println("ecrit 1");
+                    } else if (tabCase[f][i].etatMine() == false) {
+                        flux.writeInt(0);
+                        System.out.println("ecrit 0");
+                    }
+                }
+            }
+            for (int i = 0; i < ligne; i++) {
+                for (int f = 0; f < colonne; f++) {
+                    if (tabCase[f][i].getValide() == true) {
+                        flux.writeInt(1);
+                        System.out.println("ecrit 1");
+                    } else if (tabCase[f][i].getValide() == false) {
+                        flux.writeInt(0);
+                        System.out.println("ecrit 0");
+                    }
+                    if (tabCase[f][i].getNb() != 0) {
+                        flux.writeInt(tabCase[f][i].getNb());
+                        System.out.println("ecrit nb");
+                    } else {
+                        flux.writeInt(0);
+                        System.out.println("ecrit nb:0");
+                    }
+
+                }
+            }
+            for (int i = 0; i < ligne; i++) {
+                for (int f = 0; f < colonne; f++) {
+                    flux.writeInt(tabCase[f][i].getEtat());
+                }
+            }
+
+            flux.writeInt(marqueurs);
+            flux.close();
+        } catch (FileNotFoundException ex) {
+            System.err.println("fichier non trouvé: ecriture");
+        } catch (IOException ex) {
+            System.out.println("il y'a une erreur: ecriture");
+        }
+
+}
 }
