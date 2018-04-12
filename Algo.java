@@ -190,7 +190,7 @@ public void LectureAlgo(Case[][] tabCase, int ligne, int colonne,int a,int b)
 /*
         if(b>0&&a>0&&tabAlgo[b -1][a-1] == 0)
         {
-            System.out.println("Angle Haut Gauche");
+            System.out.println("Angle Bas Gauche Recursif");
 
             System.out.println(a + "/" + b);
             tabCase[b][a].setBackground(Color.WHITE);
@@ -203,7 +203,7 @@ public void LectureAlgo(Case[][] tabCase, int ligne, int colonne,int a,int b)
         }
                
         if (b + 1 < ligne && a > 0 && tabAlgo[b + 1][a - 1] == 0) {
-            System.out.println("Angle Haut Gauche");
+            System.out.println("Angle Haut Droite Recursif");
 
             System.out.println(a + "/" + b);
             tabCase[b][a].setBackground(Color.WHITE);
@@ -215,26 +215,26 @@ public void LectureAlgo(Case[][] tabCase, int ligne, int colonne,int a,int b)
             tabCase[b + 1][a - 1].setText(tabCase[b + 1][a - 1].getNbStr());
         }
 
-        if (b>0 && a < colonne + 1 && tabAlgo[b - 1][a + 1] == 0) {
-            System.out.println("Angle Haut Gauche");
+        if (b>0 && a < colonne  && tabAlgo[b - 1][a + 1] == 0) {
+            System.out.println("Angle Haut Gauche Recursif");
 
             System.out.println(a + "/" + b);
             tabCase[b][a].setBackground(Color.WHITE);
             this.LectureAlgo(tabCase, ligne, colonne, a + 1, b-1);
-        } else if (b > 0 && a < colonne + 1) {
+        } else if (b > 0 && a < colonne ) {
             tabCase[b-1][a + 1].setBackground(Color.WHITE);
             tabCase[b-1][a + 1].setValide();
             tabCase[b-1][a + 1].setNbtoFile(tabAlgo[b-1][a + 1]);
             tabCase[b-1][a + 1].setText(tabCase[b-1][a + 1].getNbStr());
         }
 
-        if (b + 1 < ligne && a < colonne + 1 && tabAlgo[b + 1][a + 1] == 0) {
-            System.out.println("Angle Haut Gauche");
+        if (b < ligne && a < colonne && tabAlgo[b + 1][a + 1] == 0) {
+            System.out.println("Angle Bas Droite Recursif");
 
             System.out.println(a + "/" + b);
             tabCase[b][a].setBackground(Color.WHITE);
             this.LectureAlgo(tabCase, ligne, colonne, a + 1, b + 1);
-        } else if (b + 1 < ligne && a +1 < colonne) {
+        } else if (b < ligne && a < colonne) {
             tabCase[b + 1][a + 1].setBackground(Color.WHITE);
             tabCase[b + 1][a + 1].setValide();
             tabCase[b + 1][a + 1].setNbtoFile(tabAlgo[b + 1][a + 1]);
