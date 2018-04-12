@@ -1,6 +1,6 @@
 import java.awt.Color;
 import java.io.*;
-import org.omg.CORBA.TRANSACTION_ROLLEDBACK;
+
 
 public class Algo{
     int[][] tabAlgo=null;
