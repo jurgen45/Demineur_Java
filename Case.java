@@ -86,10 +86,8 @@ public void sauvegarde(Case[][] tabCase,int ligne,int colonne,int mine1,int marq
                 for (int f = 0; f < colonne; f++) {
                     if (tabCase[f][i].etatMine() == true) {
                         flux.writeInt(1);
-                        System.out.println("ecrit 1");
                     } else if (tabCase[f][i].etatMine() == false) {
                         flux.writeInt(0);
-                        System.out.println("ecrit 0");
                     }
                 }
             }
@@ -97,17 +95,13 @@ public void sauvegarde(Case[][] tabCase,int ligne,int colonne,int mine1,int marq
                 for (int f = 0; f < colonne; f++) {
                     if (tabCase[f][i].getValide() == true) {
                         flux.writeInt(1);
-                        System.out.println("ecrit 1");
                     } else if (tabCase[f][i].getValide() == false) {
                         flux.writeInt(0);
-                        System.out.println("ecrit 0");
                     }
                     if (tabCase[f][i].getNb() != 0) {
                         flux.writeInt(tabCase[f][i].getNb());
-                        System.out.println("ecrit nb");
                     } else {
                         flux.writeInt(0);
-                        System.out.println("ecrit nb:0");
                     }
 
                 }
