@@ -197,11 +197,13 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                         && tabCase[f][i].etatMine() == false) {
                     //tabCase[f][i].setBackground(Color.WHITE);
                 }
+            
+
                 if (tabCase[f][i].getValide() == true) {
                     compteurFinal++;
                 }
                 if (compteurFinal == ligne * colonne) {
-<<<<<<< HEAD
+
                     JLabel nb_cout = new JLabel();                  
                     fenetre.getContentPane().removeAll();
                     this.getContentPane().removeAll();
@@ -210,7 +212,6 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                     fenetre.add(save);
                     fenetre.add(quitter);
                     nb_cout.setText("nombre de couts= "+nbCout);
-=======
                     try {
                         FileOutputStream fichier = new FileOutputStream("save.txt");
                         DataOutputStream flux = new DataOutputStream(fichier);
@@ -223,7 +224,6 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                     }
                     this.dispose();
                     fenetre.dispose();
->>>>>>> cbaf14eadeabf52c7503ef9e8e729412e71cc476
                 }
 
             }
