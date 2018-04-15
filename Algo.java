@@ -7,7 +7,6 @@ public class Algo{
     
 public Algo(Case[][] tabCase, int ligne, int colonne){
     tabAlgo=new int[ligne+1][colonne+1];
-    System.out.println("Algo");
     try {
            FileOutputStream fichier = new FileOutputStream("Algo.dat");
                 DataOutputStream flux = new DataOutputStream(fichier);
@@ -132,9 +131,9 @@ public void LectureAlgo(Case[][] tabCase, int ligne, int colonne,int a,int b)
                 
                 if (a<colonne-1&&tabAlgo[b][a+1]==0) {
                     
-                        System.out.println("bas");
+                        //System.out.println("bas");
 
-                    System.out.println(a + "/" + b);
+                    
                     tabCase[b][a].setBackground(Color.WHITE);
                     this.LectureAlgo(tabCase, ligne, colonne, a + 1, b);
             
@@ -145,9 +144,9 @@ public void LectureAlgo(Case[][] tabCase, int ligne, int colonne,int a,int b)
                     tabCase[b][a+1].setText(tabCase[b][a+1].getNbStr());
                 }
                  if(b+1<ligne&&tabAlgo[b+1][a]==0 ){
-                    System.out.println("droite");
+                    //System.out.println("droite");
 
-            System.out.println(a + "/" + b);
+            
             tabCase[b][a].setBackground(Color.WHITE);
             this.LectureAlgo(tabCase, ligne, colonne, a, b+1);
             
@@ -159,9 +158,9 @@ public void LectureAlgo(Case[][] tabCase, int ligne, int colonne,int a,int b)
         }
 
                  if (a>0 && tabAlgo[b][a-1] == 0 ) {
-            System.out.println("haut");
+            //System.out.println("haut");
 
-            System.out.println(a + "/" + b);
+            
             tabCase[b][a].setBackground(Color.WHITE);
             this.LectureAlgo(tabCase, ligne, colonne, a-1, b);
             
@@ -174,9 +173,9 @@ public void LectureAlgo(Case[][] tabCase, int ligne, int colonne,int a,int b)
         } 
         
         if (b >0 && tabAlgo[b -1][a] == 0 ) {
-            System.out.println("gauche");
+            //System.out.println("gauche");
 
-            System.out.println(a + "/" + b);
+            
             tabCase[b][a].setBackground(Color.WHITE);
             this.LectureAlgo(tabCase, ligne, colonne, a, b - 1);
             
@@ -192,7 +191,7 @@ public void LectureAlgo(Case[][] tabCase, int ligne, int colonne,int a,int b)
         {
             System.out.println("Angle Bas Gauche Recursif");
 
-            System.out.println(a + "/" + b);
+            
             tabCase[b][a].setBackground(Color.WHITE);
             this.LectureAlgo(tabCase, ligne, colonne, a - 1, b - 1);
         }else if (b > 0 && a > 0) {
@@ -205,7 +204,7 @@ public void LectureAlgo(Case[][] tabCase, int ligne, int colonne,int a,int b)
         if (b + 1 < ligne && a > 0 && tabAlgo[b + 1][a - 1] == 0) {
             System.out.println("Angle Haut Droite Recursif");
 
-            System.out.println(a + "/" + b);
+            
             tabCase[b][a].setBackground(Color.WHITE);
             this.LectureAlgo(tabCase, ligne, colonne, a - 1, b + 1);
         } else if (b + 1 < ligne && a > 0) {
@@ -218,7 +217,7 @@ public void LectureAlgo(Case[][] tabCase, int ligne, int colonne,int a,int b)
         if (b>0 && a < colonne  && tabAlgo[b - 1][a + 1] == 0) {
             System.out.println("Angle Haut Gauche Recursif");
 
-            System.out.println(a + "/" + b);
+            
             tabCase[b][a].setBackground(Color.WHITE);
             this.LectureAlgo(tabCase, ligne, colonne, a + 1, b-1);
         } else if (b > 0 && a < colonne ) {
@@ -231,7 +230,7 @@ public void LectureAlgo(Case[][] tabCase, int ligne, int colonne,int a,int b)
         if (b < ligne && a < colonne && tabAlgo[b + 1][a + 1] == 0) {
             System.out.println("Angle Bas Droite Recursif");
 
-            System.out.println(a + "/" + b);
+            
             tabCase[b][a].setBackground(Color.WHITE);
             this.LectureAlgo(tabCase, ligne, colonne, a + 1, b + 1);
         } else if (b < ligne && a < colonne) {
@@ -254,11 +253,11 @@ public void recherche(Case[][] tabCase,int f,int i,int ligne,int colonne)
         tabCase[f][i].setBackground(Color.WHITE);
         
      if (f == ligne - 1 && i == colonne - 1) {
-                        System.out.println("angle bas droite");
+                        //System.out.println("angle bas droite");
                         for (  k = i - 1; k < i + 1; k++) {
                             for (  g = f - 1; g < f + 1; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
+                                    //System.out.println("mine");
                                     tabCase[f][i].setNb();
                                     tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setValide();
@@ -266,11 +265,11 @@ public void recherche(Case[][] tabCase,int f,int i,int ligne,int colonne)
                             }
                         }
                     } else if (f == 0 && i == 0) {
-                        System.out.println("angle haut gauche");
+                        //System.out.println("angle haut gauche");
                         for (  k = i; k < i + 2; k++) {
                             for (  g = f; g < f + 2; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
+                                   // System.out.println("mine");
                                     tabCase[f][i].setNb();
                                     tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setValide();
@@ -278,11 +277,11 @@ public void recherche(Case[][] tabCase,int f,int i,int ligne,int colonne)
                             }
                         }
                     } else if (i == 0 && f == ligne - 1) {
-                        System.out.println("angle haut droite");
+                        //System.out.println("angle haut droite");
                         for (  k = i; k < i + 2; k++) {
                             for (  g = f - 1; g < f + 1; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
+                                    //System.out.println("mine");
                                     tabCase[f][i].setNb();
                                     tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setValide();
@@ -290,11 +289,11 @@ public void recherche(Case[][] tabCase,int f,int i,int ligne,int colonne)
                             }
                         }
                     } else if (f == 0 && i == colonne - 1) {
-                        System.out.println("angle bas gauche");
+                        //System.out.println("angle bas gauche");
                         for (  k = i - 1; k < i + 1; k++) {
                             for (  g = f; g < f + 2; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
+                                   // System.out.println("mine");
                                     tabCase[f][i].setNb();
                                     tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setValide();
@@ -302,11 +301,11 @@ public void recherche(Case[][] tabCase,int f,int i,int ligne,int colonne)
                             }
                         }
                     } else if (f == 0) {
-                        System.out.println("Ligne de gauche");
+                       // System.out.println("Ligne de gauche");
                         for (  k = i - 1; k < i + 2; k++) {
                             for (  g = f; g < f + 2; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
+                                    //System.out.println("mine");
                                     tabCase[f][i].setNb();
                                     tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setValide();
@@ -315,11 +314,11 @@ public void recherche(Case[][] tabCase,int f,int i,int ligne,int colonne)
                             }
                         }
                     } else if (i == 0) {
-                        System.out.println("Ligne de haut");
+                        //System.out.println("Ligne de haut");
                         for (  k = i; k < i + 2; k++) {
                             for (  g = f - 1; g < f + 2; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
+                                    //System.out.println("mine");
                                     tabCase[f][i].setNb();
                                     tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setValide();
@@ -328,11 +327,11 @@ public void recherche(Case[][] tabCase,int f,int i,int ligne,int colonne)
                             }
                         }
                     } else if (i == colonne - 1) {
-                        System.out.println("Ligne du bas");
+                        //System.out.println("Ligne du bas");
                         for (  k = i - 1; k < i + 1; k++) {
                             for (  g = f - 1; g < f + 2; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
+                                    //System.out.println("mine");
                                     tabCase[f][i].setNb();
                                     tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setValide();
@@ -340,11 +339,11 @@ public void recherche(Case[][] tabCase,int f,int i,int ligne,int colonne)
                             }
                         }
                     } else if (f == ligne - 1) {
-                        System.out.println("Ligne du bas");
+                       //System.out.println("Ligne du bas");
                         for (  k = i - 1; k < i + 2; k++) {
                             for (  g = f - 1; g < f + 1; g++) {
                                 if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
+                                    //System.out.println("mine");
                                     tabCase[f][i].setNb();
                                     tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setValide();
@@ -357,7 +356,7 @@ public void recherche(Case[][] tabCase,int f,int i,int ligne,int colonne)
                             for (  g = f - 1; g < f + 2; g++) {
                                 //System.out.println("position: " + g + "/" + k);
                                 if (tabCase[g][k].etatMine() == true) {
-                                    System.out.println("mine");
+                                   // System.out.println("mine");
                                     tabCase[f][i].setNb();
                                     tabCase[f][i].setText(tabCase[f][i].getNbStr());
                                     tabCase[f][i].setValide();

@@ -33,7 +33,6 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
         GridLayout grid = new GridLayout(colonne, ligne);
         this.setLayout(grid);
         tabCase = new Case[ligne][colonne];
-        System.out.println(ligne + "/" + colonne + "/" + mine);
         for (int i = 0; i < colonne; i++) {
             for (int f = 0; f < ligne; f++) {
                 tabCase[f][i] = new Case(false);
@@ -55,9 +54,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                 for (int i = 0; i < colonne; i++) {
                     for (int f = 0; f < ligne; f++) {
                         nbm = flux1.readInt();
-                        System.out.println(nbm);
                         if (nbm == 1) {
-                            System.out.println("lecture 1");
                             tabCase[f][i] = new Case(true);
                             tabCase[f][i].addActionListener(this);
                             tabCase[f][i].addMouseListener(this);
@@ -88,11 +85,11 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                         etat = flux1.readInt();
                         tabCase[f][i].setEtattoFile(etat);
                         if (tabCase[f][i].getEtat() == 1) {
-                            img = new ImageIcon("flag1.png");
+                            img = new ImageIcon(new ImageIcon("flag1.png").getImage().getScaledInstance(40, 40,Image.SCALE_DEFAULT));
                             tabCase[f][i].setIcon(img);
                             marqueurs++;
                         } else if (tabCase[f][i].getEtat() == 2) {
-                            img = new ImageIcon("intero.png");
+                            img = new ImageIcon(new ImageIcon("intero.png").getImage().getScaledInstance(40, 40,Image.SCALE_DEFAULT));
                             tabCase[f][i].setIcon(img);
                             marqueurs--;
                         }
@@ -139,7 +136,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
             for (int f = 0; f < ligne; f++) {
                 if (tabCase[f][i].etatMine() == true) {
                     tabCase[f][i].setValide();
-                    tabCase[f][i].setText("*");
+                    tabCase[f][i].setText("");
                 }
             }
         }
@@ -168,7 +165,6 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
     }
 
     public void actionPerformed(ActionEvent e) {
-        System.out.println("event");
         
         for (int i = 0; i < colonne; i++) {
             for (int f = 0; f < ligne; f++) {
@@ -205,6 +201,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                     compteurFinal++;
                 }
                 if (compteurFinal == ligne * colonne) {
+<<<<<<< HEAD
                     JLabel nb_cout = new JLabel();                  
                     fenetre.getContentPane().removeAll();
                     this.getContentPane().removeAll();
@@ -213,6 +210,20 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                     fenetre.add(save);
                     fenetre.add(quitter);
                     nb_cout.setText("nombre de couts= "+nbCout);
+=======
+                    try {
+                        FileOutputStream fichier = new FileOutputStream("save.txt");
+                        DataOutputStream flux = new DataOutputStream(fichier);
+                        flux.writeInt(-1);
+                        flux.close();
+                    } catch (FileNotFoundException ex) {
+                        System.err.println("fichier non trouvé: ecriture");
+                    } catch (IOException ex) {
+                        System.out.println("il y'a une erreur: ecriture");
+                    }
+                    this.dispose();
+                    fenetre.dispose();
+>>>>>>> cbaf14eadeabf52c7503ef9e8e729412e71cc476
                 }
 
             }
@@ -224,6 +235,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
         }
         if (e.getActionCommand() == "sauvegarder") {
             tabCase[0][0].sauvegarde(tabCase, ligne, colonne, mine1, marqueurs);
+         
 
         }
 
@@ -257,7 +269,6 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
 
     public void mouseClicked(MouseEvent e) {
         if (e.getModifiers() == MouseEvent.BUTTON3_MASK) {
-            System.out.println("You right clicked on the button");
         }
         for (int i = 0; i < colonne; i++) {
             for (int f = 0; f < ligne; f++) {
@@ -276,12 +287,12 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
             for (int f = 0; f < ligne; f++) {
                 if (e.getSource() == tabCase[f][i] && tabCase[f][i].getEtat() == 1
                         && e.getModifiers() == MouseEvent.BUTTON3_MASK) {
-                    img = new ImageIcon("flag1.png");
+                    img = new ImageIcon(new ImageIcon("flag1.png").getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT));
                     tabCase[f][i].setIcon(img);
                     marqueurs++;
                 } else if (e.getSource() == tabCase[f][i] && tabCase[f][i].getEtat() == 2
                         && e.getModifiers() == MouseEvent.BUTTON3_MASK) {
-                    img = new ImageIcon("intero.png");
+                    img = new ImageIcon(new ImageIcon("intero.png").getImage().getScaledInstance(35, 35, Image.SCALE_DEFAULT));
                     tabCase[f][i].setIcon(img);
                     marqueurs--;
                 } else if (e.getSource() == tabCase[f][i] && tabCase[f][i].getEtat() == 0
