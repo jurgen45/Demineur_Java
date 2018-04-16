@@ -136,7 +136,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
             for (int f = 0; f < ligne; f++) {
                 if (tabCase[f][i].etatMine() == true) {
                     tabCase[f][i].setValide();
-                    tabCase[f][i].setText("*");
+                    tabCase[f][i].setText("");
                 }
             }
         }
@@ -189,6 +189,10 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                                  for (int m = 0; m < ligne; m++) {
                                      if (tabCase[m][j].etatMine()==true) {
                                          tabCase[m][j].setBackground(Color.RED);
+                                         img = new ImageIcon(new ImageIcon("mine.png").getImage().getScaledInstance(40, 40,
+                                        Image.SCALE_DEFAULT));
+                                        tabCase[m][j].setIcon(img);
+                                        tabCase[f][i].setBackground(Color.ORANGE);
                                      }
                                      
                                  }
