@@ -13,7 +13,9 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
     private int colonne;
     private int mine1;
     private int marqueurs;
+    private int nbCout=0;
     private JLabel nbmarques = null;
+    private JLabel nbmines = null;
     private Case[][] tabCase = null;
     private JFrame fenetre = new JFrame();
     private ImageIcon img = null;
@@ -140,7 +142,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
         }
 
         mine1 = mine;
-        JLabel nbmines = new JLabel();
+        nbmines = new JLabel();
         nbmarques = new JLabel();
         GridLayout grid1 = new GridLayout(4, 2);
         fenetre.setLayout(grid1);
@@ -169,6 +171,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                 if (e.getSource() == tabCase[f][i] && tabCase[f][i].etatMine() == false
                         && tabCase[f][i].getValide() == false && tabCase[f][i].getEtat() == 0) {
                     alg.recherche(tabCase,f, i,ligne, colonne);
+                    nbCout++;
                 }
                 if (e.getSource() == tabCase[f][i] && tabCase[f][i].etatMine() == true
                         && tabCase[f][i].getEtat() == 0) {
@@ -204,10 +207,21 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                         && tabCase[f][i].etatMine() == false) {
                     //tabCase[f][i].setBackground(Color.WHITE);
                 }
+            
+
                 if (tabCase[f][i].getValide() == true) {
                     compteurFinal++;
                 }
                 if (compteurFinal == ligne * colonne) {
+
+                    JLabel nb_cout = new JLabel();                  
+                    fenetre.getContentPane().removeAll();
+                    this.getContentPane().removeAll();
+                    //fenetre.add(temps);
+                    fenetre.add(nb_cout);
+                    fenetre.add(save);
+                    fenetre.add(quitter);
+                    nb_cout.setText("nombre de couts= "+nbCout);
                     try {
                         FileOutputStream fichier = new FileOutputStream("save.txt");
                         DataOutputStream flux = new DataOutputStream(fichier);
