@@ -134,7 +134,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
             for (int f = 0; f < ligne; f++) {
                 if (tabCase[f][i].etatMine() == true) {
                     tabCase[f][i].setValide();
-                    tabCase[f][i].setText("");
+                    tabCase[f][i].setText("*");
                 }
             }
         }
@@ -172,6 +172,16 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                 }
                 if (e.getSource() == tabCase[f][i] && tabCase[f][i].etatMine() == true
                         && tabCase[f][i].getEtat() == 0) {
+                            try {
+                        FileOutputStream fichier = new FileOutputStream("save.txt");
+                        DataOutputStream flux = new DataOutputStream(fichier);
+                        flux.writeInt(-1);
+                        flux.close();
+                    } catch (FileNotFoundException ex) {
+                        System.err.println("fichier non trouvé: ecriture");
+                    } catch (IOException ex) {
+                        System.out.println("il y'a une erreur: ecriture");
+                    }
                             for (int j = 0; j < colonne; j++) {
                                  for (int m = 0; m < ligne; m++) {
                                      if (tabCase[m][j].etatMine()==true) {
