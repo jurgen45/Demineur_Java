@@ -161,21 +161,19 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
         nbmines.setIcon(new ImageIcon("mine.png"));
         nbmines.setText("" + mine);
 
-        /*TimerTask action = new TimerTask() {
+        TimerTask action = new TimerTask() {
             public void run() {
                 sec++;
-                System.out.println(sec);
                 time.setText("chrono: "+sec);
             }
         };
-        temps.schedule(action, 0, 1000);*/
+        temps.schedule(action, 0, 1000);
         time.setText("chrono: "+sec);
         fenetre.setSize(150, 600);
         fenetre.setLocation(800, 100);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         quitter.addActionListener(this);
         save.addActionListener(this);
-
         fenetre.add(time);
         fenetre.add(nbmarques);
         fenetre.add(nbmines);
