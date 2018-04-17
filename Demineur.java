@@ -264,8 +264,10 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
         }
 
         if (e.getActionCommand() == "quitter") {
-            this.dispose();
             fenetre.dispose();
+            this.dispose();
+            System.exit(0);
+           
         }
         if (e.getActionCommand() == "sauvegarder") {
             tabCase[0][0].sauvegarde(tabCase, ligne, colonne, mine1, marqueurs, sec);         
