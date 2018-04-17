@@ -6,7 +6,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import java.awt.event.MouseListener;
-
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Demineur extends JFrame implements ActionListener, MouseListener,WindowListener {
     private int ligne;
@@ -14,8 +15,14 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
     private int mine1;
     private int marqueurs;
     private int nbCout=0;
+
+    public static int sec=0;
+    Timer temps = new Timer();
+
+
     private JLabel nbmarques = null;
     private JLabel nbmines = null;
+    private JLabel time = null;
     private Case[][] tabCase = null;
     private JFrame fenetre = new JFrame();
     private ImageIcon img = null;
@@ -105,6 +112,8 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
             }
         } else {
 
+            
+
             double aleadouble = Math.random() * 100;
             int alea = (int) aleadouble;
             int compteurAleaMine = 0;
@@ -144,23 +153,37 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
         mine1 = mine;
         nbmines = new JLabel();
         nbmarques = new JLabel();
-        GridLayout grid1 = new GridLayout(4, 2);
+        time = new JLabel();
+        GridLayout grid1 = new GridLayout(5, 2);
         fenetre.setLayout(grid1);
         nbmarques.setIcon(new ImageIcon("flag1.png"));
         nbmarques.setText("" + marqueurs);
         nbmines.setIcon(new ImageIcon("mine.png"));
         nbmines.setText("" + mine);
+
+        /*TimerTask action = new TimerTask() {
+            public void run() {
+                sec++;
+                System.out.println(sec);
+                time.setText("chrono: "+sec);
+            }
+        };
+        temps.schedule(action, 0, 1000);*/
+        time.setText("chrono: "+sec);
         fenetre.setSize(150, 600);
         fenetre.setLocation(800, 100);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         quitter.addActionListener(this);
         save.addActionListener(this);
+
+        fenetre.add(time);
         fenetre.add(nbmarques);
         fenetre.add(nbmines);
         fenetre.add(save);
         fenetre.add(quitter);
         fenetre.setVisible(true);
         this.addWindowListener(this);
+
         alg=new Algo(tabCase,ligne,colonne);
     }
 
