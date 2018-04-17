@@ -237,13 +237,14 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                 }
                 if (compteurFinal == ligne * colonne) {
 
-                    JLabel nb_cout = new JLabel();                  
+                    JLabel nb_cout = new JLabel();
+                    JLabel temps = new JLabel();                  
                     fenetre.getContentPane().removeAll();
                     this.getContentPane().removeAll();
-                    //fenetre.add(temps);
+                    fenetre.add(temps);
                     fenetre.add(nb_cout);
-                    fenetre.add(save);
                     fenetre.add(quitter);
+                    temps.setText("temps: "+sec);
                     nb_cout.setText("nombre de couts= "+nbCout);
                     try {
                         FileOutputStream fichier = new FileOutputStream("save.txt");
