@@ -15,11 +15,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
     private int mine1;
     private int marqueurs;
     private int nbCout=0;
-
-    public static int sec=0;
-    Timer temps = new Timer();
-
-
+    private int sec=0;  
     private JLabel nbmarques = null;
     private JLabel nbmines = null;
     private JLabel time = null;
@@ -28,6 +24,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
     private ImageIcon img = null;
     JButton save = new JButton("sauvegarder");
     JButton quitter = new JButton("quitter");
+    Timer temps = new Timer();
     Algo alg=null;
     public Demineur(int ligne, int colonne, int mine, boolean fichier) {
         super();
@@ -104,6 +101,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                 }
                 etat = flux1.readInt();
                 marqueurs = etat;
+                sec = flux1.readInt();
 
             } catch (FileNotFoundException ex) {
                 System.err.println("fichier non trouvé: lecture");
@@ -269,8 +267,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
             fenetre.dispose();
         }
         if (e.getActionCommand() == "sauvegarder") {
-            tabCase[0][0].sauvegarde(tabCase, ligne, colonne, mine1, marqueurs);
-         
+            tabCase[0][0].sauvegarde(tabCase, ligne, colonne, mine1, marqueurs, sec);         
 
         }
 
@@ -286,7 +283,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
         int confirm = JOptionPane.showOptionDialog(null, "Are You Sure to Close Application?", "Exit Confirmation",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
         if (confirm == 0) {
-            tabCase[0][0].sauvegarde(tabCase,ligne,colonne, mine1,marqueurs);
+            tabCase[0][0].sauvegarde(tabCase, ligne, colonne, mine1, marqueurs, sec);
             System.exit(0);
         }
     }

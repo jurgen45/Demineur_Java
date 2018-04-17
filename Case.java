@@ -72,7 +72,7 @@ public String getNbStr() {
         
     
    
-public void sauvegarde(Case[][] tabCase,int ligne,int colonne,int mine1,int marqueurs){
+public void sauvegarde(Case[][] tabCase, int ligne, int colonne, int mine1, int marqueurs, int sec){
 
         try {
 
@@ -113,6 +113,7 @@ public void sauvegarde(Case[][] tabCase,int ligne,int colonne,int mine1,int marq
             }
 
             flux.writeInt(marqueurs);
+            flux.writeInt(sec);
             flux.close();
         } catch (FileNotFoundException ex) {
             System.err.println("fichier non trouvé: ecriture");
