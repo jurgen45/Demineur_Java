@@ -143,7 +143,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
             for (int f = 0; f < ligne; f++) {
                 if (tabCase[f][i].etatMine() == true) {
                     tabCase[f][i].setValide();
-                    tabCase[f][i].setText("");
+                    tabCase[f][i].setText("*");
                 }
             }
         }
@@ -152,6 +152,8 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
         nbmines = new JLabel();
         nbmarques = new JLabel();
         time = new JLabel();
+        img = new ImageIcon(new ImageIcon("Chronometre.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+        time.setIcon(img);
         GridLayout grid1 = new GridLayout(5, 2);
         fenetre.setLayout(grid1);
         nbmarques.setIcon(new ImageIcon("flag1.png"));
@@ -162,11 +164,11 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
         TimerTask action = new TimerTask() {
             public void run() {
                 sec++;
-                time.setText("chrono: "+sec);
+                time.setText(""+sec);
             }
         };
         temps.schedule(action, 0, 1000);
-        time.setText("chrono: "+sec);
+        time.setText(""+sec);
         fenetre.setSize(150, 600);
         fenetre.setLocation(800, 100);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -236,16 +238,32 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                     compteurFinal++;
                 }
                 if (compteurFinal == ligne * colonne) {
-
+                    JLabel etat = new JLabel();
                     JLabel nb_cout = new JLabel();
                     JLabel temps = new JLabel();                  
                     fenetre.getContentPane().removeAll();
-                    this.getContentPane().removeAll();
+                    //this.getContentPane().removeAll();
+                    for (int j = 0; j < colonne; j++) {
+                        for (int m = 0; m < ligne; m++) {
+                            if (tabCase[m][j].etatMine() == true) {
+                                tabCase[m][j].setBackground(Color.RED);
+                                img = new ImageIcon(new ImageIcon("mine.png").getImage().getScaledInstance(40, 40,
+                                        Image.SCALE_DEFAULT));
+                                tabCase[m][j].setIcon(img);
+                            }
+
+                        }
+                    }
+                    fenetre.add(etat);
                     fenetre.add(temps);
                     fenetre.add(nb_cout);
                     fenetre.add(quitter);
-                    temps.setText("temps: "+sec);
+                    img = new ImageIcon(new ImageIcon("Chronometre.png").getImage().getScaledInstance(100, 100,
+                            Image.SCALE_DEFAULT));
+                    temps.setIcon(img);
+                    temps.setText(""+sec);
                     nb_cout.setText("nombre de couts= "+nbCout);
+                    etat.setText("Victoire");
                     try {
                         FileOutputStream fichier = new FileOutputStream("save.txt");
                         DataOutputStream flux = new DataOutputStream(fichier);
@@ -256,8 +274,9 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                     } catch (IOException ex) {
                         System.out.println("il y'a une erreur: ecriture");
                     }
-                    this.dispose();
-                    fenetre.dispose();
+
+                    //this.dispose();
+                    //fenetre.dispose();
                 }
 
             }
