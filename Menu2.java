@@ -21,7 +21,7 @@ public class Menu2 extends JFrame implements MouseListener{
     public void mouseExited(MouseEvent me){}
     public void mouseClicked (MouseEvent e){
        
-            if (e.getX()>100 && e.getButton() == MouseEvent.BUTTON1) {
+            if (e.getX()>100 && e.getX()<250 && e.getButton() == MouseEvent.BUTTON1) {
                 this.dispose();  
             Reglage visu = new Reglage();          
             visu.affiche();
