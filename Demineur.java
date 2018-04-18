@@ -205,7 +205,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                 if (e.getSource() == tabCase[f][i] && tabCase[f][i].etatMine() == true
                         && tabCase[f][i].getEtat() == 0) {
                          nbCout++;  
-                        fin(false, tabCase, fenetre, ligne, colonne, quitter, sec, nbCout, f, i);
+                        fin(false, tabCase, fenetre, ligne, colonne, quitter, sec, min,  nbCout, f, i);
                 }
             }
         }
@@ -223,8 +223,8 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                 }
                 if (compteurFinal == ligne * colonne) {
                 
-                    fin(true,tabCase,fenetre,ligne,colonne,quitter,sec,nbCout,f,i);
-                   tabCase[0][0].ecritureTabScore(sec,ligne,colonne,mine1);
+                    fin(true,tabCase,fenetre,ligne,colonne,quitter,sec,min,nbCout,f,i);
+                   tabCase[0][0].ecritureTabScore(sec,min,ligne,colonne,mine1);
                 }
 
             }
@@ -339,7 +339,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
         nbmarques.setText("" + marqueurs);
     }
 
-    public void fin(boolean victoire,Case tabCase[][],JFrame fenetre,int ligne,int colonne,JButton quitter,int sec,int nbCout,int f,int i){
+    public void fin(boolean victoire,Case tabCase[][],JFrame fenetre,int ligne,int colonne,JButton quitter,int sec, int min ,int nbCout,int f,int i){
         if (victoire==true) {
             JLabel etat = new JLabel();
             JLabel nb_cout = new JLabel();
@@ -367,7 +367,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
             temps.setText("" + sec);
             nb_cout.setText("nombre de couts= " + nbCout);
             etat.setText("Victoire");
-            tabCase[0][0].lectureTabScore(sec,ligne,colonne,mine1);
+            tabCase[0][0].lectureTabScore(sec,min,ligne,colonne,mine1);
             
         }else{
             JLabel etat = new JLabel();

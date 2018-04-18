@@ -124,7 +124,7 @@ public void sauvegarde(Case[][] tabCase, int ligne, int colonne, int mine1, int 
 
 }
 
-public void ecritureTabScore(int temps,int ligne,int colonne,int nbmine){
+public void ecritureTabScore(int sec, int min,int ligne,int colonne,int nbmine){
 try {
     
             FileOutputStream fichier = new FileOutputStream("Score.dat",true);
@@ -132,7 +132,8 @@ try {
             flux.writeInt(ligne);
             flux.writeInt(colonne);
             flux.writeInt(nbmine);
-            flux.writeInt(temps);
+            flux.writeInt(sec);
+            flux.writeInt(min);
             flux.close();
 }catch(FileNotFoundException ex)
     {
@@ -144,21 +145,22 @@ try {
     }
 }
 
-public void lectureTabScore(int temps,int aligne,int acolonne,int anbmine){
+public void lectureTabScore(int sec, int min,int aligne,int acolonne,int anbmine){
         try {
             FileInputStream file = new FileInputStream("Score.dat");
             DataInputStream flux1 = new DataInputStream(file);
          System.out.println("Grille: " + aligne + "*" + acolonne + "\n" + anbmine + " mines");
-         System.out.println("Votre Temps: "+temps);
+         System.out.println("Votre Temps: "+min+":"+sec);
             while (flux1.available()>8) {
                 
                 int ligne = flux1.readInt();
                 int colonne = flux1.readInt();
                 int nbmine = flux1.readInt();
-                 temps = flux1.readInt();
+                 sec = flux1.readInt();
+                 min = flux1.readInt();
                 if (aligne==ligne&&acolonne==colonne&&anbmine==nbmine) {
                     
-                System.out.println("Temps: "+temps);
+                System.out.println("Temps: "+sec+":"+min);
                 }
    
                 
