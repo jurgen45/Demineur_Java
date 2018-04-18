@@ -22,6 +22,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
     private Case[][] tabCase = null;
     private JFrame fenetre = new JFrame();
     private ImageIcon img = null;
+    private int victoire =0;
     JButton save = new JButton("sauvegarder");
     JButton quitter = new JButton("quitter");
     Timer temps = new Timer();
@@ -186,6 +187,8 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
     }
 
     public void actionPerformed(ActionEvent e) {
+        if (victoire==0) {
+            
         
         for (int i = 0; i < colonne; i++) {
             for (int f = 0; f < ligne; f++) {
@@ -196,7 +199,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                 }
                 if (e.getSource() == tabCase[f][i] && tabCase[f][i].etatMine() == true
                         && tabCase[f][i].getEtat() == 0) {
-                           
+                         nbCout++;  
                         fin(false, tabCase, fenetre, ligne, colonne, quitter, sec, nbCout, f, i);
                 }
             }
@@ -221,7 +224,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
 
             }
         }
-
+        }
         if (e.getActionCommand() == "quitter") {
             fenetre.dispose();
             this.dispose();
@@ -303,13 +306,13 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
         nbmarques.setText("" + marqueurs);
     }
 
-    public static void fin(boolean victoire,Case tabCase[][],JFrame fenetre,int ligne,int colonne,JButton quitter,int sec,int nbCout,int f,int i){
+    public void fin(boolean victoire,Case tabCase[][],JFrame fenetre,int ligne,int colonne,JButton quitter,int sec,int nbCout,int f,int i){
         if (victoire==true) {
             JLabel etat = new JLabel();
             JLabel nb_cout = new JLabel();
             JLabel temps = new JLabel();
             fenetre.getContentPane().removeAll();
-            //this.getContentPane().removeAll();
+            this.victoire=1;
             for (int j = 0; j < colonne; j++) {
                 for (int m = 0; m < ligne; m++) {
                     if (tabCase[m][j].etatMine() == true) {
@@ -332,11 +335,13 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
             nb_cout.setText("nombre de couts= " + nbCout);
             etat.setText("Victoire");
             
+            
         }else{
             JLabel etat = new JLabel();
             JLabel nb_cout = new JLabel();
             JLabel temps = new JLabel();
             fenetre.getContentPane().removeAll();
+            this.victoire = 2;
             for (int j = 0; j < colonne; j++) {
                 for (int m = 0; m < ligne; m++) {
                     if (tabCase[m][j].etatMine() == true) {
@@ -359,6 +364,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
             temps.setText("" + sec);
             nb_cout.setText("nombre de couts= " + nbCout);
             etat.setText("Defaite");
+            
         }
         try {
             FileOutputStream fichier = new FileOutputStream("save.txt");
