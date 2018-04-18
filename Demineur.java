@@ -22,6 +22,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
     private Case[][] tabCase = null;
     private JFrame fenetre = new JFrame();
     private ImageIcon img = null;
+    private int victoire =0;
     JButton save = new JButton("sauvegarder");
     JButton quitter = new JButton("quitter");
     Timer temps = new Timer();
@@ -186,6 +187,8 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
     }
 
     public void actionPerformed(ActionEvent e) {
+        if (victoire==0) {
+            
         
         for (int i = 0; i < colonne; i++) {
             for (int f = 0; f < ligne; f++) {
@@ -196,32 +199,8 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                 }
                 if (e.getSource() == tabCase[f][i] && tabCase[f][i].etatMine() == true
                         && tabCase[f][i].getEtat() == 0) {
-                            try {
-                        FileOutputStream fichier = new FileOutputStream("save.txt");
-                        DataOutputStream flux = new DataOutputStream(fichier);
-                        flux.writeInt(-1);
-                        flux.close();
-                    } catch (FileNotFoundException ex) {
-                        System.err.println("fichier non trouvé: ecriture");
-                    } catch (IOException ex) {
-                        System.out.println("il y'a une erreur: ecriture");
-                    }
-                            for (int j = 0; j < colonne; j++) {
-                                 for (int m = 0; m < ligne; m++) {
-                                     if (tabCase[m][j].etatMine()==true) {
-                                         tabCase[m][j].setBackground(Color.RED);
-                                         img = new ImageIcon(new ImageIcon("mine.png").getImage().getScaledInstance(40, 40,
-                                        Image.SCALE_DEFAULT));
-                                        tabCase[m][j].setIcon(img);
-                                        tabCase[f][i].setBackground(Color.ORANGE);
-                                     }
-                                     
-                                 }
-                                }
-                            /*
-                    this.dispose();
-                    fenetre.dispose();
-                    */
+                         nbCout++;  
+                        fin(false, tabCase, fenetre, ligne, colonne, quitter, sec, nbCout, f, i);
                 }
             }
         }
@@ -238,50 +217,14 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                     compteurFinal++;
                 }
                 if (compteurFinal == ligne * colonne) {
-                    JLabel etat = new JLabel();
-                    JLabel nb_cout = new JLabel();
-                    JLabel temps = new JLabel();                  
-                    fenetre.getContentPane().removeAll();
-                    //this.getContentPane().removeAll();
-                    for (int j = 0; j < colonne; j++) {
-                        for (int m = 0; m < ligne; m++) {
-                            if (tabCase[m][j].etatMine() == true) {
-                                tabCase[m][j].setBackground(Color.RED);
-                                img = new ImageIcon(new ImageIcon("mine.png").getImage().getScaledInstance(40, 40,
-                                        Image.SCALE_DEFAULT));
-                                tabCase[m][j].setIcon(img);
-                            }
-
-                        }
-                    }
-                    fenetre.add(etat);
-                    fenetre.add(temps);
-                    fenetre.add(nb_cout);
-                    fenetre.add(quitter);
-                    img = new ImageIcon(new ImageIcon("Chronometre.png").getImage().getScaledInstance(100, 100,
-                            Image.SCALE_DEFAULT));
-                    temps.setIcon(img);
-                    temps.setText(""+sec);
-                    nb_cout.setText("nombre de couts= "+nbCout);
-                    etat.setText("Victoire");
-                    try {
-                        FileOutputStream fichier = new FileOutputStream("save.txt");
-                        DataOutputStream flux = new DataOutputStream(fichier);
-                        flux.writeInt(-1);
-                        flux.close();
-                    } catch (FileNotFoundException ex) {
-                        System.err.println("fichier non trouvé: ecriture");
-                    } catch (IOException ex) {
-                        System.out.println("il y'a une erreur: ecriture");
-                    }
-
-                    //this.dispose();
-                    //fenetre.dispose();
+                
+                    fin(true,tabCase,fenetre,ligne,colonne,quitter,sec,nbCout,f,i);
+                   
                 }
 
             }
         }
-
+        }
         if (e.getActionCommand() == "quitter") {
             fenetre.dispose();
             this.dispose();
@@ -389,6 +332,79 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
             }
         }
         nbmarques.setText("" + marqueurs);
+    }
+
+    public void fin(boolean victoire,Case tabCase[][],JFrame fenetre,int ligne,int colonne,JButton quitter,int sec,int nbCout,int f,int i){
+        if (victoire==true) {
+            JLabel etat = new JLabel();
+            JLabel nb_cout = new JLabel();
+            JLabel temps = new JLabel();
+            fenetre.getContentPane().removeAll();
+            this.victoire=1;
+            for (int j = 0; j < colonne; j++) {
+                for (int m = 0; m < ligne; m++) {
+                    if (tabCase[m][j].etatMine() == true) {
+                        tabCase[m][j].setBackground(Color.RED);
+                       ImageIcon img = new ImageIcon(
+                                new ImageIcon("mine.png").getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT));
+                        tabCase[m][j].setIcon(img);
+                    }
+
+                }
+            }
+            fenetre.add(etat);
+            fenetre.add(temps);
+            fenetre.add(nb_cout);
+            fenetre.add(quitter);
+            ImageIcon img = new ImageIcon(
+                    new ImageIcon("Chronometre.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+            temps.setIcon(img);
+            temps.setText("" + sec);
+            nb_cout.setText("nombre de couts= " + nbCout);
+            etat.setText("Victoire");
+            
+            
+        }else{
+            JLabel etat = new JLabel();
+            JLabel nb_cout = new JLabel();
+            JLabel temps = new JLabel();
+            fenetre.getContentPane().removeAll();
+            this.victoire = 2;
+            for (int j = 0; j < colonne; j++) {
+                for (int m = 0; m < ligne; m++) {
+                    if (tabCase[m][j].etatMine() == true) {
+                        tabCase[m][j].setBackground(Color.RED);
+                        ImageIcon  img = new ImageIcon(
+                                new ImageIcon("mine.png").getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT));
+                        tabCase[m][j].setIcon(img);
+                        tabCase[f][i].setBackground(Color.ORANGE);
+                    }
+
+                }
+            }
+            fenetre.add(etat);
+            fenetre.add(temps);
+            fenetre.add(nb_cout);
+            fenetre.add(quitter);
+            ImageIcon img = new ImageIcon(
+                    new ImageIcon("Chronometre.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+            temps.setIcon(img);
+            temps.setText("" + sec);
+            nb_cout.setText("nombre de couts= " + nbCout);
+            etat.setText("Defaite");
+            
+        }
+        try {
+            FileOutputStream fichier = new FileOutputStream("save.txt");
+            DataOutputStream flux = new DataOutputStream(fichier);
+            flux.writeInt(-1);
+            flux.close();
+        } catch (FileNotFoundException ex) {
+            System.err.println("fichier non trouvé: ecriture");
+        } catch (IOException ex) {
+            System.out.println("il y'a une erreur: ecriture");
+        }
+
     }
 
    
