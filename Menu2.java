@@ -28,6 +28,7 @@ public class Menu2 extends JFrame implements MouseListener{
             }
             if (e.getX()>300 && e.getButton() == MouseEvent.BUTTON1) {
             this.dispose();
+            System.exit(0);
             }
         
        

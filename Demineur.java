@@ -219,7 +219,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                 if (compteurFinal == ligne * colonne) {
                 
                     fin(true,tabCase,fenetre,ligne,colonne,quitter,sec,nbCout,f,i);
-                   
+                   tabCase[0][0].ecritureTabScore(sec,ligne,colonne,mine1);
                 }
 
             }
@@ -254,7 +254,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                 Menu2 m2 = new Menu2();
                 m2.affiche();
                 m2.setLocation(200, 100);
-                System.out.println("2");
+                
             }
             
            
@@ -325,7 +325,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                         || tabCase[f][i].etatMine() == true && e.getSource() == tabCase[f][i]
                                 && e.getModifiers() == MouseEvent.BUTTON3_MASK) {
                     img = null;
-                    tabCase[f][i].setIcon(img);
+                    tabCase[f][i].setIcon(img); 
 
                 }
 
@@ -362,7 +362,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
             temps.setText("" + sec);
             nb_cout.setText("nombre de couts= " + nbCout);
             etat.setText("Victoire");
-            
+            tabCase[0][0].lectureTabScore(sec,ligne,colonne,mine1);
             
         }else{
             JLabel etat = new JLabel();
