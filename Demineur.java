@@ -15,7 +15,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
     private int mine1;
     private int marqueurs;
     private int nbCout=0;
-    private int sec=0;  
+    private int sec=0, min=0;  
     private JLabel nbmarques = null;
     private JLabel nbmines = null;
     private JLabel time = null;
@@ -103,6 +103,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                 etat = flux1.readInt();
                 marqueurs = etat;
                 sec = flux1.readInt();
+                min = flux1.readInt();
 
             } catch (FileNotFoundException ex) {
                 System.err.println("fichier non trouvé: lecture");
@@ -165,11 +166,15 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
         TimerTask action = new TimerTask() {
             public void run() {
                 sec++;
-                time.setText(""+sec);
+                time.setText(""+min+":"+sec);
+                if (sec==60) {
+                    sec=0;
+                    min++;
+                }
             }
         };
         temps.schedule(action, 0, 1000);
-        time.setText(""+sec);
+        time.setText(""+min+":"+sec);
         fenetre.setSize(150, 600);
         fenetre.setLocation(800, 100);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -260,7 +265,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
            
         }
         if (e.getActionCommand() == "sauvegarder") {
-            tabCase[0][0].sauvegarde(tabCase, ligne, colonne, mine1, marqueurs, sec);         
+            tabCase[0][0].sauvegarde(tabCase, ligne, colonne, mine1, marqueurs, sec, min);         
 
         }
 
@@ -276,7 +281,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
         int confirm = JOptionPane.showOptionDialog(null, "Are You Sure to Close Application?", "Exit Confirmation",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
         if (confirm == 0) {
-            tabCase[0][0].sauvegarde(tabCase, ligne, colonne, mine1, marqueurs, sec);
+            tabCase[0][0].sauvegarde(tabCase, ligne, colonne, mine1, marqueurs, sec, min);
             System.exit(0);
         }
     }
