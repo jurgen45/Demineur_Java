@@ -37,14 +37,24 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
         this.setVisible(true);
         GridLayout grid = new GridLayout(colonne, ligne);
         this.setLayout(grid);
+        /**
+             * On créer un tableau bidimensionel de Case(Heritage de JButton)
+             */
         tabCase = new Case[ligne][colonne];
         for (int i = 0; i < colonne; i++) {
             for (int f = 0; f < ligne; f++) {
+                 /**
+             * l'attribu de validation de case est initialiser a false pour chaque case 
+             * et chaque case est ajoutée au listener 
+             */
                 tabCase[f][i] = new Case(false);
                 tabCase[f][i].addActionListener(this);
                 tabCase[f][i].addMouseListener(this);
             }
         }
+         /**
+             * Si un fichier de sauvgarde est detecter on definit les attributs grace au données du fichier de save
+             */
         if (fichier == true) {
             int nbm;
             int nbcompteur;
@@ -110,6 +120,9 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
             } catch (IOException ex) {
                 System.out.println("il y'a une erreur: lecture");
             }
+            /**
+             * sinon on instancie de maniére aleatoire les mines dans le tableau
+             */
         } else {
 
             
@@ -144,12 +157,17 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
         for (int i = 0; i < colonne; i++) {
             for (int f = 0; f < ligne; f++) {
                 if (tabCase[f][i].etatMine() == true) {
+                    /**
+                     * on definit les mines comme validée pour faciliter le calcule final
+                     */
                     tabCase[f][i].setValide();
                     tabCase[f][i].setText("*");
                 }
             }
         }
-
+        /**
+         * On initialise le menu des informations 
+         */
         mine1 = mine;
         nbmines = new JLabel();
         nbmarques = new JLabel();
@@ -197,11 +215,18 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
         
         for (int i = 0; i < colonne; i++) {
             for (int f = 0; f < ligne; f++) {
+                /**
+                 * Si un JButton est activer,on recupere son id est et on utilise l'algorithme de recherche
+                 * pour trouver les mines dans les cases autour
+                 */
                 if (e.getSource() == tabCase[f][i] && tabCase[f][i].etatMine() == false
                         && tabCase[f][i].getValide() == false && tabCase[f][i].getEtat() == 0) {
                     alg.recherche(tabCase,f, i,ligne, colonne);
                     nbCout++;
                 }
+                /**
+                 * si le JButton contient une mine alors on arrete le jeu et on lance l'ecran de fin 
+                 */
                 if (e.getSource() == tabCase[f][i] && tabCase[f][i].etatMine() == true
                         && tabCase[f][i].getEtat() == 0) {
                          nbCout++;  
@@ -222,7 +247,9 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                     compteurFinal++;
                 }
                 if (compteurFinal == ligne * colonne) {
-                
+                /**
+                 * si tout les JButton ont ete activer alors on arrete le jeu et on lance l'ecran de fin 
+                 */
                     fin(true,tabCase,fenetre,ligne,colonne,quitter,sec,min,nbCout,f,i);
                    tabCase[0][0].ecritureTabScore(sec,min,ligne,colonne,mine1);
                 }
@@ -231,6 +258,10 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
         }
         }
         if (e.getActionCommand() == "quitter") {
+            /**
+             * Si le JButton Quitter est activer alors on ferme le programme sans sauvegarder 
+             * et on relance le menu principale
+             */
             fenetre.dispose();
             this.dispose();
             int indice=0;
@@ -248,6 +279,10 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
             catch(IOException ex){
                 System.out.println("il y'a une erreur: lecture");
             }
+            /**
+             * si le contenue du fichier de sauvgarde est negatif alors on lance le menu sans possibilité 
+             * de charger une sauvgarde 
+             */
             if (indice>0) {
              
                 Menu m=new Menu();
@@ -255,6 +290,9 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                 m.setLocation(200, 100);
                 System.out.println("1");
             }
+            /**
+             * Sinon on lance le menu standart avec la possibilité de reprendre une sauvgarde
+             */
             else{
                 Menu2 m2 = new Menu2();
                 m2.affiche();
@@ -264,6 +302,9 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
             
            
         }
+        /**
+         * Si le JButton est activer alors on sauvgarde dans un fichier 
+         */
         if (e.getActionCommand() == "sauvegarder") {
             tabCase[0][0].sauvegarde(tabCase, ligne, colonne, mine1, marqueurs, sec, min);         
 
@@ -278,7 +319,10 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
     public void windowOpened(WindowEvent e){}
 
     public void windowClosing(WindowEvent e) {
-        int confirm = JOptionPane.showOptionDialog(null, "Are You Sure to Close Application?", "Exit Confirmation",
+        /**
+         * Si on ferme la fenetre alors on sauvgarde
+         */
+        int confirm = JOptionPane.showOptionDialog(null, "Etes vous sur de vouloir quitter", "Confirmation de quitter",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
         if (confirm == 0) {
             tabCase[0][0].sauvegarde(tabCase, ligne, colonne, mine1, marqueurs, sec, min);
@@ -298,6 +342,9 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
     }
 
     public void mouseClicked(MouseEvent e) {
+        /**
+         * Si on clique droit sur une case alors on pose un drapeau puis un "?" puis une case vide
+         */
         if (e.getModifiers() == MouseEvent.BUTTON3_MASK) {
         }
         for (int i = 0; i < colonne; i++) {
@@ -313,6 +360,9 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
 
             }
         }
+        /**
+         * On affiche l'image correspondante sur le JButton
+         */
         for (int i = 0; i < colonne; i++) {
             for (int f = 0; f < ligne; f++) {
                 if (e.getSource() == tabCase[f][i] && tabCase[f][i].getEtat() == 1
@@ -338,8 +388,13 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
         }
         nbmarques.setText("" + marqueurs);
     }
-
+/**
+ * Ecran de fin
+ */
     public void fin(boolean victoire,Case tabCase[][],JFrame fenetre,int ligne,int colonne,JButton quitter,int sec, int min ,int nbCout,int f,int i){
+        /**
+         * Si on gagne alors victoire==true ,On affiche le temps et le nombre de coups 
+         */
         if (victoire==true) {
             JLabel etat = new JLabel();
             JLabel nb_cout = new JLabel();
@@ -365,11 +420,14 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                     new ImageIcon("Chronometre.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
             temps.setIcon(img);
             temps.setText("" + sec);
-            nb_cout.setText("nombre de couts= " + nbCout);
+            nb_cout.setText("nombre de coups= " + nbCout);
             etat.setText("Victoire");
             tabCase[0][0].lectureTabScore(sec,min,ligne,colonne,mine1);
             
         }else{
+            /**
+             * Si on perd alors l'ecran de fin est le même mais toutes les mines sont afficher en rouge et la mine qui a sauté
+             */
             JLabel etat = new JLabel();
             JLabel nb_cout = new JLabel();
             JLabel temps = new JLabel();
@@ -399,6 +457,9 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
             etat.setText("Defaite");
             
         }
+        /**
+         * On vide le fichier de sauvgarde
+         */
         try {
             FileOutputStream fichier = new FileOutputStream("save.txt");
             DataOutputStream flux = new DataOutputStream(fichier);
