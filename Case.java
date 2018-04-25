@@ -2,6 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.*;
 public class Case extends JButton{
+    /**
+     * Case herite de JButton et ajoute des arguments 
+     */
     private boolean mine;
     private boolean valide;
     private int nb;
@@ -73,7 +76,9 @@ public String getNbStr() {
     
    
 public void sauvegarde(Case[][] tabCase, int ligne, int colonne, int mine1, int marqueurs, int sec, int min){
-
+/**
+ * Sauvgarde dans le fichier les cases minée,les drapeaux,les "?" et les cases deja tester
+ */
         try {
 
             FileOutputStream fichier = new FileOutputStream("save.txt");
@@ -125,6 +130,9 @@ public void sauvegarde(Case[][] tabCase, int ligne, int colonne, int mine1, int 
 }
 
 public void ecritureTabScore(int sec, int min,int ligne,int colonne,int nbmine){
+    /**
+     * Ecrit dans Score.dat le score de chaque partie
+     */
 try {
     
             FileOutputStream fichier = new FileOutputStream("Score.dat",true);
@@ -146,6 +154,9 @@ try {
 }
 
 public void lectureTabScore(int sec, int min,int aligne,int acolonne,int anbmine){
+    /**
+     * Lis dans Score.dat les scores correspondant au parametre de la partie
+     */
     JOptionPane tbscore = new JOptionPane();
     int temps_m=0;
     int temps_s=0;

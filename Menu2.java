@@ -4,6 +4,9 @@ import java.awt.event.*;
 import java.io.*;
 
 public class Menu2 extends JFrame implements MouseListener{
+    /**
+     * On initialise le menu avec Jouer et Quitter
+     */
     public Dessin2 des2 = new Dessin2();
     public int indice;
     public void affiche(){
@@ -24,7 +27,7 @@ public class Menu2 extends JFrame implements MouseListener{
             if (e.getX()>100 && e.getX()<250 && e.getButton() == MouseEvent.BUTTON1) {
                 this.dispose();  
             Reglage visu = new Reglage();          
-            visu.affiche();
+            
             }
             if (e.getX()>300 && e.getButton() == MouseEvent.BUTTON1) {
             this.dispose();

@@ -8,11 +8,6 @@ int[][] tabAlgo=null;
          * On stocke dans le tableau tabAlgo le nombre de mines detecter autour de chque case
          */
         tabAlgo=new int[ligne][colonne];
-        System.out.println("Algo");
-        
-        
-        
-    
     for(int i=0;i<colonne;i++){
             for(int f=0;f<ligne;f++){
                 int v=0;
@@ -249,6 +244,9 @@ public void LectureAlgo(Case[][] tabCase, int ligne, int colonne,int a,int b)
 
 public void recherche(Case[][] tabCase,int f,int i,int ligne,int colonne)
 {
+    /**
+     * On cherche autour du JButton les cases minée en prenant en compte les angles 
+     */
     int g,k;
         tabCase[f][i].setBackground(Color.WHITE);
         

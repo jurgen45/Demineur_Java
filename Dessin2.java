@@ -2,6 +2,9 @@ import javax.swing.*;
 import java.awt.*;
  
 public class Dessin2 extends JComponent {
+   /**
+   * On dessine le menu avec les images pour Jouer et Quitter
+   */
   private Image play;
   private Image quitter;
   @Override

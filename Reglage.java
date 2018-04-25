@@ -3,14 +3,17 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Reglage extends JFrame implements ActionListener{
-
-	public int nbc=4;
-	public int nbl=4;
-	public int nbm=nbc*nbl/4;
-	public JLabel col = new JLabel();
-	public JLabel lig = new JLabel();
-	public JLabel mines = new JLabel();
-	public void affiche(){
+/**
+ * On initialise le menu de reglage 
+ */
+	private int nbc=4;
+	private int nbl=4;
+	private int nbm=nbc*nbl/4;
+	private JLabel col = new JLabel();
+	private JLabel lig = new JLabel();
+	private JLabel mines = new JLabel();
+	public Reglage(){
+		
 		GridLayout gestionnaire = new GridLayout(8, 2);
 		this.setLayout(gestionnaire);
 		JButton c1 = new JButton("colonne +");
