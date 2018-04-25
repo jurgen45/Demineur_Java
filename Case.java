@@ -180,7 +180,7 @@ public void lectureTabScore(int sec, int min,int aligne,int acolonne,int anbmine
                 
             }
             
-            tbscore.showMessageDialog(null, "Grille: " + aligne + "*" + acolonne + "\n" + anbmine + " mines\n Votre temps: "+min+":"+sec+"\nTemps: "+temps_s+":"+temps_m, "Score", JOptionPane.INFORMATION_MESSAGE);
+            tbscore.showMessageDialog(null, "Grille: " + aligne + "*" + acolonne + "\n" + anbmine + " mines\n Votre temps: "+min+":"+sec+"\n", "Score", JOptionPane.INFORMATION_MESSAGE);
 
             flux1.close();
         } catch (FileNotFoundException ex) {

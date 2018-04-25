@@ -30,6 +30,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
     public Demineur(int ligne, int colonne, int mine, boolean fichier) {
         super();
         marqueurs=mine;
+        System.out.println(mine);
         this.ligne = ligne;
         this.colonne = colonne;
         this.setSize(600, 600);
@@ -136,7 +137,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                     for (int f = 0; f < ligne; f++) {
                         aleadouble = Math.random() * 100;
                         alea = (int) aleadouble;
-                        if (alea == 1 && compteurAleaMine < mine + 1) {
+                        if (alea == 1 && compteurAleaMine < mine) {
                             tabCase[f][i] = new Case(true);
                             tabCase[f][i].addActionListener(this);
                             tabCase[f][i].addMouseListener(this);
@@ -455,7 +456,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                     new ImageIcon("Chronometre.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
             temps.setIcon(img);
             temps.setText("" + sec);
-            nb_cout.setText("nombre de couts= " + nbCout);
+            nb_cout.setText("nombre de coups= " + nbCout);
             etat.setText("Defaite");
             
         }
