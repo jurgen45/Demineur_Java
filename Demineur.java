@@ -126,26 +126,46 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
              * sinon on instancie de maniére aleatoire les mines dans le tableau
              */
         } else {
-
-            
-
-            double aleadouble = Math.random() * 100;
-            int alea = (int) aleadouble;
-            int compteurAleaMine = 0;
-            while (compteurAleaMine < mine) {
-                for (int i = 0; i < colonne; i++) {
-                    for (int f = 0; f < ligne; f++) {
-                        aleadouble = Math.random() * 100;
-                        alea = (int) aleadouble;
-                        if (alea == 1 && compteurAleaMine < mine) {
-                            tabCase[f][i] = new Case(true);
-                            tabCase[f][i].addActionListener(this);
-                            tabCase[f][i].addMouseListener(this);
-                            compteurAleaMine++;
-                        }
-                    }
+////////////////////////////////////////////////////
+int[] aleamine=new int[mine];
+double aleadouble;
+    int alea;
+for(int i=0;i<mine;i++)
+{
+    aleadouble = Math.random() * (ligne*colonne);
+    alea = (int) aleadouble;
+    for(int v=0;v<i;v++)
+    {
+           if(alea==aleamine[v]){
+            i--;
+            break;
+           }else{
+            aleamine[i]=alea;
+           }
+    }
+}
+int compteur=0;
+boolean valide=false;
+for(int compteurtab=0;compteurtab<aleamine.length;compteurtab++){
+    
+        for(int i=0;i<colonne&&valide==false;i++)
+        {
+            for(int f=0;f<ligne&&valide==false;f++)
+            {
+                if(compteur==aleamine[compteurtab])
+                {
+                    tabCase[f][i] = new Case(true);
+                    tabCase[f][i].addActionListener(this);
+                    tabCase[f][i].addMouseListener(this);
+                    compteur=0;
+                    valide=true;
                 }
+                compteur++;
             }
+        }
+        compteur=0;
+        valide=false;
+} 
         }
         for (int i = 0; i < colonne; i++) {
             for (int f = 0; f < ligne; f++) {
