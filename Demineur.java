@@ -29,6 +29,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
     Algo alg=null;
     public Demineur(int ligne, int colonne, int mine, boolean fichier) {
         super();
+        marqueurs=mine;
         this.ligne = ligne;
         this.colonne = colonne;
         this.setSize(600, 600);
@@ -102,11 +103,11 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                         if (tabCase[f][i].getEtat() == 1) {
                             img = new ImageIcon(new ImageIcon("flag1.png").getImage().getScaledInstance(40, 40,Image.SCALE_DEFAULT));
                             tabCase[f][i].setIcon(img);
-                            marqueurs++;
+                            marqueurs--;
                         } else if (tabCase[f][i].getEtat() == 2) {
                             img = new ImageIcon(new ImageIcon("intero.png").getImage().getScaledInstance(40, 40,Image.SCALE_DEFAULT));
                             tabCase[f][i].setIcon(img);
-                            marqueurs--;
+                            marqueurs++;
                         }
                     }
                 }
@@ -205,6 +206,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
         fenetre.add(quitter);
         fenetre.setVisible(true);
         this.addWindowListener(this);
+        fenetre.addWindowListener(this);
 
         alg=new Algo(tabCase,ligne,colonne);
     }
@@ -369,12 +371,12 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                         && e.getModifiers() == MouseEvent.BUTTON3_MASK) {
                     img = new ImageIcon(new ImageIcon("flag1.png").getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT));
                     tabCase[f][i].setIcon(img);
-                    marqueurs++;
+                    marqueurs--;
                 } else if (e.getSource() == tabCase[f][i] && tabCase[f][i].getEtat() == 2
                         && e.getModifiers() == MouseEvent.BUTTON3_MASK) {
                     img = new ImageIcon(new ImageIcon("intero.png").getImage().getScaledInstance(35, 35, Image.SCALE_DEFAULT));
                     tabCase[f][i].setIcon(img);
-                    marqueurs--;
+                    marqueurs++;
                 } else if (e.getSource() == tabCase[f][i] && tabCase[f][i].getEtat() == 0
                         && tabCase[f][i].getValide() == false && e.getModifiers() == MouseEvent.BUTTON3_MASK
                         || tabCase[f][i].etatMine() == true && e.getSource() == tabCase[f][i]
