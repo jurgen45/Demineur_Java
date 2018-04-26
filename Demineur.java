@@ -126,27 +126,26 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
              * sinon on instancie de maniére aleatoire les mines dans le tableau
              */
         } else {
-////////////////////////////////////////////////////
-int[] aleamine=new int[mine];
-double aleadouble;
-    int alea;
-for(int i=0;i<mine;i++)
-{
-    aleadouble = Math.random() * (ligne*colonne);
-    alea = (int) aleadouble;
-    for(int v=0;v<i;v++)
-    {
-           if(alea==aleamine[v]){
-            i--;
-            break;
-           }else{
-            aleamine[i]=alea;
-           }
-    }
-}
-int compteur=0;
-boolean valide=false;
-for(int compteurtab=0;compteurtab<aleamine.length;compteurtab++){
+        int[] aleamine=new int[mine];
+        double aleadouble;
+            int alea;
+        for(int i=0;i<mine;i++)
+        {
+            aleadouble = Math.random() * (ligne*colonne);
+            alea = (int) aleadouble;
+            for(int v=0;v<i;v++)
+            {
+                if(alea==aleamine[v]){
+                    i--;
+                    break;
+                }else{
+                    aleamine[i]=alea;
+                }
+            }
+        }
+        int compteur=0;
+        boolean valide=false;
+    for(int compteurtab=0;compteurtab<aleamine.length;compteurtab++){
     
         for(int i=0;i<colonne&&valide==false;i++)
         {

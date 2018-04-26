@@ -181,60 +181,61 @@ public void LectureAlgo(Case[][] tabCase, int ligne, int colonne,int a,int b)
             tabCase[b - 1][a].setNbtoFile(tabAlgo[b - 1][a]);
             tabCase[b - 1][a].setText(tabCase[b - 1][a].getNbStr());
         }
-/*
-        if(b>0&&a>0&&tabAlgo[b -1][a-1] == 0)
+        
+        
+        if(b-1>0&&a-1>0&&tabAlgo[b -1][a-1] == 0)
         {
-            System.out.println("Angle Bas Gauche Recursif");
+            
 
             
             tabCase[b][a].setBackground(Color.WHITE);
             this.LectureAlgo(tabCase, ligne, colonne, a - 1, b - 1);
-        }else if (b > 0 && a > 0) {
+        }else if (b-1 > 0 && a-1 > 0) {
             tabCase[b - 1][a-1].setBackground(Color.WHITE);
             tabCase[b - 1][a-1].setValide();
             tabCase[b - 1][a-1].setNbtoFile(tabAlgo[b - 1][a-1]);
             tabCase[b - 1][a-1].setText(tabCase[b - 1][a-1].getNbStr());
         }
-               
-        if (b + 1 < ligne && a > 0 && tabAlgo[b + 1][a - 1] == 0) {
-            System.out.println("Angle Haut Droite Recursif");
+             
+        if (b + 1 < ligne && a-1 > 0 && tabAlgo[b + 1][a - 1] == 0) {
+            
 
             
             tabCase[b][a].setBackground(Color.WHITE);
             this.LectureAlgo(tabCase, ligne, colonne, a - 1, b + 1);
-        } else if (b + 1 < ligne && a > 0) {
+        } else if (b + 1 < ligne && a-1 > 0) {
             tabCase[b + 1][a - 1].setBackground(Color.WHITE);
             tabCase[b + 1][a - 1].setValide();
             tabCase[b + 1][a - 1].setNbtoFile(tabAlgo[b + 1][a - 1]);
             tabCase[b + 1][a - 1].setText(tabCase[b + 1][a - 1].getNbStr());
         }
 
-        if (b>0 && a < colonne  && tabAlgo[b - 1][a + 1] == 0) {
-            System.out.println("Angle Haut Gauche Recursif");
+        if (b-1>0 && a+1 < colonne  && tabAlgo[b - 1][a + 1] == 0) {
+            
 
             
             tabCase[b][a].setBackground(Color.WHITE);
             this.LectureAlgo(tabCase, ligne, colonne, a + 1, b-1);
-        } else if (b > 0 && a < colonne ) {
+        } else if (b-1 > 0 && a+1 < colonne ) {
             tabCase[b-1][a + 1].setBackground(Color.WHITE);
             tabCase[b-1][a + 1].setValide();
             tabCase[b-1][a + 1].setNbtoFile(tabAlgo[b-1][a + 1]);
             tabCase[b-1][a + 1].setText(tabCase[b-1][a + 1].getNbStr());
         }
 
-        if (b < ligne && a < colonne && tabAlgo[b + 1][a + 1] == 0) {
-            System.out.println("Angle Bas Droite Recursif");
+        if (b+1 < ligne && a+1 < colonne && tabAlgo[b + 1][a + 1] == 0) {
+            
 
             
             tabCase[b][a].setBackground(Color.WHITE);
             this.LectureAlgo(tabCase, ligne, colonne, a + 1, b + 1);
-        } else if (b < ligne && a < colonne) {
+        } else if (b+1< ligne && a+1 < colonne) {
             tabCase[b + 1][a + 1].setBackground(Color.WHITE);
             tabCase[b + 1][a + 1].setValide();
             tabCase[b + 1][a + 1].setNbtoFile(tabAlgo[b + 1][a + 1]);
             tabCase[b + 1][a + 1].setText(tabCase[b + 1][a + 1].getNbStr());
         }
-*/
+
 
                
             
