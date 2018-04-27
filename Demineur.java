@@ -182,7 +182,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                      * on definit les mines comme validée pour faciliter le calcule final
                      */
                     tabCase[f][i].setValide();
-                    tabCase[f][i].setText("*");
+                    //tabCase[f][i].setText("*");
                 }
             }
         }
@@ -485,7 +485,18 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                 fenetre.dispose();
             }
             else{
-                System.exit(0);
+            	//vide le fichier de sauvegarde
+                try {
+		            FileOutputStream fichier = new FileOutputStream("save.txt");
+		            DataOutputStream flux = new DataOutputStream(fichier);
+		            flux.writeInt(-1);
+		            flux.close();
+		        } catch (FileNotFoundException ex) {
+		            System.err.println("fichier non trouvé: ecriture");
+		        } catch (IOException ex) {
+		            System.out.println("il y'a une erreur: ecriture");
+		        }
+        	System.exit(0);
             }
             
         }
