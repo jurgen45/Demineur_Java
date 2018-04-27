@@ -160,6 +160,8 @@ public void lectureTabScore(int sec, int min,int aligne,int acolonne,int anbmine
     JOptionPane tbscore = new JOptionPane();
     int temps_m=0;
     int temps_s=0;
+    String text=null;
+    String textfinal="";
         try {
             FileInputStream file = new FileInputStream("Score.dat");
             DataInputStream flux1 = new DataInputStream(file);
@@ -174,13 +176,14 @@ public void lectureTabScore(int sec, int min,int aligne,int acolonne,int anbmine
                 temps_m = flux1.readInt();
                 if (aligne==ligne&&acolonne==colonne&&anbmine==nbmine) {
                     
-                System.out.println("Temps: "+temps_s+":"+temps_m);
+                text="Temps: "+temps_s+":"+temps_m+"\n";
+                textfinal=textfinal+text;
                 }
    
                 
             }
-            
-            tbscore.showMessageDialog(null, "Grille: " + aligne + "*" + acolonne + "\n" + anbmine + " mines\n Votre temps: "+min+":"+sec+"\n", "Score", JOptionPane.INFORMATION_MESSAGE);
+            System.out.println(textfinal);
+            tbscore.showMessageDialog(null, "Grille: " + aligne + "*" + acolonne + "\n" + anbmine + " mines\n"+textfinal, "Score", JOptionPane.INFORMATION_MESSAGE);
 
             flux1.close();
         } catch (FileNotFoundException ex) {

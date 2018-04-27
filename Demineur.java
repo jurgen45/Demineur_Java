@@ -272,8 +272,9 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                 /**
                  * si tout les JButton ont ete activer alors on arrete le jeu et on lance l'ecran de fin 
                  */
+                tabCase[0][0].ecritureTabScore(sec,min,ligne,colonne,mine1);
                     fin(true,tabCase,fenetre,ligne,colonne,quitter,sec,min,nbCout,f,i);
-                   tabCase[0][0].ecritureTabScore(sec,min,ligne,colonne,mine1);
+                   
                 }
 
             }
@@ -344,12 +345,10 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
         /**
          * Si on ferme la fenetre alors on sauvgarde
          */
-        int confirm = JOptionPane.showOptionDialog(null, "Etes vous sur de vouloir quitter", "Confirmation de quitter",
-                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
-        if (confirm == 0) {
+        
             tabCase[0][0].sauvegarde(tabCase, ligne, colonne, mine1, marqueurs, sec, min);
             System.exit(0);
-        }
+        
     }
     public void mousePressed(MouseEvent me) {
     }
