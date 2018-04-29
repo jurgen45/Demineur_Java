@@ -162,11 +162,15 @@ public void lectureTabScore(int sec, int min,int aligne,int acolonne,int anbmine
     int temps_s=0;
     String text=null;
     String textfinal="";
+    int p1m=min;
+    int p1s=sec;
+   
         try {
             FileInputStream file = new FileInputStream("Score.dat");
             DataInputStream flux1 = new DataInputStream(file);
          System.out.println("Grille: " + aligne + "*" + acolonne + "\n" + anbmine + " mines");
          System.out.println("Votre Temps: "+min+":"+sec);
+                
             while (flux1.available()>8) {
                 
                 int ligne = flux1.readInt();
@@ -176,13 +180,23 @@ public void lectureTabScore(int sec, int min,int aligne,int acolonne,int anbmine
                 temps_m = flux1.readInt();
                 if (aligne==ligne&&acolonne==colonne&&anbmine==nbmine) {
                     
-                text="Temps: "+temps_s+":"+temps_m+"\n";
-                textfinal=textfinal+text;
+                
+                if(temps_m<=p1m&&temps_s<p1s)
+                {
+                p1m=temps_m;
+                p1s=temps_s;
                 }
+                
    
                 
             }
-            System.out.println(textfinal);
+        }
+            
+            
+            System.out.println(); 
+            
+            textfinal="Votre Temps: "+min+":"+sec+"\n1er: "+p1m+":"+p1s;
+            
             tbscore.showMessageDialog(null, "Grille: " + aligne + "*" + acolonne + "\n" + anbmine + " mines\n"+textfinal, "Score", JOptionPane.INFORMATION_MESSAGE);
 
             flux1.close();
