@@ -23,7 +23,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
     private JFrame fenetre = new JFrame();
     private ImageIcon img = null;
     private int victoire =0;
-    JButton save = new JButton("sauvegarder");
+    JButton save = new JButton("sauvegarder & quitter");
     JButton quitter = new JButton("quitter");
     Timer temps = new Timer();
     Algo alg=null;
@@ -214,7 +214,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
         };
         temps.schedule(action, 0, 1000);
         time.setText(""+min+":"+sec);
-        fenetre.setSize(150, 600);
+        fenetre.setSize(175, 600);
         fenetre.setLocation(800, 100);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         quitter.addActionListener(this);
@@ -223,7 +223,6 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
         fenetre.add(nbmarques);
         fenetre.add(nbmines);
         fenetre.add(save);
-        fenetre.add(quitter);
         fenetre.setVisible(true);
         this.addWindowListener(this);
         fenetre.addWindowListener(this);
@@ -328,8 +327,45 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
         /**
          * Si le JButton est activer alors on sauvgarde dans un fichier 
          */
-        if (e.getActionCommand() == "sauvegarder") {
-            tabCase[0][0].sauvegarde(tabCase, ligne, colonne, mine1, marqueurs, sec, min);         
+        if (e.getActionCommand() == "sauvegarder et quitter") {
+            tabCase[0][0].sauvegarde(tabCase, ligne, colonne, mine1, marqueurs, sec, min);
+            fenetre.dispose();
+            this.dispose();
+            int indice=0;
+
+        try{
+                FileInputStream file = new FileInputStream("save.txt");
+                DataInputStream flux1 = new DataInputStream(file);
+                indice = flux1.readInt();
+                
+                flux1.close();
+            }
+            catch(FileNotFoundException ex){
+                System.err.println("fichier non trouvé: lecture");
+            }
+            catch(IOException ex){
+                System.out.println("il y'a une erreur: lecture");
+            }
+            /**
+             * si le contenue du fichier de sauvgarde est negatif alors on lance le menu sans possibilité 
+             * de charger une sauvgarde 
+             */
+            if (indice>0) {
+             
+                Menu m=new Menu();
+                m.affiche();
+                m.setLocation(200, 100);
+                System.out.println("1");
+            }
+            /**
+             * Sinon on lance le menu standart avec la possibilité de reprendre une sauvgarde
+             */
+            else{
+                Menu2 m2 = new Menu2();
+                m2.affiche();
+                m2.setLocation(200, 100);
+                
+            }         
 
         }
 
