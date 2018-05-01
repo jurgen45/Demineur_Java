@@ -345,27 +345,10 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
             catch(IOException ex){
                 System.out.println("il y'a une erreur: lecture");
             }
-            /**
-             * si le contenue du fichier de sauvgarde est negatif alors on lance le menu sans possibilité 
-             * de charger une sauvgarde 
-             */
-            if (indice>0) {
-             
                 Menu m=new Menu();
                 m.affiche();
                 m.setLocation(200, 100);
-                System.out.println("1");
-            }
-            /**
-             * Sinon on lance le menu standart avec la possibilité de reprendre une sauvgarde
-             */
-            else{
-                Menu2 m2 = new Menu2();
-                m2.affiche();
-                m2.setLocation(200, 100);
-                
-            }         
-
+                System.out.println("1");       
         }
 
     }
