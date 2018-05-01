@@ -20,9 +20,12 @@ public class Menu extends JFrame implements MouseListener{
     public void mouseExited(MouseEvent me){}
     public void mouseClicked (MouseEvent e){
         if (e.getX()>10 && e.getX()<150 && e.getButton() == MouseEvent.BUTTON1) {
+            /**
+             * Si nouvelle partie est cliquée alors on lance le panneau de reglage
+             */
             this.dispose();
             Reglage visu = new Reglage();          
-            visu.affiche();
+            
         }
         if (e.getX()>200 && e.getX()<340 && e.getButton() == MouseEvent.BUTTON1) {
             try{
@@ -44,6 +47,7 @@ public class Menu extends JFrame implements MouseListener{
         }
         if (e.getX()>390 && e.getButton() == MouseEvent.BUTTON1) {
             this.dispose();
+            System.exit(0);
         }
 
     }

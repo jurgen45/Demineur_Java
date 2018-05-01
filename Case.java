@@ -2,6 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.*;
 public class Case extends JButton{
+    /**
+     * Case herite de JButton et ajoute des arguments 
+     */
     private boolean mine;
     private boolean valide;
     private int nb;
@@ -72,8 +75,10 @@ public String getNbStr() {
         
     
    
-public void sauvegarde(Case[][] tabCase, int ligne, int colonne, int mine1, int marqueurs, int sec){
-
+public void sauvegarde(Case[][] tabCase, int ligne, int colonne, int mine1, int marqueurs, int sec, int min){
+/**
+ * Sauvgarde dans le fichier les cases minée,les drapeaux,les "?" et les cases deja tester
+ */
         try {
 
             FileOutputStream fichier = new FileOutputStream("save.txt");
@@ -114,6 +119,7 @@ public void sauvegarde(Case[][] tabCase, int ligne, int colonne, int mine1, int 
 
             flux.writeInt(marqueurs);
             flux.writeInt(sec);
+            flux.writeInt(min);
             flux.close();
         } catch (FileNotFoundException ex) {
             System.err.println("fichier non trouvé: ecriture");
@@ -123,7 +129,10 @@ public void sauvegarde(Case[][] tabCase, int ligne, int colonne, int mine1, int 
 
 }
 
-public void ecritureTabScore(int temps,int ligne,int colonne,int nbmine){
+public void ecritureTabScore(int sec, int min,int ligne,int colonne,int nbmine){
+    /**
+     * Ecrit dans Score.dat le score de chaque partie
+     */
 try {
     
             FileOutputStream fichier = new FileOutputStream("Score.dat",true);
@@ -131,7 +140,8 @@ try {
             flux.writeInt(ligne);
             flux.writeInt(colonne);
             flux.writeInt(nbmine);
-            flux.writeInt(temps);
+            flux.writeInt(sec);
+            flux.writeInt(min);
             flux.close();
 }catch(FileNotFoundException ex)
     {
@@ -143,25 +153,52 @@ try {
     }
 }
 
-public void lectureTabScore(int temps,int aligne,int acolonne,int anbmine){
+public void lectureTabScore(int sec, int min,int aligne,int acolonne,int anbmine){
+    /**
+     * Lis dans Score.dat les scores correspondant au parametre de la partie
+     */
+    JOptionPane tbscore = new JOptionPane();
+    int temps_m=0;
+    int temps_s=0;
+    String text=null;
+    String textfinal="";
+    int p1m=min;
+    int p1s=sec;
+   
         try {
             FileInputStream file = new FileInputStream("Score.dat");
             DataInputStream flux1 = new DataInputStream(file);
          System.out.println("Grille: " + aligne + "*" + acolonne + "\n" + anbmine + " mines");
-         System.out.println("Votre Temps: "+temps);
+         System.out.println("Votre Temps: "+min+":"+sec);
+                
             while (flux1.available()>8) {
                 
                 int ligne = flux1.readInt();
                 int colonne = flux1.readInt();
                 int nbmine = flux1.readInt();
-                 temps = flux1.readInt();
+                temps_s = flux1.readInt();
+                temps_m = flux1.readInt();
                 if (aligne==ligne&&acolonne==colonne&&anbmine==nbmine) {
                     
-                System.out.println("Temps: "+temps);
+                
+                if(temps_m<=p1m&&temps_s<p1s)
+                {
+                p1m=temps_m;
+                p1s=temps_s;
                 }
+                
    
                 
             }
+        }
+            
+            
+            System.out.println(); 
+            
+            textfinal="Votre Temps: "+min+":"+sec+"\n1er: "+p1m+":"+p1s;
+            
+            tbscore.showMessageDialog(null, "Grille: " + aligne + "*" + acolonne + "\n" + anbmine + " mines\n"+textfinal, "Score", JOptionPane.INFORMATION_MESSAGE);
+
             flux1.close();
         } catch (FileNotFoundException ex) {
             System.err.println("fichier non trouvé: ecriture");
