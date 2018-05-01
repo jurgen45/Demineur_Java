@@ -326,7 +326,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
         /**
          * Si le JButton est activer alors on sauvgarde dans un fichier 
          */
-        if (e.getActionCommand() == "sauvegarder et quitter") {
+        if (e.getActionCommand() == "sauvegarder & quitter") {
             tabCase[0][0].sauvegarde(tabCase, ligne, colonne, mine1, marqueurs, sec, min);
             fenetre.dispose();
             this.dispose();
