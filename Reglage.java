@@ -77,6 +77,8 @@ public class Reglage extends JFrame implements ActionListener{
 	      	 	nbc=30;
 	      	 }	
 		  col.setText("colonne: " + nbc); 
+		  nbm=nbl*nbc/4;
+	    	mines.setText("mines: " + nbm);
 	    }
 	    else if(e.getActionCommand()=="colonne -")
 	    {
@@ -84,7 +86,9 @@ public class Reglage extends JFrame implements ActionListener{
 	      if (nbc<=4) {
 	      	 	nbc=4;
 	      	 }
-	      col.setText("colonne: " + nbc);
+		  col.setText("colonne: " + nbc);
+		  nbm=nbl*nbc/4;
+	    	mines.setText("mines: " + nbm);
 	    }
 	    else if(e.getActionCommand()=="ligne +")
 	    {
@@ -92,7 +96,9 @@ public class Reglage extends JFrame implements ActionListener{
 	      if (nbl>=30) {
 	      	 	nbl=30;
 	      	 }
-	      lig.setText("ligne: " + nbl);
+		  lig.setText("ligne: " + nbl);
+		  nbm=nbl*nbc/4;
+	    	mines.setText("mines: " + nbm);
 	    }
 	    else if (e.getActionCommand()=="ligne -")
 	    {
@@ -100,20 +106,27 @@ public class Reglage extends JFrame implements ActionListener{
 	      if (nbl<=4) {
 	      	 	nbl=4;
 	      	 }
-	      lig.setText("ligne: " + nbl);
+		  lig.setText("ligne: " + nbl);
+		  nbm=nbl*nbc/4;
+	    	mines.setText("mines: " + nbm);
 		}
 		else if (e.getActionCommand()=="mines +") {
-	    	nbm++;
-	    	if (nbm>=nbl*nbc/4) {
-	    		nbm=nbl*nbc/4;
-	    	}
+			nbm++;
+			if(nbm>(nbl*nbc/2))
+			{
+				nbm=(nbl*nbc/2);
+			}
 	    	mines.setText("mines: " + nbm);
 	    }
 	    else if (e.getActionCommand()=="mines -") {
 	    	nbm--;
 	    	if (nbm<=4) {
 	    		nbm=4;
-	    	}
+			}
+			if(nbm<(nbl*nbc/4))
+			{
+				nbm=nbl*nbc/4;
+			}
 	    	mines.setText("mines: " + nbm);
 		}
 		else if (e.getActionCommand()=="lancer la partie !") {
@@ -125,14 +138,18 @@ public class Reglage extends JFrame implements ActionListener{
 	    	if (nbc>=30) {
 	      	 	nbc=30;
 	      	 }
-	      col.setText("colonne: " + nbc);
+		  col.setText("colonne: " + nbc);
+		  nbm=nbl*nbc/4;
+	    	mines.setText("mines: " + nbm);
 	    }
 	    else if (e.getActionCommand()=="colonne -5") {
 	    	nbc=nbc-5;
 	    	if (nbc<=4) {
 	      	 	nbc=4;
 	      	 }
-	      col.setText("colonne: " + nbc);
+		  col.setText("colonne: " + nbc);
+		  nbm=nbl*nbc/4;
+	    	mines.setText("mines: " + nbm);
 	    }
 	    else if(e.getActionCommand()=="ligne +5")
 	    {
@@ -140,7 +157,9 @@ public class Reglage extends JFrame implements ActionListener{
 	      if (nbl>=30) {
 	      	 	nbl=30;
 	      	 }
-	      lig.setText("ligne: " + nbl);
+		  lig.setText("ligne: " + nbl);
+		  nbm=nbl*nbc/4;
+	    	mines.setText("mines: " + nbm);
 	    }
 	    else if (e.getActionCommand()=="ligne -5")
 	    {
@@ -148,21 +167,28 @@ public class Reglage extends JFrame implements ActionListener{
 	      if (nbl<=4) {
 	      	 	nbl=4;
 	      	 }
-	      lig.setText("ligne: " + nbl);
+		  lig.setText("ligne: " + nbl);
+		  nbm=nbl*nbc/4;
+	    	mines.setText("mines: " + nbm);
 		}
 		else if (e.getActionCommand()=="mines +5")
 	    {
-	      nbm=nbm+5;
-	    	if (nbm>=nbl*nbc/4) {
-	    		nbm=nbl*nbc/4;
-	    	}
+		  nbm=nbm+5;
+		  if(nbm>(nbl*nbc/2))
+			{
+				nbm=(nbl*nbc/2);
+			}
 	    	mines.setText("mines: " + nbm);
 		}
 		else if (e.getActionCommand()=="mines -5") {
 	    	nbm=nbm-5;
 	    	if (nbm<=4) {
 	    		nbm=4;
-	    	}
+			}
+			if(nbm<(nbl*nbc/4))
+			{
+				nbm=nbl*nbc/4;
+			}
 	    	mines.setText("mines: " + nbm);
 		}
 	}

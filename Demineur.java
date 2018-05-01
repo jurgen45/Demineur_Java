@@ -30,7 +30,6 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
     public Demineur(int ligne, int colonne, int mine, boolean fichier) {
         super();
         marqueurs=mine;
-        System.out.println(mine);
         this.ligne = ligne;
         this.colonne = colonne;
         this.setSize(600, 600);
