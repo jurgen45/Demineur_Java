@@ -49,7 +49,6 @@ public class Reglage extends JFrame implements ActionListener{
 		ld5.addActionListener(this);
 		mi5.addActionListener(this);
 		md5.addActionListener(this);
-		mi5.addActionListener(this);
 		run.addActionListener(this);
 		this.setSize(400,400);
 		this.setLocation(200, 100);
