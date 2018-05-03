@@ -2,7 +2,11 @@ import java.awt.Color;
 import java.io.*;
 public class Algo{
 int[][] tabAlgo=null;
-
+/**
+ * @param tabCase est le tableau de cases de la partie
+ * @param ligne le nombre de ligne de la partie
+ * @param colonne le nombe de colonne de la partie
+ */
     public Algo(Case[][] tabCase, int ligne, int colonne){
         /**
          * On stocke dans le tableau tabAlgo le nombre de mines detecter autour de chque case
@@ -109,6 +113,13 @@ int[][] tabAlgo=null;
     
     }
 
+    /**
+     * @param tabCase est le tableau de cases de la partie
+     * @param ligne   le nombre de ligne de la partie
+     * @param colonne le nombe de colonne de la partie
+     * @param a la position y de tabCase a l'appel recursif
+     * @param b la position x de tabCase a l'appel recursif
+     */
 public void LectureAlgo(Case[][] tabCase, int ligne, int colonne,int a,int b)
 {
     /**
@@ -243,6 +254,13 @@ public void LectureAlgo(Case[][] tabCase, int ligne, int colonne,int a,int b)
        
 }
 
+    /**
+     * @param tabCase est le tableau de cases de la partie
+     * @param ligne   le nombre de ligne de la partie
+     * @param colonne le nombe de colonne de la partie
+     * @param i       la position y de tabCase a l'appel recursif
+     * @param f       la position x de tabCase a l'appel recursif
+     */
 public void recherche(Case[][] tabCase,int f,int i,int ligne,int colonne)
 {
     /**
