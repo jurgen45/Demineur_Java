@@ -1,6 +1,13 @@
 import java.io.*;
 import java.awt.*;
 import javax.swing.*;
+
+/**
+ * Lance le programme en prenant en compte la sauvegarde pour les menus
+ *  @version 1
+ * @author Nathan Bertholier
+ * @author Jürgen Hablainville
+ */
 public class Main {
     public static void main(String[] args) { 
         int indice=0;

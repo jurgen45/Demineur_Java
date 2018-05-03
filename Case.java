@@ -1,8 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
+
 /**
- * Case herite de JButton et ajoute des arguments
+ * Case herite de JButton et ajoute des arguments 
+ *  @version 1
+ * @author Nathan Bertholier
+ * @author Jürgen Hablainville
  */
 public class Case extends JButton{
 

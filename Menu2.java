@@ -4,7 +4,10 @@ import java.awt.event.*;
 import java.io.*;
 
 /**
- * On initialise le menu avec Jouer et Quitter
+ * On initialise le menu avec Jouer et Quitter 
+ * @version 1
+ * @author Nathan Bertholier
+ * @author Jürgen Hablainville
  */
 public class Menu2 extends JFrame implements MouseListener{
    

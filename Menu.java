@@ -2,9 +2,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
+
 /**
-* On initialise le menu avec Jouer, charger une partie et quitter
-*/
+ * On initialise le menu avec Jouer, charger une partie et quitter
+ * @version 1
+ * @author Nathan Bertholier
+ * @author Jürgen Hablainville
+ */
 public class Menu extends JFrame implements MouseListener{
     public Dessin des = new Dessin();
     public void affiche(){

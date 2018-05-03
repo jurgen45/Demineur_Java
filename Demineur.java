@@ -8,8 +8,13 @@ import java.io.*;
 import java.awt.event.MouseListener;
 import java.util.Timer;
 import java.util.TimerTask;
+
 /**
- * Classe principale du jeu qui permet d'interagir avec toutes les autres classes  
+ * Classe principale du jeu qui permet d'interagir avec toutes les autres
+ * classes  
+ * @version 1
+ * @author Nathan Bertholier
+ * @author Jürgen Hablainville
  */
 public class Demineur extends JFrame implements ActionListener, MouseListener,WindowListener {
     private int ligne;

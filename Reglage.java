@@ -3,7 +3,10 @@ import java.awt.*;
 import java.awt.event.*;
 
 /**
- * On initialise le menu de reglage
+ * On initialise le menu de reglage 
+ * @version 1
+ * @author Nathan Bertholier
+ * @author Jürgen Hablainville
  */
 public class Reglage extends JFrame implements ActionListener{
 

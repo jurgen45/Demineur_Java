@@ -1,8 +1,17 @@
+
 import java.awt.Color;
 import java.io.*;
+
+/**
+ * Effectue les calculs pour la detection des cases
+ * @version 1
+ * @author Nathan Bertholier
+ * @author Jürgen Hablainville
+ */
 public class Algo{
 int[][] tabAlgo=null;
 /**
+ * Stocke dans un tableau le nombre de mines autour de la case de chaque case pour eviter de recalculer a chaque fois 
  * @param tabCase est le tableau de cases de la partie
  * @param ligne le nombre de ligne de la partie
  * @param colonne le nombe de colonne de la partie
@@ -114,18 +123,19 @@ int[][] tabAlgo=null;
     }
 
     /**
+     * On detecte de maniere recursive les case adjacente,si aucune mines n'est
+     * presente on passe a la case en bas puis a droite puis en haut puis a gauche
+     * Si une case a deja ete visiter alors on la bloque avec Valide
      * @param tabCase est le tableau de cases de la partie
      * @param ligne   le nombre de ligne de la partie
      * @param colonne le nombe de colonne de la partie
-     * @param a la position y de tabCase a l'appel recursif
-     * @param b la position x de tabCase a l'appel recursif
+     * @param a       la position y de tabCase a l'appel recursif
+     * @param b       la position x de tabCase a l'appel recursif
      */
 public void LectureAlgo(Case[][] tabCase, int ligne, int colonne,int a,int b)
 {
     /**
-     * On detecte de maniere recursive les case adjacente,si aucune mines n'est presente on passe a la case en bas puis a droite 
-     * puis en haut puis a gauche
-     * Si une case a deja ete visiter alors on la bloque avec Valide
+    
      */
         
             if (tabCase[b][a].getValide()==true) {
@@ -255,6 +265,7 @@ public void LectureAlgo(Case[][] tabCase, int ligne, int colonne,int a,int b)
 }
 
     /**
+     * On recherche le nombre de mines autour de la case cliquer
      * @param tabCase est le tableau de cases de la partie
      * @param ligne   le nombre de ligne de la partie
      * @param colonne le nombe de colonne de la partie
