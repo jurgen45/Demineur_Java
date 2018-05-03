@@ -5,13 +5,8 @@ import java.io.*;
  * Case herite de JButton et ajoute des arguments
  */
 public class Case extends JButton{
-/**
- * permet de savoir si la case est une mine
- */
+
     private boolean mine;
-    /**
-     * permet de savoir si la case a éte visité
-     */
     private boolean valide;
     private int nb;
     private int etat;
@@ -30,7 +25,7 @@ public Case(boolean etatmine)
 
 }
 /**
- * renvoi la valeur de mine
+ * renvoi la valeur de mine (true si mine presente)
  * @return valeur boolean de mine
  */
 public boolean etatMine()
@@ -38,28 +33,50 @@ public boolean etatMine()
     return this.mine;
 }
 
- 
+    /**
+     * Definit la valeur de valide sur true
+     */
 public void setValide()
 {
     this.valide=true;
 }
 
+    /**
+     * Definit la valeur de valide sur fals
+     */
 public void setDeValide() {
      this.valide = false;
 }
 
+    /**
+     * renvoi la valeur de de valide (true si case validé)
+     * @return valeur boolean de valide
+     */
 public boolean getValide() {
     return this.valide;
 }
+
+    /**
+     * Incremente la valeur de nb(nombre de mines aux alentour)
+     */
 public void setNb()
 {
     this.nb++;
 }
 
+    /**
+     * Determine la valeur de nb(nombre de mines aux alentour) par les donnes
+     * du fichier de sauvegarde
+     * 
+     * @param n valeur a assigné a nb
+     */
 public void setNbtoFile(int n) {
       this.nb=n;
 }
 
+    /**
+     * Incremente la valeur de etat(logo drapeau,"?" ou vide)
+     */
 public void setEtat()
 {
     this.etat++;
@@ -68,37 +85,66 @@ public void setEtat()
     }
 }
 
+    /**
+     * Determine la valeur de etat(logo drapeau,"?" ou vide) par les donnes du fichier
+     * de sauvegarde
+     * 
+     * @param n valeur a assigné a etat
+     */
 public void setEtattoFile(int n) {
     this.etat=n;
     
  }
+ 
+    /**
+     * Donne la valeur de etat(logo drapeau,"? ou vide")
+     * 
+     * @return etat valeur de etat(logo drapeau,"?"" ou vide)
+     */
 public int getEtat()
 {
     return this.etat;
 }
 
+    /**
+     * Donne la valeur de nb(nombre de mines aux alentour)
+     * 
+     * @return nb valeur de nb(nombre de mines aux alentour)
+     */
 public int getNb() {
     return this.nb;
 }
-
+/**
+ * Donne au format Sting la valeur de nb
+ * @return k valeur de k en String
+ */
 public String getNbStr() {
     int k= this.nb;
       return ""+k;
 }
         
     
-   
-public void sauvegarde(Case[][] tabCase, int ligne, int colonne, int mine1, int marqueurs, int sec, int min){
-/**
- * Sauvgarde dans le fichier les cases minée,les drapeaux,les "?" et les cases deja tester
- */
+    /**
+     * Sauvgarde dans le fichier les cases minée,les drapeaux,les "?" et les cases
+     * deja tester
+     * 
+     * @param tabCase  est le tableau de cases de la partie
+     * @param ligne    le nombre de ligne de la partie
+     * @param colonne  le nombe de colonne de la partie
+     * @param nbmine    nombre de mine dans la partie
+     * @param marqueur valeur de etat(logo drapeau,"? ou vide")
+     * @param sec nombre de seconde du timer
+     * @param min nombre de minute du timer 
+     */
+public void sauvegarde(Case[][] tabCase, int ligne, int colonne, int nbmine, int marqueurs, int sec, int min){
+
         try {
 
             FileOutputStream fichier = new FileOutputStream("save.txt");
             DataOutputStream flux = new DataOutputStream(fichier);
             flux.writeInt(ligne);
             flux.writeInt(colonne);
-            flux.writeInt(mine1);
+            flux.writeInt(nbmine);
 
             for (int i = 0; i < ligne; i++) {
                 for (int f = 0; f < colonne; f++) {
@@ -142,9 +188,17 @@ public void sauvegarde(Case[][] tabCase, int ligne, int colonne, int mine1, int 
 
 }
 
-public void ecritureTabScore(int sec, int min,int ligne,int colonne,int nbmine){
     /**
      * Ecrit dans Score.dat le score de chaque partie
+     * @param ligne    le nombre de ligne de la partie
+     * @param colonne  le nombe de colonne de la partie
+     * @param nbmine    nombre de mine dans la partie
+     * @param sec      nombre de seconde du timer
+     * @param min      nombre de minute du timer
+     */
+public void ecritureTabScore(int sec, int min,int ligne,int colonne,int nbmine){
+    /**
+     * 
      */
 try {
     

@@ -8,7 +8,9 @@ import java.io.*;
 import java.awt.event.MouseListener;
 import java.util.Timer;
 import java.util.TimerTask;
-
+/**
+ * Classe principale du jeu qui permet d'interagir avec toutes les autres classes  
+ */
 public class Demineur extends JFrame implements ActionListener, MouseListener,WindowListener {
     private int ligne;
     private int colonne;
@@ -27,6 +29,15 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
     JButton quitter = new JButton("quitter");
     Timer temps = new Timer();
     Algo alg=null;
+    
+    /**
+     * Initialise la partie
+     * 
+     * @param ligne   le nombre de ligne de la partie
+     * @param colonne le nombe de colonne de la partie
+     * @param mine  nombre de mine dans la partie
+     * @param fichier true si fichier de sauvegarde present sinon false
+     */
     public Demineur(int ligne, int colonne, int mine, boolean fichier) {
         super();
         marqueurs=mine;
@@ -427,9 +438,19 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
         }
         nbmarques.setText("" + marqueurs);
     }
-/**
- * Ecran de fin
- */
+
+    /**
+     * Definit l'ecran de fin
+     * 
+     * @param victoire true si victoire sinon false
+     * @param tabCase  tableau de cases de la partie
+     * @param fenetre  fenetre secondaire(menu)
+     * @param ligne    le nombre de ligne de la partie
+     * @param colonne  le nombe de colonne de la partie
+     * @param quitter  JButton permettant de quitter 
+     * @param sec      nombre de seconde du timer
+     * @param min      nombre de minute du timer
+     */
     public void fin(boolean victoire,Case tabCase[][],JFrame fenetre,int ligne,int colonne,JButton quitter,int sec, int min ,int nbCout,int f,int i){
         /**
          * Si on gagne alors victoire==true ,On affiche le temps et le nombre de coups 
