@@ -1,15 +1,24 @@
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
+/**
+ * Case herite de JButton et ajoute des arguments
+ */
 public class Case extends JButton{
-    /**
-     * Case herite de JButton et ajoute des arguments 
-     */
+/**
+ * permet de savoir si la case est une mine
+ */
     private boolean mine;
+    /**
+     * permet de savoir si la case a éte visité
+     */
     private boolean valide;
     private int nb;
     private int etat;
-
+/**
+ * permet de definir la case avec etatmine==true si on veut que la case soit minée
+ * @param etatmine definit l'argument mine en la valeur d'etatmine
+ */
 public Case(boolean etatmine)
 {
     super();
@@ -20,12 +29,16 @@ public Case(boolean etatmine)
     
 
 }
+/**
+ * renvoi la valeur de mine
+ * @return valeur boolean de mine
+ */
 public boolean etatMine()
 {
     return this.mine;
 }
 
-
+ 
 public void setValide()
 {
     this.valide=true;
