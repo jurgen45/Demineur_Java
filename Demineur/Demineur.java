@@ -144,10 +144,14 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
         int[] aleamine=new int[mine];
         double aleadouble;
             int alea;
+            aleadouble = Math.random() * (ligne * colonne);
+            alea = (int) aleadouble;
+            aleamine[0]=alea;
         for(int i=0;i<mine;i++)
         {
             aleadouble = Math.random() * (ligne*colonne);
             alea = (int) aleadouble;
+            
             for(int v=0;v<i;v++)
             {
                 if(alea==aleamine[v]){
@@ -158,6 +162,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                 }
             }
         }
+      
         int compteur=0;
         boolean valide=false;
     for(int compteurtab=0;compteurtab<aleamine.length;compteurtab++){
