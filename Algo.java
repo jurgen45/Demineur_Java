@@ -258,8 +258,8 @@ public void LectureAlgo(Case[][] tabCase, int ligne, int colonne,int a,int b)
      * @param tabCase est le tableau de cases de la partie
      * @param ligne   le nombre de ligne de la partie
      * @param colonne le nombe de colonne de la partie
-     * @param i       la position y de tabCase a l'appel recursif
-     * @param f       la position x de tabCase a l'appel recursif
+     * @param i       la position y de tabCase a l'appui du bouton
+     * @param f       la position x de tabCase a l'appui du bouton
      */
 public void recherche(Case[][] tabCase,int f,int i,int ligne,int colonne)
 {

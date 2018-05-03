@@ -132,7 +132,7 @@ public String getNbStr() {
      * @param ligne    le nombre de ligne de la partie
      * @param colonne  le nombe de colonne de la partie
      * @param nbmine    nombre de mine dans la partie
-     * @param marqueur valeur de etat(logo drapeau,"? ou vide")
+     * @param marqueurs valeur de etat(logo drapeau,"? ou vide")
      * @param sec nombre de seconde du timer
      * @param min nombre de minute du timer 
      */
