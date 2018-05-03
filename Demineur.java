@@ -16,7 +16,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
     private int colonne;
     private int mine1;
     private int marqueurs;
-    private int nbCout=0;
+    private int nbCoup=0;
     private int sec=0, min=0;  
     private JLabel nbmarques = null;
     private JLabel nbmines = null;
@@ -253,15 +253,15 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                 if (e.getSource() == tabCase[f][i] && tabCase[f][i].etatMine() == false
                         && tabCase[f][i].getValide() == false && tabCase[f][i].getEtat() == 0) {
                     alg.recherche(tabCase,f, i,ligne, colonne);
-                    nbCout++;
+                    nbCoup++;
                 }
                 /**
                  * si le JButton contient une mine alors on arrete le jeu et on lance l'ecran de fin 
                  */
                 if (e.getSource() == tabCase[f][i] && tabCase[f][i].etatMine() == true
                         && tabCase[f][i].getEtat() == 0) {
-                         nbCout++;  
-                        fin(false, tabCase, fenetre, ligne, colonne, quitter, sec, min,  nbCout, f, i);
+                         nbCoup++;  
+                        fin(false, tabCase, fenetre, ligne, colonne, quitter, sec, min,  nbCoup, f, i);
                 }
             }
         }
@@ -282,7 +282,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                  * si tout les JButton ont ete activer alors on arrete le jeu et on lance l'ecran de fin 
                  */
                 tabCase[0][0].ecritureTabScore(sec,min,ligne,colonne,mine1);
-                    fin(true,tabCase,fenetre,ligne,colonne,quitter,sec,min,nbCout,f,i);
+                    fin(true,tabCase,fenetre,ligne,colonne,quitter,sec,min,nbCoup,f,i);
                    
                 }
 
@@ -447,11 +447,14 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
      * @param fenetre  fenetre secondaire(menu)
      * @param ligne    le nombre de ligne de la partie
      * @param colonne  le nombe de colonne de la partie
-     * @param quitter  JButton permettant de quitter 
+     * @param quitter  JButton permettant de quitter
      * @param sec      nombre de seconde du timer
      * @param min      nombre de minute du timer
+     * @param nbCoup   nombre de coups executer dans la partie 
+     * @param i  position y de tabCase a l'appui du bouton
+     * @param f  position x de tabCase a l'appui du bouton
      */
-    public void fin(boolean victoire,Case tabCase[][],JFrame fenetre,int ligne,int colonne,JButton quitter,int sec, int min ,int nbCout,int f,int i){
+    public void fin(boolean victoire,Case tabCase[][],JFrame fenetre,int ligne,int colonne,JButton quitter,int sec, int min ,int nbCoup,int f,int i){
         /**
          * Si on gagne alors victoire==true ,On affiche le temps et le nombre de coups 
          */
@@ -480,7 +483,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                     new ImageIcon("Chronometre.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
             temps.setIcon(img);
             temps.setText("" + sec);
-            nb_cout.setText("nombre de coups= " + nbCout);
+            nb_cout.setText("nombre de coups= " + nbCoup);
             etat.setText("Victoire");
             tabCase[0][0].lectureTabScore(sec,min,ligne,colonne,mine1);
             
@@ -514,9 +517,13 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
                     new ImageIcon("Chronometre.png").getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
             temps.setIcon(img);
             temps.setText("" + sec);
-            nb_cout.setText("nombre de coups= " + nbCout);
+            nb_cout.setText("nombre de coups= " + nbCoup);
             etat.setText("Defaite");
+<<<<<<< HEAD
             int yes=gameOver.showOptionDialog(null, "vous avez perdu\n"+"temps: "+min+":"+sec+"\nnombre de coups: "+nbCout+"\nrecommencer?", "defaite",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+=======
+            int yes=gameOver.showOptionDialog(null, "vous avez perdu\n"+"temps: "+min+":"+sec+"\nnombre de couts: "+nbCoup+"\nrecommencer?", "defaite",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+>>>>>>> 6d873cdb1abb5d29c3d7700816bc4f4bcc3470e2
             if (yes == 0) {             
                 Demineur jeu=new Demineur(ligne,colonne,mine1,false);
                 this.dispose();
