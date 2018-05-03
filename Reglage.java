@@ -13,7 +13,9 @@ public class Reglage extends JFrame implements ActionListener{
 	private JLabel lig = new JLabel();
 	private JLabel mines = new JLabel();
 	public Reglage(){
-		
+		/**
+		* On créer la fenetre des réglage
+		*/
 		GridLayout gestionnaire = new GridLayout(8, 2);
 		this.setLayout(gestionnaire);
 		JButton c1 = new JButton("colonne +");
@@ -131,6 +133,12 @@ public class Reglage extends JFrame implements ActionListener{
 		}
 		else if (e.getActionCommand()=="lancer la partie !") {
 			this.dispose();
+			/**
+			*@param nbl Le nombre de ligne choisi
+			*@param nbc Le nombre de colonnes choisi
+			*@param nbm Le nombre de mines chosi
+			*@param false Pas de sauvegarde
+			*/
 			Demineur jeu=new Demineur(nbl,nbc,nbm,false);
 	    }
 	    else if (e.getActionCommand()=="colonne +5") {

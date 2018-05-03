@@ -2,7 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
-
+/**
+* On initialise le menu avec Jouer, charger une partie et quitter
+*/
 public class Menu extends JFrame implements MouseListener{
     public Dessin des = new Dessin();
     public void affiche(){
@@ -28,6 +30,9 @@ public class Menu extends JFrame implements MouseListener{
             
         }
         if (e.getX()>200 && e.getX()<340 && e.getButton() == MouseEvent.BUTTON1) {
+            /**
+             * Si on charge une partie, on lit les donnée sauvegardé
+             */
             try{
                 FileInputStream file = new FileInputStream("save.txt");
                 DataInputStream flux1 = new DataInputStream(file);
