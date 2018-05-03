@@ -2,8 +2,8 @@ import javax.swing.*;
 import java.awt.*;
  
 public class Dessin extends JComponent {
-  /**
-   * On dessine le menu avec les images pour Jouer Charger et Quitter
+   /**
+   * On dessine le menu avec les images pour Jouer, Charger et Quitter
    */
   private Image play;
   private Image replay;
@@ -22,9 +22,18 @@ public class Dessin extends JComponent {
     pinceau1.setFont(f);
     pinceau1.drawImage(play,10,10,this);
     pinceau1.drawString("nouvelle partie", 15, 130);
+    /**
+    * On dessine l'image pour nouvelle partie 
+    */
     pinceau1.drawImage(replay,200,10,this);
     pinceau1.drawString("reprendre la partie", 200, 130);
+    /**
+    * On dessine l'image pour reprendre la partie 
+    */
     pinceau1.drawImage(quitter,390,10,this);
     pinceau1.drawString("quitter", 410, 130);
+    /**
+    * On dessine l'image pour quitter le jeu 
+    */
   }
 }

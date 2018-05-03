@@ -516,7 +516,7 @@ public class Demineur extends JFrame implements ActionListener, MouseListener,Wi
             temps.setText("" + sec);
             nb_cout.setText("nombre de coups= " + nbCout);
             etat.setText("Defaite");
-            int yes=gameOver.showOptionDialog(null, "vous avez perdu\n"+"temps: "+min+":"+sec+"\nnombre de couts: "+nbCout+"\nrecommencer?", "defaite",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+            int yes=gameOver.showOptionDialog(null, "vous avez perdu\n"+"temps: "+min+":"+sec+"\nnombre de coups: "+nbCout+"\nrecommencer?", "defaite",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
             if (yes == 0) {             
                 Demineur jeu=new Demineur(ligne,colonne,mine1,false);
                 this.dispose();

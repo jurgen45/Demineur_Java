@@ -20,7 +20,13 @@ public class Dessin2 extends JComponent {
     pinceau1.setFont(f);
     pinceau1.drawImage(play,100,10,this);
     pinceau1.drawString("nouvelle partie", 105, 130);
+    /**
+    * On dessine l'image pour nouvelle partie 
+    */
     pinceau1.drawImage(quitter,300,10,this);
     pinceau1.drawString("quitter", 330, 130);
+    /**
+    * On dessine l'image pour quitter le jeu 
+    */
   }
 }
