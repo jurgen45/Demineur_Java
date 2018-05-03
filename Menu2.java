@@ -3,10 +3,11 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 
+/**
+ * On initialise le menu avec Jouer et Quitter
+ */
 public class Menu2 extends JFrame implements MouseListener{
-    /**
-     * On initialise le menu avec Jouer et Quitter
-     */
+   
     public Dessin2 des2 = new Dessin2();
     public int indice;
     public void affiche(){

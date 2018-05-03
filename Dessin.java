@@ -1,10 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
  
+/**
+ * On dessine le menu avec les images pour Jouer, Charger et Quitter
+ */
 public class Dessin extends JComponent {
-   /**
-   * On dessine le menu avec les images pour Jouer, Charger et Quitter
-   */
+ 
   private Image play;
   private Image replay;
   private Image quitter;
