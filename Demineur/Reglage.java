@@ -84,7 +84,7 @@ public class Reglage extends JFrame implements ActionListener{
 	      	 	nbc=30;
 	      	 }	
 		  col.setText("colonne: " + nbc); 
-		  nbm=nbl*nbc/4;
+		  nbm=nbl*nbc/8;
 	    	mines.setText("mines: " + nbm);
 	    }
 	    else if(e.getActionCommand()=="colonne -")
@@ -94,7 +94,7 @@ public class Reglage extends JFrame implements ActionListener{
 	      	 	nbc=4;
 	      	 }
 		  col.setText("colonne: " + nbc);
-		  nbm=nbl*nbc/4;
+		  nbm=nbl*nbc/8;
 	    	mines.setText("mines: " + nbm);
 	    }
 	    else if(e.getActionCommand()=="ligne +")
@@ -104,7 +104,7 @@ public class Reglage extends JFrame implements ActionListener{
 	      	 	nbl=30;
 	      	 }
 		  lig.setText("ligne: " + nbl);
-		  nbm=nbl*nbc/4;
+		  nbm=nbl*nbc/8;
 	    	mines.setText("mines: " + nbm);
 	    }
 	    else if (e.getActionCommand()=="ligne -")
@@ -114,7 +114,7 @@ public class Reglage extends JFrame implements ActionListener{
 	      	 	nbl=4;
 	      	 }
 		  lig.setText("ligne: " + nbl);
-		  nbm=nbl*nbc/4;
+		  nbm=nbl*nbc/8;
 	    	mines.setText("mines: " + nbm);
 		}
 		else if (e.getActionCommand()=="mines +") {
@@ -130,9 +130,9 @@ public class Reglage extends JFrame implements ActionListener{
 	    	if (nbm<=4) {
 	    		nbm=4;
 			}
-			if(nbm<(nbl*nbc/4))
+			if(nbm<(nbl*nbc/8))
 			{
-				nbm=nbl*nbc/4;
+				nbm=nbl*nbc/8;
 			}
 	    	mines.setText("mines: " + nbm);
 		}
@@ -146,7 +146,7 @@ public class Reglage extends JFrame implements ActionListener{
 	      	 	nbc=30;
 	      	 }
 		  col.setText("colonne: " + nbc);
-		  nbm=nbl*nbc/4;
+		  nbm=nbl*nbc/8;
 	    	mines.setText("mines: " + nbm);
 	    }
 	    else if (e.getActionCommand()=="colonne -5") {
@@ -155,7 +155,7 @@ public class Reglage extends JFrame implements ActionListener{
 	      	 	nbc=4;
 	      	 }
 		  col.setText("colonne: " + nbc);
-		  nbm=nbl*nbc/4;
+		  nbm=nbl*nbc/8;
 	    	mines.setText("mines: " + nbm);
 	    }
 	    else if(e.getActionCommand()=="ligne +5")
@@ -165,7 +165,7 @@ public class Reglage extends JFrame implements ActionListener{
 	      	 	nbl=30;
 	      	 }
 		  lig.setText("ligne: " + nbl);
-		  nbm=nbl*nbc/4;
+		  nbm=nbl*nbc/8;
 	    	mines.setText("mines: " + nbm);
 	    }
 	    else if (e.getActionCommand()=="ligne -5")
@@ -175,7 +175,7 @@ public class Reglage extends JFrame implements ActionListener{
 	      	 	nbl=4;
 	      	 }
 		  lig.setText("ligne: " + nbl);
-		  nbm=nbl*nbc/4;
+		  nbm=nbl*nbc/8;
 	    	mines.setText("mines: " + nbm);
 		}
 		else if (e.getActionCommand()=="mines +5")
@@ -192,9 +192,9 @@ public class Reglage extends JFrame implements ActionListener{
 	    	if (nbm<=4) {
 	    		nbm=4;
 			}
-			if(nbm<(nbl*nbc/4))
+			if(nbm<(nbl*nbc/8))
 			{
-				nbm=nbl*nbc/4;
+				nbm=nbl*nbc/8;
 			}
 	    	mines.setText("mines: " + nbm);
 		}
